@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env.*
+.vscode/
+.idea/
+*.log
+*.xlsx
+*.xls
+*.db
+.DS_Store
+*.json # (optional, exclude test or secrets)
+.env
