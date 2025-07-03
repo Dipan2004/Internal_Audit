@@ -1,0 +1,15 @@
+{
+  "Equity": ["capital", "share", "reserve", "surplus", "premium"],
+  "Non-Current Liability": ["loan", "liability", "debt", "borrowing"],
+ "Current Liability": ["payable", "creditor", "tax", "duty", "refundable", "advance.*received"],
+  "Non-Current Asset": ["asset", "equipment", "furniture", "vehicle", "building", "depreciation"],
+  "Current Asset": ["advance.*to", "advance.*given", "deposit", "prepaid","cash", "bank", "debtor", "receivable", "stock", "deposit", "prepaid", "input", "credit"],
+  "Revenue from Operations": ["sales", "service", "revenue", "turnover", "income"],
+  "Cost of Materials Consumed": ["purchase", "consumable", "material", "stock"],
+  "Direct Expenses": ["charge", "payment", "expense", "study", "volunteer", "insurance", "consultancy", "nurse", "physician", "analysis", "screening"],
+  "Other Income": ["interest", "gain", "refund"],
+  "Other Expenses": ["maintenance", "repair", "rent", "electricity", "water", "housekeeping", "travel", "transport", "printing", "stationery", "software", "fee", "license", "tax", "duty"],
+  "Employee Benefits Expense": ["salary", "wage", "staff", "employee", "gratuity", "incentive", "remuneration", "director", "compensation"],
+  "Finance Cost": ["interest", "finance", "bank charge"]
+  
+}
