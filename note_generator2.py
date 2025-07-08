@@ -8,7 +8,7 @@ import re
 import sys
 from typing import Dict, List, Any, Optional
 
-# Load environment variables
+
 load_dotenv()
 
 class FlexibleFinancialNoteGenerator:
@@ -25,7 +25,7 @@ class FlexibleFinancialNoteGenerator:
             "X-Title": "Financial Note Generator"
         }
         
-        # Load note templates from note_temp.py
+        
         self.note_templates = self.load_note_templates()
         
         # Account classification patterns
@@ -62,7 +62,7 @@ class FlexibleFinancialNoteGenerator:
             }
         }
         
-        # Recommended models
+        
         self.recommended_models = [
             "deepseek/deepseek-r1:free",
             "deepseek/deepseek-chat-v3-0324:free"
@@ -122,20 +122,20 @@ class FlexibleFinancialNoteGenerator:
             account_group = account.get("group", "")
             amount = account.get("amount", 0)
             
-            # Skip accounts with zero amount
+            
             if amount == 0:
                 continue
                 
-            # Check for exclusion keywords
+            
             if any(exclude_word.lower() in account_name for exclude_word in exclude_keywords):
                 continue
             
-            # Check for keyword or group match
+            
             keyword_match = any(keyword.lower() in account_name for keyword in keywords)
             group_match = account_group in groups
             
             if keyword_match or group_match:
-                # Additional exclusions for specific notes
+                
                 if note_number == "14" and account_name in ["deposits (asset)", "gst input tax credit", "tcs receivables", "advance to perennail code it consultants pvt ltd"]:
                     continue
                 if note_number == "10" and account_name in ["prepaid expenses", "loans & advances (asset)", "tds advance tax paid sec 100", "tds receivables"]:
@@ -256,15 +256,15 @@ class FlexibleFinancialNoteGenerator:
                 else:
                     categories["uncategorized"].append(account)
         
-        # Log categorized accounts for debugging
+        
         for category, acc_list in categories.items():
             if acc_list:
-                print(f"📋 Category '{category}' for Note {note_number}: {[acc['account_name'] for acc in acc_list]}")
+                print(f" Category '{category}' for Note {note_number}: {[acc['account_name'] for acc in acc_list]}")
             elif category != "uncategorized":
-                print(f"📋 Category '{category}' for Note {note_number}: Empty")
+                print(f" Category '{category}' for Note {note_number}: Empty")
         
         if categories.get("uncategorized", []):
-            print(f"⚠️ Uncategorized accounts for Note {note_number}: {[acc['account_name'] for acc in categories['uncategorized']]}")
+            print(f"⚠ Uncategorized accounts for Note {note_number}: {[acc['account_name'] for acc in categories['uncategorized']]}")
         
         return categories
     
