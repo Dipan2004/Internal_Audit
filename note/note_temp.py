@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-# Template structure for financial notes
+
 note_templates = {
     "10": {
         "title": "Long Term Loans and Advances",
@@ -452,6 +452,6 @@ def generate_all_notes():
     return all_notes
 
 if __name__ == "__main__":
-    # Example usage: Generate templates
+    
     notes_data = generate_all_notes()
     print("Note templates generated and saved to note_templates.json")
