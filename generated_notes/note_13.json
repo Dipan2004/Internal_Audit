@@ -1,0 +1,54 @@
+{
+  "title": "Cash and Bank Balances",
+  "full_title": "13. Cash and Bank Balances",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "192.54"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Cash and cash equivalents",
+      "subcategories": [
+        {
+          "label": "Balances with banks in current accounts",
+          "value": "188.86",
+          "previous_value": "-"
+        },
+        {
+          "label": "Cash on hand",
+          "value": "3.68",
+          "previous_value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Other Bank Balances",
+      "subcategories": [
+        {
+          "label": "Fixed Deposits with ICICI Bank",
+          "value": "0.00",
+          "previous_value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Total",
+      "subcategories": [],
+      "total": "192.54",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "13",
+    "generated_on": "2025-07-08T17:37:26.918663"
+  }
+}

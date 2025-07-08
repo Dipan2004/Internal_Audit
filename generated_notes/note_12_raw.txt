@@ -1,0 +1,410 @@
+```json
+{
+  "title": "Trade Receivables",
+  "full_title": "12. Trade Receivables",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "833.79"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Unsecured, considered good",
+      "subcategories": [
+        {
+          "label": "Outstanding for a period exceeding six months from the date they are due for payment",
+          "value": "0.00",
+          "previous_value": "-"
+        },
+        {
+          "label": "Other receivables",
+          "value": "833.79",
+          "previous_value": "-"
+        }
+      ],
+      "total": "833.79",
+      "previous_total": "0.00"
+    },
+    {
+      "category": "Age wise analysis of Trade receivables as on 31.03.2024",
+      "subcategories": [
+        {
+          "label": "Particulars",
+          "sub_label": "Outstanding for following periods from due date of payment",
+          "columns": [
+            {
+              "header": "0 - 6 months",
+              "value": "833.79"
+            },
+            {
+              "header": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "header": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "header": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "header": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "header": "Total",
+              "value": "833.79"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "833.79"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "Total",
+              "value": "833.79"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered doubtful",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "0.00"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "Total",
+              "value": "0.00"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "0.00"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "Total",
+              "value": "0.00"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered doubtful",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "0.00"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "Total",
+              "value": "0.00"
+            }
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "833.79"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "0.00"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "0.00"
+            },
+            {
+              "period": "Total",
+              "value": "833.79"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Age wise analysis of Trade receivables as on 31.03.2023",
+      "subcategories": [
+        {
+          "label": "Particulars",
+          "sub_label": "Outstanding for following periods from due date of payment",
+          "columns": [
+            {
+              "header": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "header": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "header": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "header": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "header": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "header": "Total",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "Total",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered doubtful",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "Total",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "Total",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered doubtful",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "Total",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "-"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "-"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "-"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "-"
+            },
+            {
+              "period": "Total",
+              "value": "-"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "note_number": "12",
+    "generated_on": "2025-07-08T17:35:18.825934"
+  }
+}
+```

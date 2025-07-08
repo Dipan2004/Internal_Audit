@@ -246,7 +246,7 @@ if __name__ == "__main__":
         sys.exit(1)
     print(f"Found file: {file_path}")
     structured_data = extract_trial_balance_data(file_path)
-    output_file = "output/parsed_trial_balance.json"
+    output_file = "output/parsed_trial_balance2.json"
     final_data = analyze_and_save_results(structured_data, output_file)
     if final_data:
         print(f"\nSAMPLE RECORD:")

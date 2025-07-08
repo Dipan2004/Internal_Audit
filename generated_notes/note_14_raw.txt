@@ -1,0 +1,47 @@
+{
+  "title": "Short Term Loans and Advances",
+  "full_title": "14. Short Term Loans and Advances",
+  "structure": [
+    {
+      "category": "Unsecured, considered good",
+      "subcategories": [
+        {
+          "label": "Prepaid Expenses",
+          "value": "15.90",
+          "previous_value": "-"
+        },
+        {
+          "label": "Other Advances",
+          "value": "256.62",
+          "previous_value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Other loans and advances",
+      "subcategories": [
+        {
+          "label": "Advance tax",
+          "value": "112.85",
+          "previous_value": "-"
+        },
+        {
+          "label": "Balances with statutory/government authorities",
+          "value": "117.18",
+          "previous_value": "-"
+        }
+      ]
+    },
+    {
+      "category": "Total",
+      "subcategories": [],
+      "total": "502.98",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "14",
+    "generated_on": "2025-07-08T17:39:13.070867"
+  },
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 15.90 | - |\n| Other Advances               | 256.62 | - |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 112.85 | - |\n| Balances with statutory/government authorities | 117.18 | - |\n| **Total**                    | 502.98 | - |"
+}
