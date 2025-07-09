@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 
 import pandas as pd
 import json
@@ -10,7 +10,7 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+
 load_dotenv()
 api_key = os.getenv("OPENROUTER_API_KEY")
 
