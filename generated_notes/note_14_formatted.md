@@ -4,8 +4,8 @@
 |------------------------------|----------------|----------------|
 | **Unsecured, considered good**|                |                |
 | Prepaid Expenses             | 15.90 | - |
-| Other Advances               | 256.62 | - |
+| Other Advances               | 257.02 | - |
 | **Other loans and advances** |                |                |
 | Advance tax                  | 112.85 | - |
-| Balances with statutory/government authorities | 117.18 | - |
-| **Total**                    | 502.98 | - |
+| Balances with statutory/government authorities | 357.96 | - |
+| **Total**                    | 743.74 | - |

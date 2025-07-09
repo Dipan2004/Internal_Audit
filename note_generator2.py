@@ -2,12 +2,9 @@ import json
 import os
 import requests
 from datetime import datetime
-from pathlib import Path
-from dotenv import load_dotenv
-import re
-import sys
 from typing import Dict, List, Any, Optional
 
+<<<<<<< HEAD
 
 load_dotenv()
 
@@ -63,60 +60,23 @@ class FlexibleFinancialNoteGenerator:
         }
         
         
+=======
+class TrialBalanceNotesGenerator:
+    def __init__(self, config_file: str = "config.json"):
+        """Initialize with configuration and recommended models."""
+        self.config = self._load_config(config_file)
+>>>>>>> a1d41f0 (llm note temp generator partialy working)
         self.recommended_models = [
             "deepseek/deepseek-r1:free",
             "deepseek/deepseek-chat-v3-0324:free"
         ]
-    
-    def load_note_templates(self) -> Dict[str, Any]:
-        """Load note templates from note/note_temp.py file"""
-        try:
-            sys.path.append('note')
-            from note_temp import note_templates
-            return note_templates
-        except ImportError:
-            try:
-                with open('note/note_temp.py', 'r') as f:
-                    content = f.read()
-                    exec_globals = {}
-                    exec(content, exec_globals)
-                    return exec_globals.get('note_templates', {})
-            except FileNotFoundError:
-                print("Warning: note/note_temp.py not found. Using empty templates.")
-                return {}
-    
-    def load_trial_balance(self, file_path: str = "output/parsed_trial_balance.json") -> Optional[Dict[str, Any]]:
-        """Load the classified trial balance JSON file"""
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    accounts = data
-                elif isinstance(data, dict):
-                    accounts = data.get('accounts', [])
-                else:
-                    print(f"❌ Unexpected trial balance format: {type(data)}")
-                    return None
-                print(f"✅ Loaded trial balance with {len(accounts)} accounts")
-                return {"accounts": accounts}
-        except FileNotFoundError:
-            print(f"❌ Trial balance file not found: {file_path}")
-            return None
-        except json.JSONDecodeError as e:
-            print(f"❌ Error parsing trial balance JSON: {e}")
-            return None
-    
-    def classify_accounts_by_note(self, trial_balance_data: Dict[str, Any], note_number: str) -> List[Dict[str, Any]]:
-        """Classify accounts based on note number and patterns"""
-        if not trial_balance_data or "accounts" not in trial_balance_data:
-            return []
         
-        classified_accounts = []
-        patterns = self.account_patterns.get(note_number, {})
-        keywords = patterns.get("keywords", [])
-        groups = patterns.get("groups", [])
-        exclude_keywords = patterns.get("exclude_keywords", [])
+        # API configuration
+        self.api_endpoint = self.config.get('api', {}).get('endpoint', 'https://openrouter.ai/api/v1/chat/completions')
+        self.api_key = self.config.get('api', {}).get('key')
+        self.model = self.config.get('api', {}).get('model', self.recommended_models[0])
         
+<<<<<<< HEAD
         for account in trial_balance_data["accounts"]:
             account_name = account.get("account_name", "").lower()
             account_group = account.get("group", "")
@@ -307,343 +267,458 @@ class FlexibleFinancialNoteGenerator:
             f"{note_number}_march_2023_total": "0.00",
             f"{note_number}_total_2024": str(grand_total_lakhs),
             f"{note_number}_total_2023": "0.00"
+=======
+        self.headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}" if self.api_key else None,
+            "HTTP-Referer": "https://github.com/your-repo",  # Required for OpenRouter
+            "X-Title": "Trial Balance Generator"
+>>>>>>> a1d41f0 (llm note temp generator partialy working)
         }
-        
-        # Map category totals to template placeholders
-        if note_number == "10":
-            llm_data.update({
-                "10_security_deposits_2024": str(category_totals.get("security_deposits", {}).get("lakhs", 0.00)),
-                "10_security_deposits_2023": "0.00",
-                "10_unsecured_total_2024": str(category_totals.get("security_deposits", {}).get("lakhs", 0.00)),
-                "10_unsecured_total_2023": "0.00"
-            })
-        elif note_number == "11":
-            llm_data.update({
-                "11_consumables_2024": str(category_totals.get("consumables", {}).get("lakhs", 0.00)),
-                "11_consumables_2023": "0.00"
-            })
-        elif note_number == "12":
-            llm_data.update({
-                "12_over_six_months_2024": "0.00",  # No aging data in trial balance
-                "12_over_six_months_2023": "0.00",
-                "12_other_receivables_2024": str(category_totals.get("other_receivables", {}).get("lakhs", 0.00)),
-                "12_other_receivables_2023": "0.00",
-                "12_unsecured_total_2024": str(category_totals.get("other_receivables", {}).get("lakhs", 0.00)),
-                "12_unsecured_total_2023": "0.00",
-                # Placeholder for aging analysis (all 0.00 due to lack of data)
-                "12_zero_six_2024": "0.00",
-                "12_six_one_2024": "0.00",
-                "12_one_two_2024": "0.00",
-                "12_two_three_2024": "0.00",
-                "12_more_three_2024": "0.00",
-                "12_age_total_2024": str(category_totals.get("other_receivables", {}).get("lakhs", 0.00)),
-                "12_zero_six_2023": "0.00",
-                "12_six_one_2023": "0.00",
-                "12_one_two_2023": "0.00",
-                "12_two_three_2023": "0.00",
-                "12_more_three_2023": "0.00",
-                "12_age_total_2023": "0.00",
-                "12_undisputed_good_zero_six_2024": "0.00",
-                "12_undisputed_good_six_one_2024": "0.00",
-                "12_undisputed_good_one_two_2024": "0.00",
-                "12_undisputed_good_two_three_2024": "0.00",
-                "12_undisputed_good_more_three_2024": "0.00",
-                "12_undisputed_good_total_2024": str(category_totals.get("other_receivables", {}).get("lakhs", 0.00)),
-                # Add other aging placeholders as needed
-            })
-        elif note_number == "13":
-            llm_data.update({
-                "13_bank_balances_2024": str(category_totals.get("bank_balances", {}).get("lakhs", 0.00)),
-                "13_bank_balances_2023": "0.00",
-                "13_cash_on_hand_2024": str(category_totals.get("cash_on_hand", {}).get("lakhs", 0.00)),
-                "13_cash_on_hand_2023": "0.00",
-                "13_fixed_deposits_2024": str(category_totals.get("fixed_deposits", {}).get("lakhs", 0.00)),
-                "13_fixed_deposits_2023": "0.00",
-                "13_total_2024": str(grand_total_lakhs),
-                "13_total_2023": "0.00"
-            })
-        elif note_number == "14":
-            llm_data.update({
-                "14_prepaid_expenses_2024": str(category_totals.get("prepaid_expenses", {}).get("lakhs", 0.00)),
-                "14_prepaid_expenses_2023": "0.00",
-                "14_other_advances_2024": str(category_totals.get("other_advances", {}).get("lakhs", 0.00)),
-                "14_other_advances_2023": "0.00",
-                "14_advance_tax_2024": str(category_totals.get("advance_tax", {}).get("lakhs", 0.00)),
-                "14_advance_tax_2023": "0.00",
-                "14_statutory_balances_2024": str(category_totals.get("statutory_balances", {}).get("lakhs", 0.00)),
-                "14_statutory_balances_2023": "0.00"
-            })
-        elif note_number == "15":
-            llm_data.update({
-                "15_interest_accrued_2024": str(category_totals.get("interest_accrued", {}).get("lakhs", 0.00)),
-                "15_interest_accrued_2023": "0.00"
-            })
-        
-        # Generate template with filled values
-        from note_temp import generate_note_template
-        filled_template = generate_note_template(note_number, llm_data)
-        
-        # Generate markdown content dynamically
-        markdown_content = ""
-        if note_number == "14":
-            markdown_content = f"""14. Short Term Loans and Advances
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| **Unsecured, considered good**|                |                |
-| Prepaid Expenses             | {category_totals.get("prepaid_expenses", {}).get("lakhs", 0.00)} | - |
-| Other Advances               | {category_totals.get("other_advances", {}).get("lakhs", 0.00)} | - |
-| **Other loans and advances** |                |                |
-| Advance tax                  | {category_totals.get("advance_tax", {}).get("lakhs", 0.00)} | - |
-| Balances with statutory/government authorities | {category_totals.get("statutory_balances", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        elif note_number == "10":
-            markdown_content = f"""10. Long Term Loans and Advances
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| **Unsecured, considered good**|                |                |
-| Security Deposits            | {category_totals.get("security_deposits", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        elif note_number == "11":
-            markdown_content = f"""11. Inventories
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| Consumables                  | {category_totals.get("consumables", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        elif note_number == "12":
-            markdown_content = f"""12. Trade Receivables
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| **Unsecured, considered good**|                |                |
-| Other receivables            | {category_totals.get("other_receivables", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        elif note_number == "13":
-            markdown_content = f"""13. Cash and Bank Balances
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| **Cash and cash equivalents**|                |                |
-| Balances with banks in current accounts | {category_totals.get("bank_balances", {}).get("lakhs", 0.00)} | - |
-| Cash on hand                 | {category_totals.get("cash_on_hand", {}).get("lakhs", 0.00)} | - |
-| **Other Bank Balances**      |                |                |
-| Fixed Deposits               | {category_totals.get("fixed_deposits", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        elif note_number == "15":
-            markdown_content = f"""15. Other Current Assets
-
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| Interest accrued on fixed deposits | {category_totals.get("interest_accrued", {}).get("lakhs", 0.00)} | - |
-| **Total**                    | {grand_total_lakhs} | - |
-"""
-        
-        context = {
-            "note_info": {
-                "number": note_number,
-                "title": template.get("title", ""),
-                "full_title": template.get("full_title", "")
-            },
-            "financial_data": {
-                "total_accounts": len(classified_accounts),
-                "total_amount": total_amount,
-                "total_lakhs": grand_total_lakhs,
-                "category_totals": category_totals
-            },
-            "trial_balance": trial_balance_data,
-            "current_date": datetime.now().isoformat(),
-            "financial_year": "2023-24"
-        }
-        
-        prompt = f"""
-You are a financial reporting expert. Generate a JSON object for "{template['full_title']}" following the exact template structure provided.
-
-**CRITICAL INSTRUCTIONS:**
-1. Return ONLY valid JSON - no markdown formatting, no explanations
-2. Follow the exact template structure provided
-3. All amounts must be in lakhs (₹ in lakhs, divide by 100000, round to 2 decimal places)
-4. Use provided category totals for accurate values
-5. For 2023 data (previous year), use 0 or "-"
-6. Ensure totals add up correctly
-7. Include markdown_content for each note with the specified table format
-8. Use professional financial reporting standards
-9. Exclude accounts like 'Deposits (Asset)', 'GST Input Tax Credit', 'TCS Receivables', and 'Advance to Perennail Code IT Consultants Pvt Ltd' from Note 14
-10. Use trial balance data and calculated category totals for all values
-
-**TEMPLATE STRUCTURE:**
-{json.dumps(filled_template, indent=2)}
-
-**FINANCIAL CONTEXT:**
-{json.dumps(context, indent=2)}
-
-**SPECIFIC REQUIREMENTS:**
-- For Note 10: Map 'Deposits (Asset)' to Security Deposits
-- For Note 11: Map relevant accounts to Consumables
-- For Note 12: Map receivables to Other Receivables (no aging data available)
-- For Note 13: Map accounts to Bank Balances, Cash on Hand, Fixed Deposits
-- For Note 14: Categorize into:
-  - Unsecured, considered good:
-    - Prepaid Expenses: Use value from 'Prepaid Expenses'
-    - Other Advances: Use value from 'Loans & Advances (Asset)'
-  - Other loans and advances:
-    - Advance tax: Use value from 'TDS Advance Tax Paid SEC 100'
-    - Balances with statutory/government authorities: Use value from 'Tds Receivables'
-- For Note 15: Map to Interest Accrued
-- Generate markdown_content for each note with the specified table format:
-```
-{markdown_content}
-```
-
-**CALCULATION RULES:**
-- Use trial balance data for exact values
-- Convert amounts to lakhs by dividing by 100000
-- Round to 2 decimal places
-- Validate totals: Sum of subcategories must equal the grand total
-- Include generated_on timestamp: {datetime.now().isoformat()}
-- Exclude inappropriate accounts for each note as specified
-
-Generate the complete JSON structure now:
-"""
-        return prompt
     
-    def call_openrouter_api(self, prompt: str) -> Optional[str]:
-        """Make API call to OpenRouter with model fallback"""
-        for model in self.recommended_models:
-            print(f"🤖 Trying model: {model}")
-            payload = {
-                "model": model,
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are a financial reporting expert. Always respond with valid JSON only."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                "max_tokens": 8000,
+    def _load_config(self, config_file: str) -> Dict[str, Any]:
+        """Load configuration with smart defaults."""
+        default_config = {
+            "api": {
+                "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+                "key": None,
+                "model": "deepseek/deepseek-r1:free",
                 "temperature": 0.1,
-                "top_p": 0.9
+                "max_tokens": 3000,
+                "timeout": 30
+            },
+            "schedule_iii_mapping": {
+                "share capital": "2", "reserves": "3", "surplus": "3", 
+                "borrowings": "4", "deferred tax": "5", "payables": "6", 
+                "creditors": "6", "liabilities": "7", "provisions": "8",
+                "fixed assets": "9", "assets": "9", "deposits": "10", 
+                "advances": "10", "inventory": "11", "consumables": "11",
+                "cash": "12", "bank": "12", "receivables": "13", 
+                "debtors": "13", "loans": "14"
+            },
+            "note_titles": {
+                "2": "Share Capital", "3": "Reserves and Surplus",
+                "4": "Long Term Borrowings", "5": "Deferred Tax Liabilities",
+                "6": "Trade Payables", "7": "Other Current Liabilities",
+                "8": "Short Term Provisions", "9": "Fixed Assets",
+                "10": "Long Term Loans and Advances", "11": "Inventories",
+                "12": "Cash and Bank Balances", "13": "Trade Receivables",
+                "14": "Short-term Loans and Advances", "15": "Other Current Assets"
+            },
+            "formatting": {
+                "currency_symbol": "₹",
+                "amount_unit": "lakhs",
+                "decimal_places": 2,
+                "conversion_factor": 100000
             }
-            
-            try:
-                response = requests.post(self.api_url, json=payload, headers=self.headers, timeout=60)
-                response.raise_for_status()
-                result = response.json()
-                content = result['choices'][0]['message']['content']
-                print(f"✅ Successful response from {model}")
-                return content
-            except (requests.exceptions.RequestException, KeyError, IndexError) as e:
-                print(f"❌ Failed with {model}: {e}")
-                continue
+        }
         
-        print("❌ All models failed")
-        return None
+        if os.path.exists(config_file):
+            try:
+                with open(config_file, 'r', encoding='utf-8') as f:
+                    user_config = json.load(f)
+                    default_config.update(user_config)
+            except Exception as e:
+                print(f"⚠️ Config error: {e}. Using defaults.")
+        else:
+            self._save_config(default_config, config_file)
+        
+        return default_config
     
-    def extract_json_from_markdown(self, response_text: str) -> tuple[Optional[Dict[str, Any]], Optional[str]]:
-        """Extract JSON from response, handling markdown code blocks"""
-        response_text = response_text.strip()
-        json_patterns = [
-            r'```json\s*(.*?)\s*```',
-            r'```\s*(.*?)\s*```',
-            r'(\{.*\})'
+    def _save_config(self, config: Dict[str, Any], config_file: str):
+        """Save configuration file."""
+        try:
+            with open(config_file, 'w', encoding='utf-8') as f:
+                json.dump(config, f, indent=2, ensure_ascii=False)
+            print(f"✅ Config saved: {config_file}")
+        except Exception as e:
+            print(f"❌ Config save error: {e}")
+    
+    def load_trial_balance(self, filename: str = "output/parsed_trial_balance.json") -> List[Dict]:
+        """Load trial balance data with smart parsing and multiple file fallbacks."""
+        # Try multiple common file locations
+        possible_files = [
+            filename,
+            "parsed_trial_balance.json",
+            "trial_balance.json",
+            "output/trial_balance.json",
+            "data/parsed_trial_balance.json"
         ]
         
-        for pattern in json_patterns:
-            match = re.search(pattern, response_text, re.DOTALL)
-            if match:
+        for file_path in possible_files:
+            if os.path.exists(file_path):
+                print(f"📁 Found file: {file_path}")
                 try:
-                    json_data = json.loads(match.group(1))
-                    return json_data, match.group(1)
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    # Handle different JSON structures
+                    if isinstance(data, list):
+                        rows = data
+                    elif isinstance(data, dict) and 'sheets' in data:
+                        rows = []
+                        for sheet in data['sheets']:
+                            if any(keyword in sheet.get('name', '').lower() 
+                                  for keyword in ['trial', 'balance', 'tally']):
+                                rows.extend(sheet.get('rows', []))
+                    else:
+                        print(f"⚠️ Unexpected JSON structure in {file_path}")
+                        continue
+                    
+                    # Process rows
+                    tb_data = []
+                    for row in rows:
+                        account_name = row.get('Particulars', '').strip()
+                        if not account_name:
+                            continue
+                        
+                        # Get amounts with multiple field name options
+                        debit = float(row.get('Debit', 0) or row.get('Opening', 0) or 
+                                    row.get('Dr', 0) or row.get('Debit Amount', 0) or 0)
+                        credit = float(row.get('Credit', 0) or row.get('Closing', 0) or 
+                                     row.get('Cr', 0) or row.get('Credit Amount', 0) or 0)
+                        amount = debit - credit
+                        
+                        if amount != 0:
+                            tb_data.append({
+                                'account_name': account_name,
+                                'amount': amount,
+                                'date': row.get('date', '2024-03-31'),
+                                'debit_credit': 'Debit' if amount > 0 else 'Credit',
+                                'year': '2023-24'  # Default year
+                            })
+                    
+                    if tb_data:
+                        print(f"✅ Successfully loaded {len(tb_data)} entries from {file_path}")
+                        return tb_data
+                    else:
+                        print(f"⚠️ No valid data found in {file_path}")
+                        
                 except json.JSONDecodeError:
-                    continue
+                    print(f"❌ Invalid JSON in {file_path}")
+                except Exception as e:
+                    print(f"❌ Error reading {file_path}: {e}")
         
-        try:
-            json_data = json.loads(response_text)
-            return json_data, response_text
-        except json.JSONDecodeError:
-            return None, None
+        # If no file found, create sample data
+        print("📝 No trial balance file found. Creating sample data...")
+        return self._create_sample_data()
     
-    def save_generated_note(self, note_data: str, note_number: str, output_dir: str = "generated_notes") -> bool:
-        """Save the generated note to file in both JSON and markdown formats"""
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-        json_output_path = f"{output_dir}/note_{note_number}.json"
-        raw_output_path = f"{output_dir}/note_{note_number}_raw.txt"
-        formatted_md_path = f"{output_dir}/note_{note_number}_formatted.md"
+    def _create_sample_data(self) -> List[Dict]:
+        """Create sample trial balance data for testing."""
+        sample_data = [
+            {'account_name': 'Share Capital', 'amount': 54252000, 'date': '2024-03-31', 'debit_credit': 'Credit', 'year': '2023-24'},
+            {'account_name': 'Reserves & Surplus', 'amount': 25000000, 'date': '2024-03-31', 'debit_credit': 'Credit', 'year': '2023-24'},
+            {'account_name': 'Trade Payables', 'amount': -5000000, 'date': '2024-03-31', 'debit_credit': 'Credit', 'year': '2023-24'},
+            {'account_name': 'Fixed Assets', 'amount': 45000000, 'date': '2024-03-31', 'debit_credit': 'Debit', 'year': '2023-24'},
+            {'account_name': 'Cash and Bank', 'amount': 13125000, 'date': '2024-03-31', 'debit_credit': 'Debit', 'year': '2023-24'},
+            {'account_name': 'Trade Receivables', 'amount': 8000000, 'date': '2024-03-31', 'debit_credit': 'Debit', 'year': '2023-24'},
+            {'account_name': 'Inventory', 'amount': 992000, 'date': '2024-03-31', 'debit_credit': 'Debit', 'year': '2023-24'},
+            {'account_name': 'Security Deposits', 'amount': 8181000, 'date': '2024-03-31', 'debit_credit': 'Debit', 'year': '2023-24'}
+        ]
+        
+        # Save sample data for future use
+        os.makedirs('output', exist_ok=True)
+        with open('output/parsed_trial_balance.json', 'w', encoding='utf-8') as f:
+            json.dump(sample_data, f, indent=2, ensure_ascii=False)
+        
+        print("✅ Sample trial balance data created at output/parsed_trial_balance.json")
+        return sample_data
+    
+    def categorize_account(self, account_name: str) -> str:
+        """Categorize account to Schedule III note number."""
+        account_lower = account_name.lower()
+        mapping = self.config['schedule_iii_mapping']
+        
+        for keyword, note_num in mapping.items():
+            if keyword in account_lower:
+                return note_num
+        return "15"  # Default to Other Current Assets
+    
+    def format_amount(self, amount: float) -> str:
+        """Format amount to lakhs with proper decimal places."""
+        formatting = self.config['formatting']
+        amount_in_lakhs = amount / formatting['conversion_factor']
+        return f"{amount_in_lakhs:.{formatting['decimal_places']}f}"
+    
+    def build_prompt(self, tb_data: List[Dict]) -> str:
+        """Build concise prompt for LLM."""
+        if not tb_data:
+            return ""
+        
+        # Group accounts by category
+        categories = {}
+        for entry in tb_data:
+            note_num = self.categorize_account(entry['account_name'])
+            if note_num not in categories:
+                categories[note_num] = []
+            categories[note_num].append(entry)
+        
+        # Format data
+        formatted_data = []
+        for note_num, entries in categories.items():
+            note_title = self.config['note_titles'].get(note_num, 'Other')
+            formatted_data.append(f"Note {note_num} - {note_title}:")
+            for entry in entries:
+                amount = self.format_amount(entry['amount'])
+                formatted_data.append(f"  {entry['account_name']}: ₹{amount} lakhs")
+        
+        data_str = "\n".join(formatted_data)
+        
+        return f"""Generate Schedule III notes for Indian companies from this trial balance data:
+
+{data_str}
+
+Return ONLY valid JSON in this format:
+{{
+  "note_number": {{
+    "title": "Note Title",
+    "full_title": "Note X. Full Title",
+    "structure": [
+      {{
+        "category": "In Lakhs",
+        "subcategories": [
+          {{"label": "Account Name", "value": "amount"}},
+          {{"label": "March 31, 2024", "value": "total"}}
+        ],
+        "total": "category_total"
+      }}
+    ],
+    "metadata": {{"note_number": "X", "generated_on": "{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"}}
+  }}
+}}
+
+Rules:
+- Use provided amounts in lakhs (already converted)
+- Group similar accounts logically
+- Calculate accurate totals
+- Follow Schedule III format
+- No additional text, only JSON"""
+    
+    def call_llm(self, prompt: str) -> str:
+        """Call LLM with improved error handling."""
+        if not self.api_key:
+            print("⚠️ No API key found. Using mock response.")
+            return self._generate_mock_response()
+        
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": "You are an expert CA. Return only valid JSON."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": self.config['api']['temperature'],
+            "max_tokens": self.config['api']['max_tokens']
+        }
         
         try:
-            with open(raw_output_path, 'w', encoding='utf-8') as f:
-                f.write(note_data)
-            print(f"💾 Raw response saved to {raw_output_path}")
+            response = requests.post(
+                self.api_endpoint,
+                headers=self.headers,
+                json=payload,
+                timeout=self.config['api']['timeout']
+            )
             
-            json_data, json_string = self.extract_json_from_markdown(note_data)
-            if json_data:
-                with open(json_output_path, 'w', encoding='utf-8') as f:
-                    json.dump(json_data, f, indent=2, ensure_ascii=False)
-                print(f"✅ JSON saved to {json_output_path}")
-                
-                if 'markdown_content' in json_data:
-                    with open(formatted_md_path, 'w', encoding='utf-8') as f:
-                        f.write(json_data['markdown_content'])
-                    print(f"📝 Formatted markdown saved to {formatted_md_path}")
-                
-                return True
+            if response.status_code == 401:
+                print("❌ API key invalid. Check your configuration.")
+                return self._generate_mock_response()
+            
+            response.raise_for_status()
+            result = response.json()
+            
+            # Handle different response formats
+            if 'choices' in result and result['choices']:
+                return result['choices'][0]['message']['content']
+            elif 'response' in result:
+                return result['response']
             else:
-                fallback_json = {
-                    "note_number": note_number,
-                    "raw_response": note_data,
-                    "error": "Could not parse JSON from response",
-                    "generated_on": datetime.now().isoformat()
+                print("⚠️ Unexpected response format. Using mock.")
+                return self._generate_mock_response()
+                
+        except requests.exceptions.RequestException as e:
+            print(f"❌ API call failed: {e}")
+            return self._generate_mock_response()
+    
+    def _generate_mock_response(self) -> str:
+        """Generate mock response for testing."""
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
+        mock_response = {
+            "12": {
+                "title": "Cash and Bank Balances",
+                "full_title": "12. Cash and Bank Balances",
+                "structure": [
+                    {
+                        "category": "In Lakhs",
+                        "subcategories": [
+                            {"label": "Cash in Hand", "value": "5.50"},
+                            {"label": "Bank Balance", "value": "125.75"},
+                            {"label": "March 31, 2024", "value": "131.25"}
+                        ],
+                        "total": "131.25"
+                    }
+                ],
+                "metadata": {
+                    "note_number": "12",
+                    "generated_on": current_time
                 }
-                with open(json_output_path, 'w', encoding='utf-8') as f:
-                    json.dump(fallback_json, f, indent=2, ensure_ascii=False)
-                print(f"⚠️ Fallback JSON saved to {json_output_path}")
-                return False
+            }
+        }
+        
+        return json.dumps(mock_response, indent=2)
+    
+    def parse_response(self, response: str) -> Dict[str, Any]:
+        """Parse LLM response with robust error handling."""
+        try:
+            # Clean response
+            response = response.strip()
+            if response.startswith('```json'):
+                response = response[7:]
+            if response.endswith('```'):
+                response = response[:-3]
+            
+            # Parse JSON
+            parsed = json.loads(response)
+            
+            # Validate structure
+            if not isinstance(parsed, dict):
+                raise ValueError("Response must be a JSON object")
+            
+            return parsed
+            
+        except json.JSONDecodeError as e:
+            print(f"❌ JSON parse error: {e}")
+            return {}
         except Exception as e:
-            print(f"❌ Error saving files: {e}")
-            return False
+            print(f"❌ Parse error: {e}")
+            return {}
     
-    def generate_note(self, note_number: str, trial_balance_path: str = "output/parsed_trial_balance.json") -> bool:
-        """Generate a specific note based on note number"""
-        trial_balance_data = self.load_trial_balance(trial_balance_path)
-        if not trial_balance_data:
-            return False
+    def generate_notes(self, tb_filename: str = "output/parsed_trial_balance.json") -> Dict[str, Any]:
+        """Main method - generate Schedule III notes."""
+        print("🚀 Generating Schedule III Notes...")
         
-        classified_accounts = self.classify_accounts_by_note(trial_balance_data, note_number)
-        if not classified_accounts:
-            print(f"❌ No accounts classified for Note {note_number}")
-            return False
+        # Load data
+        tb_data = self.load_trial_balance(tb_filename)
+        if not tb_data:
+            print("❌ No trial balance data found.")
+            return {}
         
-        prompt = self.build_llm_prompt(note_number, trial_balance_data, classified_accounts)
+        print(f"📋 Loaded {len(tb_data)} entries")
+        
+        # Show sample of loaded data
+        print("\n📊 Sample of loaded accounts:")
+        for i, entry in enumerate(tb_data[:5]):
+            amount_formatted = self.format_amount(entry['amount'])
+            print(f"  {i+1}. {entry['account_name']}: ₹{amount_formatted} lakhs ({entry['debit_credit']})")
+        if len(tb_data) > 5:
+            print(f"  ... and {len(tb_data) - 5} more accounts")
+        
+        # Build prompt
+        prompt = self.build_prompt(tb_data)
         if not prompt:
-            print(f"❌ Failed to build prompt for Note {note_number}")
-            return False
+            print("❌ Failed to build prompt.")
+            return {}
         
-        response = self.call_openrouter_api(prompt)
-        if not response:
-            print(f"❌ Failed to get response from OpenRouter for Note {note_number}")
-            return False
+        # Call LLM
+        print("\n🤖 Calling LLM...")
+        response = self.call_llm(prompt)
         
-        return self.save_generated_note(response, note_number)
+        # Parse response
+        notes = self.parse_response(response)
+        
+        if notes:
+            print(f"✅ Generated {len(notes)} notes")
+            self.save_notes(notes)
+            self.print_summary(notes)
+        else:
+            print("❌ Failed to generate notes.")
+        
+        return notes
     
-    def generate_all_notes(self, trial_balance_path: str = "output/parsed_trial_balance.json") -> bool:
-        """Generate all notes defined in note_temp.py"""
-        success = True
-        for note_number in self.note_templates.keys():
-            print(f"📄 Generating Note {note_number}: {self.note_templates[note_number]['title']}")
-            if not self.generate_note(note_number, trial_balance_path):
-                print(f"❌ Failed to generate Note {note_number}")
-                success = False
-        return success
+    def save_notes(self, notes: Dict[str, Any], filename: str = "schedule_iii_notes.json"):
+        """Save notes to file."""
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(notes, f, indent=2, ensure_ascii=False)
+            print(f"💾 Notes saved: {filename}")
+        except Exception as e:
+            print(f"❌ Save error: {e}")
+    
+    def print_summary(self, notes: Dict[str, Any]):
+        """Print concise summary."""
+        print("\n📊 SCHEDULE III NOTES SUMMARY")
+        print("=" * 50)
+        
+        for note_num, note_data in notes.items():
+            print(f"\n{note_data.get('full_title', f'Note {note_num}')}")
+            print("-" * 30)
+            
+            for structure in note_data.get('structure', []):
+                for subcat in structure.get('subcategories', []):
+                    label = subcat.get('label', '')
+                    value = subcat.get('value', '')
+                    if label and value:
+                        print(f"  • {label}: ₹{value} lakhs")
+                
+                total = structure.get('total')
+                if total:
+                    print(f"  💰 Total: ₹{total} lakhs")
+        
+        print("\n" + "=" * 50)
+
+def setup_config():
+    """Create sample configuration."""
+    config = {
+        "api": {
+            "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+            "key": "your-openrouter-api-key-here",
+            "model": "deepseek/deepseek-r1:free",
+            "temperature": 0.1,
+            "max_tokens": 3000,
+            "timeout": 30
+        }
+    }
+    
+    with open("config.json", "w", encoding='utf-8') as f:
+        json.dump(config, f, indent=2, ensure_ascii=False)
+    
+    print("✅ Configuration created: config.json")
+    print("📝 Edit config.json with your OpenRouter API key")
+
+def main():
+    """Main execution function."""
+    print("🚀 Trial Balance → Schedule III Notes Generator")
+    print("=" * 50)
+    
+    if not os.path.exists("config.json"):
+        setup_config()
+        print("\n⚠️ Please edit config.json with your API key, then run again.")
+        return
+    
+    try:
+        generator = TrialBalanceNotesGenerator()
+        notes = generator.generate_notes()
+        
+        if notes:
+            print(f"\n🎉 Success! Generated {len(notes)} Schedule III notes.")
+            print("📁 Files created:")
+            print("  - schedule_iii_notes.json (Generated notes)")
+            print("  - output/parsed_trial_balance.json (Sample data)")
+        else:
+            print("\n💡 Setup Instructions:")
+            print("1. Get API key from https://openrouter.ai/")
+            print("2. Edit config.json with your API key")
+            print("3. Place trial balance data in output/parsed_trial_balance.json")
+            print("4. Run script again")
+    
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     generator = FlexibleFinancialNoteGenerator()
     generator.generate_all_notes()
+=======
+    main()
+>>>>>>> a1d41f0 (llm note temp generator partialy working)

@@ -1,0 +1,30 @@
+{
+  "12": {
+    "title": "Cash and Bank Balances",
+    "full_title": "12. Cash and Bank Balances",
+    "structure": [
+      {
+        "category": "In Lakhs",
+        "subcategories": [
+          {
+            "label": "Cash in Hand",
+            "value": "5.50"
+          },
+          {
+            "label": "Bank Balance",
+            "value": "125.75"
+          },
+          {
+            "label": "March 31, 2024",
+            "value": "131.25"
+          }
+        ],
+        "total": "131.25"
+      }
+    ],
+    "metadata": {
+      "note_number": "12",
+      "generated_on": "2025-07-09 17:56:38"
+    }
+  }
+}

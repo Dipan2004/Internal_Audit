@@ -1,0 +1,66 @@
+{
+  "api": {
+    "endpoint": "https://api.deepseek.com/v1/chat/completions",
+    "key": "your-api-key-here",
+    "model": "deepseek-chat",
+    "temperature": 0.1,
+    "max_tokens": 3000,
+    "timeout": 30
+  },
+  "schedule_iii_mapping": {
+    "security deposits": "10",
+    "long term": "10",
+    "advances": "10",
+    "deposits": "10",
+    "consumables": "11",
+    "inventory": "11",
+    "raw materials": "11",
+    "finished goods": "11",
+    "work in progress": "11",
+    "stores": "11",
+    "cash": "12",
+    "bank": "12",
+    "trade receivables": "13",
+    "debtors": "13",
+    "short term loans": "14",
+    "short term advances": "14",
+    "other current assets": "15",
+    "prepaid expenses": "15",
+    "trade payables": "16",
+    "creditors": "16",
+    "other current liabilities": "17",
+    "provisions": "18",
+    "employee benefits": "18"
+  },
+  "note_titles": {
+    "10": "Long Term Loans and Advances",
+    "11": "Inventories",
+    "12": "Cash and Bank Balances",
+    "13": "Trade Receivables",
+    "14": "Short-term Loans and Advances",
+    "15": "Other Current Assets",
+    "16": "Trade Payables",
+    "17": "Other Current Liabilities",
+    "18": "Provisions"
+  },
+  "formatting": {
+    "currency_symbol": "₹",
+    "amount_unit": "lakhs",
+    "decimal_places": 2,
+    "date_format": "%Y-%m-%d",
+    "conversion_factor": 100000
+  },
+  "validation": {
+    "required_fields": [
+      "account_name",
+      "amount",
+      "date"
+    ],
+    "required_note_fields": [
+      "title",
+      "full_title",
+      "structure",
+      "metadata"
+    ]
+  }
+}
