@@ -161,18 +161,18 @@
   "Non-Current Liabilities": "Non-Current Liability",
   "Deferred Tax Liability": "Deferred Tax Liability",
   "Profit & Loss A/c": "Profit and Loss Account",
-<<<<<<< HEAD
+
   "Unadjusted Forex Gain/Loss": "Other Income"
-=======
+
   "Unadjusted Forex Gain/Loss": "Other Income",
->>>>>>> ccc7daa (new config)
+
 
 
 
   
-<<<<<<< HEAD
-}
-=======
+
+
+
   "Advance Tax": "Current Asset",
   "APC Schneider (UPS 3KVA/2.4KW)": "Fixed Asset",
   "Apple Ipad": "Fixed Asset",
