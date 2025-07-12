@@ -10,6 +10,42 @@
   "Other Income": ["interest", "gain", "refund"],
   "Other Expenses": ["maintenance", "repair", "rent", "electricity", "water", "housekeeping", "travel", "transport", "printing", "stationery", "software", "fee", "license", "tax", "duty"],
   "Employee Benefits Expense": ["salary", "wage", "staff", "employee", "gratuity", "incentive", "remuneration", "director", "compensation"],
-  "Finance Cost": ["interest", "finance", "bank charge"]
+  "Finance Cost": ["interest", "finance", "bank charge"],
+  
+
+
+
+  
+  
+    "capital|share|equity": "Equity",
+    "reserves?|surplus": "Equity",
+    "loan|borrowings?": "Non-Current Liability",
+    "interest payable": "Current Liability",
+    "creditors?|payable|outstanding": "Current Liability",
+    "provision": "Long-Term Liability",
+    "gratuity": "Employee Benefits Expense",
+    "pf|provident fund": "Employee Benefits Expense",
+    "salary|payroll|wages": "Employee Benefits Expense",
+    "insurance": "Other Expenses",
+    "depreciation|amortisation": "Other Expenses",
+    "consultancy|professional fee|retainership": "Other Expenses",
+    "rent": "Other Expenses",
+    "maintenance|repair": "Other Expenses",
+    "subscription|membership": "Other Expenses",
+    "telephone|internet": "Other Expenses",
+    "travel|visa|per diem": "Other Expenses",
+    "stamp duty|registration fee": "Other Expenses",
+    "audit": "Other Expenses",
+    "tax": "Other Expenses",
+    "bank charges|commission|processing": "Other Expenses",
+    "postage|courier|printing": "Other Expenses",
+    "stationery": "Other Expenses",
+    "income|sales|revenue": "Revenue from Operations",
+    "discount|round off|exchange gain|foreign exchange": "Other Income",
+    "asset|equipment|laptop|monitor|projector|printer|vehicle|iphone|ipad": "Fixed Asset",
+    "deposit|advance|prepaid|cash|bank": "Current Asset",
+    "input cgst|input igst|input sgst|input tax credit": "Input Tax Credit",
+    "tds|tax paid": "Current Asset",
+    "deferred tax": "Other Asset"
   
 }
