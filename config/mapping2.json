@@ -1,0 +1,776 @@
+{
+  
+    "Accounts": {
+      "Share Capital": {
+        "category": "Equity",
+        "subcategory": [],
+        "note": "2"
+      },
+      "Reserves and Surplus": {
+        "category": "Equity",
+        "subcategory": [],
+        "note": "3"
+      },
+      "Long Term Borrowings": {
+        "category": "Non-Current Liability",
+        "subcategory": [
+          "DAIMLER FINANCIAL SERVICES INDIA PVT LTD",
+          "Loan From APSFC HYDERABAD",
+          "Loan From ICICI Bank 603090031420",
+          "LOAN FROM SBI SME HYDERABAD 40392204781"
+        ],
+        "note": "4"
+      },
+      "DAIMLER FINANCIAL SERVICES INDIA PVT LTD": {
+        "category": "Non-Current Liability",
+        "subcategory": []
+      },
+      "Loan From APSFC HYDERABAD": {
+        "category": "Non-Current Liability",
+        "subcategory": []
+      },
+      "Loan From ICICI Bank 603090031420": {
+        "category": "Non-Current Liability",
+        "subcategory": []
+      },
+      "LOAN FROM SBI SME HYDERABAD 40392204781": {
+        "category": "Non-Current Liability",
+        "subcategory": []
+      },
+      "Deferred Tax Liability": {
+        "category": "Non-Current Liability",
+        "subcategory": [],
+        "note": "5"
+      },
+      "Trade Payables": {
+        "category": "Current Liability",
+        "subcategory": [],
+        "note": "6"
+      },
+      "Other Current Liabilities": {
+        "category": "Current Liability",
+        "subcategory": [
+          "Current Maturities of Long Term Borrowings",
+          "Outstanding Liabilities for Expenses",
+          "Statutory Dues"
+        ],
+        "note": "7"
+      },
+      "Current Maturities of Long Term Borrowings": {
+        "category": "Current Liability",
+        "subcategory": []
+      },
+      "Outstanding Liabilities for Expenses": {
+        "category": "Current Liability",
+        "subcategory": []
+      },
+      "Statutory Dues": {
+        "category": "Current Liability",
+        "subcategory": []
+      },
+      "Short Term Provisions": {
+        "category": "Current Liability",
+        "subcategory": ["Provision for Taxation"],
+        "note": "8"
+      },
+      "Provision for Taxation": {
+        "category": "Current Liability",
+        "subcategory": []
+      },
+      "Fixed Assets": {
+        "category": "Non-Current Asset",
+        "subcategory": [
+          "Buildings",
+          "Computers & Peripherals",
+          "Electrical Installations & Equipment",
+          "Furniture & Fixtures",
+          "Office Equipment",
+          "Plant & Machinery",
+          "Motor Vehicle",
+          "Intangible Assets"
+        ],
+        "note": "9"
+      },
+      "Buildings": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Computers & Peripherals": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Electrical Installations & Equipment": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Furniture & Fixtures": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Office Equipment": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Plant & Machinery": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Motor Vehicle": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Intangible Assets": {
+        "category": "Non-Current Asset",
+        "subcategory": ["Software"]
+      },
+      "Software": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Long Term Loans and Advances": {
+        "category": "Non-Current Asset",
+        "subcategory": ["Long Term - Security Deposits"],
+        "note": "10"
+      },
+      "Long Term - Security Deposits": {
+        "category": "Non-Current Asset",
+        "subcategory": []
+      },
+      "Inventories": {
+        "category": "Current Asset",
+        "subcategory": ["Consumables"],
+        "note": "11"
+      },
+      "Consumables": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Trade Receivables": {
+        "category": "Current Asset",
+        "subcategory": [
+          "Outstanding for a Period Exceeding Six Months",
+          "Other Receivables"
+        ],
+        "note": "12"
+      },
+      "Outstanding for a Period Exceeding Six Months": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Other Receivables": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Cash and Bank Balances": {
+        "category": "Current Asset",
+        "subcategory": [
+          "Cash on Hand",
+          "Balances with Banks in Current Accounts",
+          "Fixed Deposits with ICICI Bank"
+        ],
+        "note": "13"
+      },
+      "Cash on Hand": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Balances with Banks in Current Accounts": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Fixed Deposits with ICICI Bank": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Short Term Loans and Advances": {
+        "category": "Current Asset",
+        "subcategory": [
+          "Prepaid Expenses",
+          "Other Advances",
+          "Advance Tax",
+          "Balances with Statutory/Government Authorities"
+        ],
+        "note": "14"
+      },
+      "Prepaid Expenses": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Other Advances": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Advance Tax": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Balances with Statutory/Government Authorities": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Other Current Assets": {
+        "category": "Current Asset",
+        "subcategory": ["Interest Accrued on Fixed Deposits"],
+        "note": "15"
+      },
+      "Interest Accrued on Fixed Deposits": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Revenue from Operations": {
+        "category": "Revenue",
+        "subcategory": ["Sale of Services"],
+        "note": "16"
+      },
+      "Sale of Services": {
+        "category": "Revenue",
+        "subcategory": ["Domestic", "Exports"]
+      },
+      "Domestic": {
+        "category": "Revenue",
+        "subcategory": [
+          "Servicing of BA/BE PROJECTS-Intra State",
+          "SERVICING OF BA PROJECTS-Intra State",
+          "SERVICING OF ONLY CLINICAL INTRA STATE",
+          "Working Standards-Intra State"
+        ]
+      },
+      "Exports": {
+        "category": "Revenue",
+        "subcategory": [
+          "Servicing of BA/BE PROJECTS EXPORT",
+          "Working Standards - Export"
+        ]
+      },
+      "Servicing of BA/BE PROJECTS EXPORT": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "Servicing of BA/BE PROJECTS-Intra State": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "SERVICING OF BA PROJECTS-Intra State": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "SERVICING OF ONLY CLINICAL INTRA STATE": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "Working Standards - Export": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "Working Standards-Intra State": {
+        "category": "Revenue",
+        "subcategory": []
+      },
+      "Other Income": {
+        "category": "Other Income",
+        "subcategory": ["Interest Income", "Foreign Exchange Gain (Net)"],
+        "note": "17"
+      },
+      "Interest Income": {
+        "category": "Other Income",
+        "subcategory": []
+      },
+      "Foreign Exchange Gain (Net)": {
+        "category": "Other Income",
+        "subcategory": []
+      },
+      "Cost of Materials Consumed": {
+        "category": "Expense",
+        "subcategory": ["Opening Stock", "Purchases"],
+        "note": "18"
+      },
+      "Opening Stock": {
+        "category": "Current Asset",
+        "subcategory": []
+      },
+      "Purchases": {
+        "category": "Expense",
+        "subcategory": ["Bio Lab Consumables", "Non GST", "Purchase GST"]
+      },
+      "Bio Lab Consumables": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Non GST": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Purchase GST": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Employee Benefit Expense": {
+        "category": "Expense",
+        "subcategory": [
+          "Salary",
+          "Remuneration to Directors",
+          "Staff Comp Offs and OTs",
+          "Incentives to Staff",
+          "Gratuity Paid to Staff",
+          "Group Health Insurance for Employees",
+          "Wages for Contract Employees",
+          "Staff Food Expenses"
+        ],
+        "note": "19"
+      },
+      "Salary": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Remuneration to Directors": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Staff Comp Offs and OTs": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Incentives to Staff": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Gratuity Paid to Staff": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Group Health Insurance for Employees": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Wages for Contract Employees": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Staff Food Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Finance Costs": {
+        "category": "Expense",
+        "subcategory": [
+          "Bank Charges",
+          "Interest of Car Loan",
+          "Interest on APSFC Loan",
+          "Interest on ICICI Loan-Commercial Building",
+          "Interest on Loan From SBI"
+        ],
+        "note": "20"
+      },
+      "Bank Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Interest of Car Loan": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Interest on APSFC Loan": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Interest on ICICI Loan-Commercial Building": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Interest on Loan From SBI": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Depreciation and Amortization Expense": {
+        "category": "Expense",
+        "subcategory": [],
+        "note": "21"
+      },
+      "Other Expenses": {
+        "category": "Expense",
+        "subcategory": [
+          "Airtel DTH Charges",
+          "Annual Maintenance Charges",
+          "BA Expenses",
+          "Bio Medical Waste Disposal Charges",
+          "Business Development Expenses",
+          "Calibration Charges",
+          "Car Insurance",
+          "CDM AND CDISC SERVICES",
+          "Civil Works",
+          "Cold Storage Charges-Freezer",
+          "Consultancy Charges",
+          "Courier and Postage Charges",
+          "CSR Fund Allocation/Expenses",
+          "Customs Duty Payment",
+          "Diesel Expenses for Vehicle (Car)",
+          "Electrical Expenses",
+          "Electricity Charges",
+          "Emergency Medicines",
+          "Fabrication Work Expenses",
+          "Fire Extinguishers Refilling Charges",
+          "Food Expenses for Guests",
+          "Generator - Diesel Expenses",
+          "GST Default Amount FY 2019-20",
+          "House Keeping Charges",
+          "House Keeping Materials",
+          "IEC Certificate Charges",
+          "Insurance for Assets Burglary",
+          "Insurance for Assets Fire Policy",
+          "IT Expenses",
+          "Labour Licence",
+          "Lab Testing Charges",
+          "Loan Processing Charges",
+          "Office Expenses",
+          "Pantry Expenses",
+          "Pest Control Charges",
+          "Plumbing Expenses",
+          "Plumbing Material",
+          "Printing and Stationery",
+          "Processing Charges",
+          "Professional & Consultancy Fee",
+          "Professional Fee-Legal",
+          "Property Tax for Zenrise-Centre1",
+          "Protocol Review/IEC Charges",
+          "Rates and Taxes",
+          "Rent of the Premises",
+          "Repairs and Maintenance",
+          "Retainership Fees",
+          "Round Off",
+          "Security Services",
+          "Service Charges",
+          "Sitting Fee of Directors",
+          "Software Renewal Fees",
+          "Stamp Duty",
+          "Stamp Papers",
+          "Storage Charges",
+          "Study Food Expenses",
+          "Tax on Professional Charges",
+          "Telephone and Internet Charges",
+          "Trade License Expenses",
+          "Translation Charges",
+          "Transportation and Unloading Charges",
+          "Travelling Expenses",
+          "Water Cans Expenses",
+          "Water Charges (Hyderabad Metropolitan)",
+          "Wooden Work Expenses",
+          "X-RAY Charges"
+        ],
+        "note": "22"
+      },
+      "Airtel DTH Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Annual Maintenance Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "BA Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Bio Medical Waste Disposal Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Business Development Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Calibration Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Car Insurance": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "CDM AND CDISC SERVICES": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Civil Works": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Cold Storage Charges-Freezer": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Consultancy Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Courier and Postage Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "CSR Fund Allocation/Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Customs Duty Payment": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Diesel Expenses for Vehicle (Car)": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Electrical Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Electricity Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Emergency Medicines": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Fabrication Work Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Fire Extinguishers Refilling Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Food Expenses for Guests": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Generator - Diesel Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "GST Default Amount FY 2019-20": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "House Keeping Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "House Keeping Materials": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "IEC Certificate Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Insurance for Assets Burglary": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Insurance for Assets Fire Policy": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "IT Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Labour Licence": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Lab Testing Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Loan Processing Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Office Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Pantry Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Pest Control Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Plumbing Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Plumbing Material": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Printing and Stationery": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Processing Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Professional & Consultancy Fee": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Professional Fee-Legal": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Property Tax for Zenrise-Centre1": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Protocol Review/IEC Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Rates and Taxes": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Rent of the Premises": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Repairs and Maintenance": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Retainership Fees": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Round Off": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Security Services": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Service Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Sitting Fee of Directors": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Software Renewal Fees": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Stamp Duty": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Stamp Papers": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Storage Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Study Food Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Tax on Professional Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Telephone and Internet Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Trade License Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Translation Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Transportation and Unloading Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Travelling Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Water Cans Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Water Charges (Hyderabad Metropolitan)": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Wooden Work Expenses": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "X-RAY Charges": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Tax Expense": {
+        "category": "Expense",
+        "subcategory": ["Current Tax", "Deferred Tax"],
+        "note": "23"
+      },
+      "Current Tax": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Deferred Tax": {
+        "category": "Expense",
+        "subcategory": []
+      },
+      "Contingent Liabilities": {
+        "category": "Contingent Liability",
+        "subcategory": [],
+        "note": "24"
+      },
+      "Capital Commitments": {
+        "category": "Commitment",
+        "subcategory": [],
+        "note": "25"
+      },
+      "Earnings per Share": {
+        "category": "Financial Metric",
+        "subcategory": ["Basic", "Diluted"],
+        "note": "28"
+      },
+      "Basic": {
+        "category": "Financial Metric",
+        "subcategory": []
+      },
+      "Diluted": {
+        "category": "Financial Metric",
+        "subcategory": []
+      },
+      "Related Party Disclosures": {
+        "category": "Disclosure",
+        "subcategory": ["Subsidiary Company"],
+        "note": "29"
+      },
+      "Subsidiary Company": {
+        "category": "Disclosure",
+        "subcategory": []
+      },
+      "MSME Disclosure": {
+        "category": "Disclosure",
+        "subcategory": [],
+        "note": "30"
+      }
+    }
+  }
