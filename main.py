@@ -148,6 +148,11 @@ def generate_notes(tb_df, debtors_df=None, creditors_df=None):
         '16. Revenue from Operations': {'keywords': ['Revenue', 'Sales', 'Service', 'income', 'operations']},
         '17. Other Income': {'keywords': ['Interest on FD', 'Interest on Income Tax Refund', 'Unadjusted Forex Gain/Loss', 'Forex Gain / Loss']},
         '18. Cost of Materials Consumed': {'keywords': ['opening stock', 'Bio Lab Consumables', 'Non GST', 'Purchase GST', 'closing stock']},
+        '19. Employee Benefit Expense': {'keywords': ['Salary', 'Wages', 'Staff', 'Employee', 'Remuneration', 'Comp Offs', 'Retainership']},
+        '20. Other Expenses': {'keywords': ['Repairs', 'Maintenance', 'Rent', 'Power', 'Fuel', 'Printing', 'Stationery', 'Telephone', 'Internet', 'Travelling', 'Professional', 'Consultancy', 'License', 'Storage', 'Food', 'Water', 'Security', 'Software', 'Translation', 'Transportation', 'Unloading', 'Study', 'Protocol', 'IEC', 'X-RAY', 'Dietician', 'ECG', 'Volunteer', 'BMWS']},
+        '21. Finance Costs': {'keywords': ['Bank Charges', 'Interest', 'Loan Processing']},
+        '22. Depreciation and Amortization Expense': {'keywords': ['Depreciation', 'Amortization', 'Accumulated Depreciation']},
+        '23. Foreign Exchange Gain/Loss': {'keywords': ['Forex Gain', 'Foreign Exchange', 'Unadjusted Forex Gain/Loss']},
         '28. Earnings per Share': {'keywords': ['Profit', 'Loss', 'profit', 'loss']},
         '29. Related Party Disclosures': {'keywords': []},
         '30. Financial Ratios': {'keywords': ['Stock', 'Cash', 'Bank', 'Receivables', 'Creditors', 'Payable']}
@@ -447,6 +452,185 @@ def generate_notes(tb_df, debtors_df=None, creditors_df=None):
                 }
             }
         
+        elif note_name == '19. Employee Benefit Expense':
+            salary = calculate_note(tb_df, note_name, ['Salary'])['total']
+            wages_contract = calculate_note(tb_df, note_name, ['Wages for Contract Employees'])['total']
+            staff_compoffs = calculate_note(tb_df, note_name, ['Staff Comp Offs and OTs'])['total']
+            retainership = calculate_note(tb_df, note_name, ['Retainership Fees'])['total']
+            total = salary + wages_contract + staff_compoffs + retainership
+            content = """
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Salary                       | {sal_lakhs} | - |
+| Wages for Contract Employees | {wc_lakhs} | - |
+| Staff Comp Offs and OTs      | {sc_lakhs} | - |
+| Retainership Fees            | {rt_lakhs} | - |
+| **Total**                    | {total_lakhs} | - |
+""".format(sal_lakhs=to_lakhs(salary), wc_lakhs=to_lakhs(wages_contract), sc_lakhs=to_lakhs(staff_compoffs), rt_lakhs=to_lakhs(retainership), total_lakhs=to_lakhs(total))
+            result['total'] = total
+            special_data = {
+                "breakdown": {
+                    "salary": {"description": "Salary", "amount": salary, "amount_lakhs": to_lakhs(salary)},
+                    "wages_contract": {"description": "Wages for Contract Employees", "amount": wages_contract, "amount_lakhs": to_lakhs(wages_contract)},
+                    "staff_compoffs": {"description": "Staff Comp Offs and OTs", "amount": staff_compoffs, "amount_lakhs": to_lakhs(staff_compoffs)},
+                    "retainership": {"description": "Retainership Fees", "amount": retainership, "amount_lakhs": to_lakhs(retainership)}
+                }
+            }
+        
+        elif note_name == '20. Other Expenses':
+            repairs_maintenance = calculate_note(tb_df, note_name, ['Repairs and Maintenance'])['total']
+            rent = calculate_note(tb_df, note_name, ['Rent'])['total']
+            power_fuel = calculate_note(tb_df, note_name, ['Power and Fuel'])['total']
+            printing_stationery = calculate_note(tb_df, note_name, ['Printing and Stationery'])['total']
+            telephone_internet = calculate_note(tb_df, note_name, ['Telephone and Internet'])['total']
+            travelling = calculate_note(tb_df, note_name, ['Travelling Expenses'])['total']
+            professional = calculate_note(tb_df, note_name, ['Professional & Consultancy'])['total']
+            license = calculate_note(tb_df, note_name, ['Trade License'])['total']
+            storage = calculate_note(tb_df, note_name, ['Storage Charges'])['total']
+            food = calculate_note(tb_df, note_name, ['Staff Food Expenses', 'Study Food Expenses'])['total']
+            water = calculate_note(tb_df, note_name, ['Water Cans', 'Water Charges'])['total']
+            security = calculate_note(tb_df, note_name, ['Security Services'])['total']
+            software = calculate_note(tb_df, note_name, ['Software Renewal'])['total']
+            translation = calculate_note(tb_df, note_name, ['Translation Charges'])['total']
+            transportation = calculate_note(tb_df, note_name, ['Transportation and Unloading'])['total']
+            study = calculate_note(tb_df, note_name, ['Study Food', 'Volunteer Study'])['total']
+            protocol = calculate_note(tb_df, note_name, ['Protocol Review/IEC'])['total']
+            xray = calculate_note(tb_df, note_name, ['X-RAY CHARGES'])['total']
+            dietician = calculate_note(tb_df, note_name, ['Dietician Charges'])['total']
+            ecg = calculate_note(tb_df, note_name, ['ECG Payments'])['total']
+            bmws = calculate_note(tb_df, note_name, ['BMWS Fee'])['total']
+            total = (repairs_maintenance + rent + power_fuel + printing_stationery + telephone_internet +
+                     travelling + professional + license + storage + food + water + security +
+                     software + translation + transportation + study + protocol + xray + dietician + ecg + bmws)
+            content = """
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Repairs and Maintenance      | {rm_lakhs} | - |
+| Rent                         | {rent_lakhs} | - |
+| Power and Fuel               | {pf_lakhs} | - |
+| Printing and Stationery      | {ps_lakhs} | - |
+| Telephone and Internet       | {ti_lakhs} | - |
+| Travelling Expenses          | {tr_lakhs} | - |
+| Professional & Consultancy   | {pr_lakhs} | - |
+| Trade License                | {lc_lakhs} | - |
+| Storage Charges              | {st_lakhs} | - |
+| Food Expenses                | {fd_lakhs} | - |
+| Water Expenses               | {wt_lakhs} | - |
+| Security Services            | {sc_lakhs} | - |
+| Software Renewal Fees        | {sf_lakhs} | - |
+| Translation Charges          | {tl_lakhs} | - |
+| Transportation and Unloading | {tp_lakhs} | - |
+| Study Expenses               | {st_exp_lakhs} | - |
+| Protocol Review/IEC Charges  | {pt_lakhs} | - |
+| X-RAY Charges                | {xr_lakhs} | - |
+| Dietician Charges            | {dt_lakhs} | - |
+| ECG Payments                 | {ecg_lakhs} | - |
+| BMWS Fee                     | {bmws_lakhs} | - |
+| **Total**                    | {total_lakhs} | - |
+""".format(rm_lakhs=to_lakhs(repairs_maintenance), rent_lakhs=to_lakhs(rent), pf_lakhs=to_lakhs(power_fuel),
+           ps_lakhs=to_lakhs(printing_stationery), ti_lakhs=to_lakhs(telephone_internet), tr_lakhs=to_lakhs(travelling),
+           pr_lakhs=to_lakhs(professional), lc_lakhs=to_lakhs(license), st_lakhs=to_lakhs(storage), fd_lakhs=to_lakhs(food),
+           wt_lakhs=to_lakhs(water), sc_lakhs=to_lakhs(security), sf_lakhs=to_lakhs(software), tl_lakhs=to_lakhs(translation),
+           tp_lakhs=to_lakhs(transportation), st_exp_lakhs=to_lakhs(study), pt_lakhs=to_lakhs(protocol), xr_lakhs=to_lakhs(xray),
+           dt_lakhs=to_lakhs(dietician), ecg_lakhs=to_lakhs(ecg), bmws_lakhs=to_lakhs(bmws), total_lakhs=to_lakhs(total))
+            result['total'] = total
+            special_data = {
+                "breakdown": {
+                    "repairs_maintenance": {"description": "Repairs and Maintenance", "amount": repairs_maintenance, "amount_lakhs": to_lakhs(repairs_maintenance)},
+                    "rent": {"description": "Rent", "amount": rent, "amount_lakhs": to_lakhs(rent)},
+                    "power_fuel": {"description": "Power and Fuel", "amount": power_fuel, "amount_lakhs": to_lakhs(power_fuel)},
+                    "printing_stationery": {"description": "Printing and Stationery", "amount": printing_stationery, "amount_lakhs": to_lakhs(printing_stationery)},
+                    "telephone_internet": {"description": "Telephone and Internet", "amount": telephone_internet, "amount_lakhs": to_lakhs(telephone_internet)},
+                    "travelling": {"description": "Travelling Expenses", "amount": travelling, "amount_lakhs": to_lakhs(travelling)},
+                    "professional": {"description": "Professional & Consultancy", "amount": professional, "amount_lakhs": to_lakhs(professional)},
+                    "license": {"description": "Trade License", "amount": license, "amount_lakhs": to_lakhs(license)},
+                    "storage": {"description": "Storage Charges", "amount": storage, "amount_lakhs": to_lakhs(storage)},
+                    "food": {"description": "Food Expenses", "amount": food, "amount_lakhs": to_lakhs(food)},
+                    "water": {"description": "Water Expenses", "amount": water, "amount_lakhs": to_lakhs(water)},
+                    "security": {"description": "Security Services", "amount": security, "amount_lakhs": to_lakhs(security)},
+                    "software": {"description": "Software Renewal Fees", "amount": software, "amount_lakhs": to_lakhs(software)},
+                    "translation": {"description": "Translation Charges", "amount": translation, "amount_lakhs": to_lakhs(translation)},
+                    "transportation": {"description": "Transportation and Unloading", "amount": transportation, "amount_lakhs": to_lakhs(transportation)},
+                    "study": {"description": "Study Expenses", "amount": study, "amount_lakhs": to_lakhs(study)},
+                    "protocol": {"description": "Protocol Review/IEC Charges", "amount": protocol, "amount_lakhs": to_lakhs(protocol)},
+                    "xray": {"description": "X-RAY Charges", "amount": xray, "amount_lakhs": to_lakhs(xray)},
+                    "dietician": {"description": "Dietician Charges", "amount": dietician, "amount_lakhs": to_lakhs(dietician)},
+                    "ecg": {"description": "ECG Payments", "amount": ecg, "amount_lakhs": to_lakhs(ecg)},
+                    "bmws": {"description": "BMWS Fee", "amount": bmws, "amount_lakhs": to_lakhs(bmws)}
+                }
+            }
+        
+        elif note_name == '21. Finance Costs':
+            bank_charges = calculate_note(tb_df, note_name, ['Bank Charges'])['total']
+            interest_car_loan = calculate_note(tb_df, note_name, ['Interest of Car Loan'])['total']
+            interest_apsfc_loan = calculate_note(tb_df, note_name, ['Interest on APSFC Loan'])['total']
+            interest_icici_loan = calculate_note(tb_df, note_name, ['Interest on ICICI Loan'])['total']
+            interest_sbi_loan = calculate_note(tb_df, note_name, ['Interest on Loan From SBI'])['total']
+            loan_processing = calculate_note(tb_df, note_name, ['Loan Processing Charges'])['total']
+            total = bank_charges + interest_car_loan + interest_apsfc_loan + interest_icici_loan + interest_sbi_loan + loan_processing
+            content = """
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Bank Charges                 | {bc_lakhs} | - |
+| Interest on Car Loan         | {ic_lakhs} | - |
+| Interest on APSFC Loan       | {ia_lakhs} | - |
+| Interest on ICICI Loan       | {ii_lakhs} | - |
+| Interest on SBI Loan         | {is_lakhs} | - |
+| Loan Processing Charges      | {lp_lakhs} | - |
+| **Total**                    | {total_lakhs} | - |
+""".format(bc_lakhs=to_lakhs(bank_charges), ic_lakhs=to_lakhs(interest_car_loan), ia_lakhs=to_lakhs(interest_apsfc_loan),
+           ii_lakhs=to_lakhs(interest_icici_loan), is_lakhs=to_lakhs(interest_sbi_loan), lp_lakhs=to_lakhs(loan_processing),
+           total_lakhs=to_lakhs(total))
+            result['total'] = total
+            special_data = {
+                "breakdown": {
+                    "bank_charges": {"description": "Bank Charges", "amount": bank_charges, "amount_lakhs": to_lakhs(bank_charges)},
+                    "interest_car_loan": {"description": "Interest on Car Loan", "amount": interest_car_loan, "amount_lakhs": to_lakhs(interest_car_loan)},
+                    "interest_apsfc_loan": {"description": "Interest on APSFC Loan", "amount": interest_apsfc_loan, "amount_lakhs": to_lakhs(interest_apsfc_loan)},
+                    "interest_icici_loan": {"description": "Interest on ICICI Loan", "amount": interest_icici_loan, "amount_lakhs": to_lakhs(interest_icici_loan)},
+                    "interest_sbi_loan": {"description": "Interest on SBI Loan", "amount": interest_sbi_loan, "amount_lakhs": to_lakhs(interest_sbi_loan)},
+                    "loan_processing": {"description": "Loan Processing Charges", "amount": loan_processing, "amount_lakhs": to_lakhs(loan_processing)}
+                }
+            }
+        
+        elif note_name == '22. Depreciation and Amortization Expense':
+            depreciation = calculate_note(tb_df, note_name, ['Depreciation', 'Accumulated Depreciation'])['total']
+            amortization = calculate_note(tb_df, note_name, ['Amortization'])['total']
+            total = depreciation + amortization
+            content = """
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Depreciation                 | {dep_lakhs} | - |
+| Amortization                 | {amr_lakhs} | - |
+| **Total**                    | {total_lakhs} | - |
+""".format(dep_lakhs=to_lakhs(depreciation), amr_lakhs=to_lakhs(amortization), total_lakhs=to_lakhs(total))
+            result['total'] = total
+            special_data = {
+                "breakdown": {
+                    "depreciation": {"description": "Depreciation", "amount": depreciation, "amount_lakhs": to_lakhs(depreciation)},
+                    "amortization": {"description": "Amortization", "amount": amortization, "amount_lakhs": to_lakhs(amortization)}
+                }
+            }
+        
+        elif note_name == '23. Foreign Exchange Gain/Loss':
+            forex_gain_unadj = calculate_note(tb_df, note_name, ['Unadjusted Forex Gain/Loss'])['total']
+            forex_gain = calculate_note(tb_df, note_name, ['Forex Gain / Loss'])['total']
+            total = forex_gain_unadj + forex_gain
+            content = """
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Foreign Exchange Gain (Net)  | {fg_lakhs} | - |
+| Unadjusted Forex Gain/Loss   | {fu_lakhs} | - |
+| **Total**                    | {total_lakhs} | - |
+""".format(fg_lakhs=to_lakhs(forex_gain), fu_lakhs=to_lakhs(forex_gain_unadj), total_lakhs=to_lakhs(total))
+            result['total'] = total
+            special_data = {
+                "breakdown": {
+                    "forex_gain": {"description": "Foreign Exchange Gain (Net)", "amount": forex_gain, "amount_lakhs": to_lakhs(forex_gain)},
+                    "forex_unadjusted": {"description": "Unadjusted Forex Gain/Loss", "amount": forex_gain_unadj, "amount_lakhs": to_lakhs(forex_gain_unadj)}
+                }
+            }
+        
         elif note_name == '28. Earnings per Share':
             content = """
 | Particulars                  | March 31, 2024 | March 31, 2023 |
@@ -485,7 +669,7 @@ def generate_notes(tb_df, debtors_df=None, creditors_df=None):
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
 | {title}                      | {total_lakhs} | - |
-""".format(title=note_title, total_lakhs=to_lakhs(result['total']))
+""".format(title=note_name.split('.', 1)[1].strip() if '.' in note_name else note_name, total_lakhs=to_lakhs(result['total']))
 
         detailed_note = create_detailed_note_structure(note_name, result, content, special_data)
         notes.append(detailed_note)

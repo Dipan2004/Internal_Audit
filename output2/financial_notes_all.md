@@ -8,66 +8,53 @@
 | **Authorised shares**        |            |            |
 | 75,70,000 equity shares of ₹ 10/- each | 757.0 | 757.0 |
 | **Issued, subscribed and fully paid-up shares** | | |
-| 54,25,210 equity shares of ₹ 10/- each | 542.52 | 542.52 |
-| **Total issued, subscribed and fully paid-up share capital** | 542.52 | 542.52 |
+| 54,25,210 equity shares of ₹ 10/- each | 0.0 | 542.52 |
+| **Total issued, subscribed and fully paid-up share capital** | 0.0 | 542.52 |
 
 
 **Account-wise breakdown:**
-- Share Capital: ₹54,252,100.00 (542.52 Lakhs)
 
 ### 3. Reserves and Surplus
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Reserves and Surplus         | 315.31 | - |
+| Reserves and Surplus         | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Reserves & Surplus: ₹31,530,868.00 (315.31 Lakhs)
+- Retained Earnings: ₹0.00 (0.0 Lakhs)
 
 ### 4. Long Term Borrowings
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Long Term Borrowings         | 2416.29 | - |
+| Long Term Borrowings         | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Loans (Liability): ₹105,665,253.45 (1056.65 Lakhs)
-- Loan From APSFC HYDERABAD: ₹19,799,790.00 (198.0 Lakhs)
-- Loan From ICICI Bank 603090031420: ₹81,396,076.35 (813.96 Lakhs)
-- LOAN FROM SBI SME HYDERABAD 40392204781: ₹0.00 (0.0 Lakhs)
-- Interest Payable on APSFC LOAN: ₹184,767.00 (1.85 Lakhs)
-- Loans & Advances (Asset): ₹25,661,755.00 (256.62 Lakhs)
-- Interest of Car Loan: ₹387,546.10 (3.88 Lakhs)
-- Interest on APSFC Loan: ₹3,129,488.00 (31.29 Lakhs)
-- Interest on ICICI Loan-Commercial Building: ₹5,041,999.02 (50.42 Lakhs)
-- Interest on Loan From SBI: ₹73,925.00 (0.74 Lakhs)
-- Loan Processing Charges: ₹288,000.00 (2.88 Lakhs)
 
 ### 5. Deferred Tax Liability
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Deferred Tax Liability       | 43.19 | - |
+| Deferred Tax Liability       | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Deferred Tax Liability: ₹4,318,647.00 (43.19 Lakhs)
+- Deferred Tax Asset: ₹0.00 (0.0 Lakhs)
 
 ### 6. Trade Payables
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Trade Payables               | 147.01 | - |
+| Trade Payables               | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Sundry Creditors: ₹14,701,343.76 (147.01 Lakhs)
 
 ### 7. Other Current Liabilities
 
@@ -75,26 +62,32 @@
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
 | Current Maturities of Long Term Borrowings | 79.35 | 139.20 |
-| Outstanding Liabilities for Expenses | 124.98 | 156.88 |
+| Outstanding Liabilities for Expenses | 1166.48 | 156.88 |
 | Statutory dues               | 79.35 | 48.03 |
-| **Total**                    | 283.68 | 344.12 |
+| **Total**                    | 1325.18 | 344.12 |
 
 
 **Account-wise breakdown:**
-- Expenses Payable: ₹4,377,982.34 (43.78 Lakhs)
-- Commission Payable: ₹0.00 (0.0 Lakhs)
-- Interest Payable on APSFC LOAN: ₹184,767.00 (1.85 Lakhs)
+- Accounts Payable: ₹22,407,167.57 (224.07 Lakhs)
+- GST Payable: ₹0.00 (0.0 Lakhs)
+- Total for GST Payable: ₹90,483.22 (0.9 Lakhs)
+- Profession Tax Payable: ₹286,600.00 (2.87 Lakhs)
+- Provident Fund Payables: ₹33,569,622.00 (335.7 Lakhs)
+- TDS Payable: ₹52,358,923.77 (523.59 Lakhs)
 
 ### 8. Short Term Provisions
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Short Term Provisions        | 36.46 | - |
+| Short Term Provisions        | 210.71 | - |
 
 
 **Account-wise breakdown:**
-- Provisions: ₹3,645,955.00 (36.46 Lakhs)
+- Provision for Gratuity: ₹5,333,587.00 (53.34 Lakhs)
+- Provision for Professional Fee (Transfer Pricing): ₹100,000.00 (1.0 Lakhs)
+- Provision for Statutory Audit Fee: ₹20,000.00 (0.2 Lakhs)
+- Provision for Tax: ₹15,617,119.02 (156.17 Lakhs)
 
 ### 9. Fixed Assets
 
@@ -104,47 +97,40 @@
 | As at 1st April 2023 | Additions | Deletion | As at 31st March 2024 | As at 1st April 2023 | For the year | Deletion | As at 31st March 2024 | As at 31st March 2024 | As at 1st April 2023 |
 |------------------------------|----------------------|--------------------------|--------------------|
 | Tangible Assets              |                      |                          |                    |
-| Buildings                    | 312.66 | 50.42 | 0 | 53.55 | 312.65 | 1478.81 | 0 | 1791.46 | 50.42 | 1.00 |
-| Equipments                   | 2081.97 | 0 | 0 | 2081.97 | 0 | 0 | 0 | 0 | 2081.97 | 2081.97 |
-| Furniture & Fixtures         | 380.01 | 0 | 0 | 380.01 | 0 | 0 | 0 | 0 | 380.01 | 380.01 |
-| Motor Vehicle                | 77.21 | 0 | 0 | 77.21 | 0 | 752.98 | 0 | 752.98 | 69.68 | 77.21 |
+| Buildings                    | 312.66 | 0.0 | 0 | 3.13 | 312.65 | 1478.81 | 0 | 1791.46 | 0.0 | 1.00 |
+| Equipments                   | 0.0 | 0 | 0 | 0.0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 |
+| Furniture & Fixtures         | 0.0 | 0 | 0 | 0.0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 |
+| Motor Vehicle                | 0.0 | 0 | 0 | 0.0 | 0 | 752.98 | 0 | 752.98 | -7.53 | 0.0 |
 
 
 **Account-wise breakdown:**
-- Fixed Assets: ₹454,696,134.36 (4546.96 Lakhs)
-- Equipments: ₹207,959,641.05 (2079.6 Lakhs)
-- Furniture & Fixtures: ₹38,000,617.72 (380.01 Lakhs)
-- Current Assets: ₹202,445,127.03 (2024.45 Lakhs)
-- Deposits (Asset): ₹48,479,841.00 (484.8 Lakhs)
-- Loans & Advances (Asset): ₹25,661,755.00 (256.62 Lakhs)
-- Diesel Expences For Vehicle(Car): ₹140,405.58 (1.4 Lakhs)
-- INSURANCE FOR ASSETS BUGLARY: ₹14,065.00 (0.14 Lakhs)
-- INSURANCE FOR ASSETS FIRE POLICY: ₹126,171.98 (1.26 Lakhs)
-- Interest on ICICI Loan-Commercial Building: ₹5,041,999.02 (50.42 Lakhs)
-- Software Equipment: ₹237,500.00 (2.38 Lakhs)
+- Assets: ₹0.00 (0.0 Lakhs)
+- Deferred Tax Asset: ₹0.00 (0.0 Lakhs)
+- Prepaid Assets Insurance: ₹6,987.19 (0.07 Lakhs)
+- Gain / Loss on Sales of Fixed Assets: ₹576,084.78 (5.76 Lakhs)
+- Asset Insurance: ₹0.00 (0.0 Lakhs)
 
 ### 10. Long Term Loans and Advances
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Long Term Loans and Advances | 741.42 | - |
+| Long Term Loans and Advances | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Deposits (Asset): ₹48,479,841.00 (484.8 Lakhs)
-- Loans & Advances (Asset): ₹25,661,755.00 (256.62 Lakhs)
+- Security Deposits - Awfis Space Solutions Private Limited: ₹0.00 (0.0 Lakhs)
+- Security Deposits - Concept Classic Converge: ₹0.00 (0.0 Lakhs)
 
 ### 11. Inventories
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Consumables                  | 10.13 | - |
+| Consumables                  | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Opening Stock: ₹1,013,265.00 (10.13 Lakhs)
 
 ### 12. Trade Receivables
 
@@ -153,13 +139,10 @@
 |------------------------------|------------|------------|
 | Unsecured, considered good   |            |            |
 | Outstanding for a period exceeding six months | 0.0 | 104.65 |
-| Total                        | 951.11 | 1037.59 |
+| Total                        | 0.0 | 1037.59 |
 
 
 **Account-wise breakdown:**
-- Sundry Debtors: ₹83,378,906.31 (833.79 Lakhs)
-- TCS RECEIVABLES: ₹13,980.75 (0.14 Lakhs)
-- Tds Receivables: ₹11,717,929.19 (117.18 Lakhs)
 
 ### 13. Cash and Bank Balances
 
@@ -167,17 +150,16 @@
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
 | **Cash and cash equivalents**|                |                |
-| Balances with banks in current accounts | 188.43 | - |
-| Cash in hand                 | 3.68 | - |
+| Balances with banks in current accounts | 0.0 | - |
+| Cash in hand                 | 0.0 | - |
 | **Other Bank Balances**      |                |                |
-| Fixed Deposit                | 484.8 | - |
-| **Total**                    | 676.91 | - |
+| Fixed Deposit                | 0.0 | - |
+| **Total**                    | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Deposits (Asset): ₹48,479,841.00 (484.8 Lakhs)
-- Cash-in-Hand: ₹368,226.00 (3.68 Lakhs)
-- Bank Accounts: ₹18,843,387.18 (188.43 Lakhs)
+- Security Deposits - Awfis Space Solutions Private Limited: ₹0.00 (0.0 Lakhs)
+- Security Deposits - Concept Classic Converge: ₹0.00 (0.0 Lakhs)
 
 ### 14. Short Term Loans and Advances
 
@@ -185,32 +167,28 @@
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
 | **Unsecured, considered good**|                |                |
-| Prepaid Expenses             | 15.9 | - |
-| Other Advances               | 256.62 | - |
+| Prepaid Expenses             | 82.24 | - |
+| Other Advances               | 0.0 | - |
 | **Other loans and advances** |                |                |
-| Advance tax                  | 112.85 | - |
-| Balances with statutory/government authorities | 117.18 | - |
-| **Total**                    | 502.55 | - |
+| Advance tax                  | 0.0 | - |
+| Balances with statutory/government authorities | 0.0 | - |
+| **Total**                    | 82.24 | - |
 
 
 **Account-wise breakdown:**
-- Loans & Advances (Asset): ₹25,661,755.00 (256.62 Lakhs)
-- Advance to Perennail Code IT Conslultants Pvt Ltd: ₹3,776.00 (0.04 Lakhs)
-- Prepaid Expenses: ₹1,589,845.00 (15.9 Lakhs)
-- TCS RECEIVABLES: ₹13,980.75 (0.14 Lakhs)
-- TDS Advance Tax Paid SEC 100: ₹11,285,077.00 (112.85 Lakhs)
-- Tds Receivables: ₹11,717,929.19 (117.18 Lakhs)
+- Prepaid Expenses: ₹7,730,866.57 (77.31 Lakhs)
+- Prepaid Expenses - Laptop AMC: ₹135,584.54 (1.36 Lakhs)
+- Prepaid Expenses - Laptop Extended Warranty: ₹357,547.18 (3.58 Lakhs)
 
 ### 15. Other Current Assets
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Other Current Assets         | 2024.45 | - |
+| Other Current Assets         | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Current Assets: ₹202,445,127.03 (2024.45 Lakhs)
 
 ### 16. Revenue from Operations
 
@@ -218,67 +196,164 @@
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
 | **Sale of Services**         |                |                |
-| Domestic                     | 1843.29 | - |
-| Exports                      | 1457.49 | - |
-| **Total**                    | 3300.78 | - |
+| Domestic                     | 0.0 | - |
+| Exports                      | 0.0 | - |
+| **Total**                    | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- DAIMLER FINANCIAL SERVICES INDIA PVT LTD: ₹4,469,387.10 (44.69 Lakhs)
-- Sales Accounts: ₹330,858,462.82 (3308.58 Lakhs)
-- Ambulance Service Charges: ₹244,000.00 (2.44 Lakhs)
-- Indirect Incomes: ₹2,784,718.00 (27.85 Lakhs)
-- Interest on Income Tax Refund: ₹267,800.00 (2.68 Lakhs)
-- CDM AND CDISC SERVICES: ₹2,572,000.00 (25.72 Lakhs)
-- SECURITY SERVICES: ₹1,173,753.00 (11.74 Lakhs)
-- Service Charges: ₹24,970.00 (0.25 Lakhs)
+- Income: ₹0.00 (0.0 Lakhs)
+- Gain / Loss on Sales of Fixed Assets: ₹576,084.78 (5.76 Lakhs)
+- Sales: ₹364,415,590.00 (3644.16 Lakhs)
+- Consultancy & Service Fee: ₹0.00 (0.0 Lakhs)
+- Income Tax: ₹0.00 (0.0 Lakhs)
 
 ### 17. Other Income
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Interest income              | 27.85 | - |
-| Foreign exchange gain (Net)  | 89.75 | - |
-| **Total**                    | 117.6 | - |
+| Interest income              | 0.0 | - |
+| Foreign exchange gain (Net)  | 0.0 | - |
+| **Total**                    | 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Interest on FD: ₹2,516,918.00 (25.17 Lakhs)
-- Interest on Income Tax Refund: ₹267,800.00 (2.68 Lakhs)
-- Forex Gain / Loss: ₹6,457,341.36 (64.57 Lakhs)
-- Unadjusted Forex Gain/Loss: ₹2,517,845.80 (25.18 Lakhs)
 
 ### 18. Cost of Materials Consumed
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Opening Stock                | 10.13 | - |
-| Purchases                    | 239.68 | - |
-|                              | 249.81 | - |
+| Opening Stock                | 0.0 | - |
+| Purchases                    | 0.0 | - |
+|                              | 0.0 | - |
 | Closing Stock                | 0.0 | - |
-| **Cost of materials consumed**| 249.81 | - |
+| **Cost of materials consumed**| 0.0 | - |
 
 
 **Account-wise breakdown:**
-- Opening Stock: ₹1,013,265.00 (10.13 Lakhs)
-- Bio Lab Consumables: ₹9,500.00 (0.1 Lakhs)
-- Non GST: ₹1,831,650.00 (18.32 Lakhs)
-- Purchase GST: ₹22,126,464.51 (221.26 Lakhs)
+
+### 19. Employee Benefit Expense
+
+
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Salary                       | 0.0 | - |
+| Wages for Contract Employees | 0.0 | - |
+| Staff Comp Offs and OTs      | 0.0 | - |
+| Retainership Fees            | 0.0 | - |
+| **Total**                    | 0.0 | - |
+
+
+**Account-wise breakdown:**
+- Prepaid - Employees Group Life Insurance: ₹221,199.88 (2.21 Lakhs)
+- Prepaid Insurance - Employees Health & Personal Accident: ₹1,362,469.55 (13.62 Lakhs)
+- Employees Expenses Reimbursement: ₹0.00 (0.0 Lakhs)
+- Employees Group Life Insurance: ₹2,481.33 (0.02 Lakhs)
+- Employees Health & Personal Accident Insurance: ₹0.00 (0.0 Lakhs)
+- Retainership Fee: ₹0.00 (0.0 Lakhs)
+- Staff Welfare Expenses: ₹0.00 (0.0 Lakhs)
+
+### 20. Other Expenses
+
+
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Repairs and Maintenance      | 0.0 | - |
+| Rent                         | 0.0 | - |
+| Power and Fuel               | 0.0 | - |
+| Printing and Stationery      | 0.0 | - |
+| Telephone and Internet       | 0.0 | - |
+| Travelling Expenses          | 0.0 | - |
+| Professional & Consultancy   | 0.0 | - |
+| Trade License                | 0.0 | - |
+| Storage Charges              | 0.0 | - |
+| Food Expenses                | 0.0 | - |
+| Water Expenses               | 0.0 | - |
+| Security Services            | 0.0 | - |
+| Software Renewal Fees        | 0.0 | - |
+| Translation Charges          | 0.0 | - |
+| Transportation and Unloading | 0.0 | - |
+| Study Expenses               | 0.0 | - |
+| Protocol Review/IEC Charges  | 0.0 | - |
+| X-RAY Charges                | 0.0 | - |
+| Dietician Charges            | 0.0 | - |
+| ECG Payments                 | 0.0 | - |
+| BMWS Fee                     | 0.0 | - |
+| **Total**                    | 0.0 | - |
+
+
+**Account-wise breakdown:**
+- Security Deposit - ESIC: ₹0.00 (0.0 Lakhs)
+- Security Deposit - Hive Space: ₹0.00 (0.0 Lakhs)
+- Security Deposits - Awfis Space Solutions Private Limited: ₹0.00 (0.0 Lakhs)
+- Security Deposits - Concept Classic Converge: ₹0.00 (0.0 Lakhs)
+- Provision for Professional Fee (Transfer Pricing): ₹100,000.00 (1.0 Lakhs)
+- Consultancy & Service Fee: ₹0.00 (0.0 Lakhs)
+- Laptop Accessories and Maintenance: ₹49,599.00 (0.5 Lakhs)
+- Laptop Annual Maintenance Charges: ₹0.00 (0.0 Lakhs)
+- Office Rent: ₹0.00 (0.0 Lakhs)
+- Printing and Stationery: ₹0.00 (0.0 Lakhs)
+- Professional Fee: ₹0.00 (0.0 Lakhs)
+- Professional Fee (Transfer Pricing): ₹0.00 (0.0 Lakhs)
+- Telephone Expense: ₹0.00 (0.0 Lakhs)
+
+### 21. Finance Costs
+
+
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Bank Charges                 | 0.0 | - |
+| Interest on Car Loan         | 0.0 | - |
+| Interest on APSFC Loan       | 0.0 | - |
+| Interest on ICICI Loan       | 0.0 | - |
+| Interest on SBI Loan         | 0.0 | - |
+| Loan Processing Charges      | 0.0 | - |
+| **Total**                    | 0.0 | - |
+
+
+**Account-wise breakdown:**
+- Interest and penalty: ₹0.00 (0.0 Lakhs)
+- Interest on TDS: ₹0.00 (0.0 Lakhs)
+
+### 22. Depreciation and Amortization Expense
+
+
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Depreciation                 | 0.0 | - |
+| Amortization                 | 0.0 | - |
+| **Total**                    | 0.0 | - |
+
+
+**Account-wise breakdown:**
+- Depreciation And Amortisation: ₹0.00 (0.0 Lakhs)
+
+### 23. Foreign Exchange Gain/Loss
+
+
+| Particulars                  | March 31, 2024 | March 31, 2023 |
+|------------------------------|----------------|----------------|
+| Foreign Exchange Gain (Net)  | 0.0 | - |
+| Unadjusted Forex Gain/Loss   | 0.0 | - |
+| **Total**                    | 0.0 | - |
+
+
+**Account-wise breakdown:**
+- Loss/Gain on Foreign Exchange: ₹0.00 (0.0 Lakhs)
 
 ### 28. Earnings per Share
 
 
 | Particulars                  | March 31, 2024 | March 31, 2023 |
 |------------------------------|----------------|----------------|
-| Earnings per Share           | 2241.88 | - |
+| Earnings per Share           | 5.76 | - |
 
 
 **Account-wise breakdown:**
-- Forex Gain / Loss: ₹6,457,341.36 (64.57 Lakhs)
-- Profit & Loss A/c: ₹215,212,520.99 (2152.13 Lakhs)
-- Unadjusted Forex Gain/Loss: ₹2,517,845.80 (25.18 Lakhs)
+- Gain / Loss on Sales of Fixed Assets: ₹576,084.78 (5.76 Lakhs)
+- Loss/Gain on Foreign Exchange: ₹0.00 (0.0 Lakhs)
 
 ### 29. Related Party Disclosures
 
@@ -295,21 +370,19 @@
 
 | Particulars                  | 2024-03-31 | 2023-03-31 |
 |------------------------------|------------|------------|
-| Current Ratio                | 5.97 | 2.52 |
-| Current Assets               | 1149.85 | - |
-| Current Liabilities          | 192.64 | - |
+| Current Ratio                | 3.38 | 2.52 |
+| Current Assets               | 3671.94 | - |
+| Current Liabilities          | 1087.13 | - |
 
 
 **Account-wise breakdown:**
-- Loan From ICICI Bank 603090031420: ₹81,396,076.35 (813.96 Lakhs)
-- Sundry Creditors: ₹14,701,343.76 (147.01 Lakhs)
-- Expenses Payable: ₹4,377,982.34 (43.78 Lakhs)
-- Commission Payable: ₹0.00 (0.0 Lakhs)
-- Interest Payable on APSFC LOAN: ₹184,767.00 (1.85 Lakhs)
-- Opening Stock: ₹1,013,265.00 (10.13 Lakhs)
-- Cash-in-Hand: ₹368,226.00 (3.68 Lakhs)
-- Bank Accounts: ₹18,843,387.18 (188.43 Lakhs)
-- TCS RECEIVABLES: ₹13,980.75 (0.14 Lakhs)
-- Tds Receivables: ₹11,717,929.19 (117.18 Lakhs)
-- Bank Charges: ₹42,167.53 (0.42 Lakhs)
+- Citi Bank (528828019): ₹357,197,323.91 (3571.97 Lakhs)
+- Petty Cash: ₹181,768.00 (1.82 Lakhs)
+- Accounts Payable: ₹22,407,167.57 (224.07 Lakhs)
+- GST Payable: ₹0.00 (0.0 Lakhs)
+- Total for GST Payable: ₹90,483.22 (0.9 Lakhs)
+- Profession Tax Payable: ₹286,600.00 (2.87 Lakhs)
+- Provident Fund Payables: ₹33,569,622.00 (335.7 Lakhs)
+- TDS Payable: ₹52,358,923.77 (523.59 Lakhs)
+- Bank Fees and Charges: ₹0.00 (0.0 Lakhs)
 
