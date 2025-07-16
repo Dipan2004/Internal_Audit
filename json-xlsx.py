@@ -6,6 +6,11 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.utils import get_column_letter
 
+
+
+
+
+
 def create_output_folder(folder_path):
     """Create output folder if it doesn't exist"""
     if not os.path.exists(folder_path):
