@@ -1,12 +1,6 @@
 import json
 from datetime import datetime
 
-
-
-
-
-
-
 note_templates = {
     "10": {
         "title": "Long Term Loans and Advances",
