@@ -1,0 +1,47 @@
+# Note 28
+
+```json
+{
+  "title": "Earnings per Share",
+  "full_title": "28. Earnings per Share",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "{march_2024_total}"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "{march_2023_total}"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Profit after tax",
+          "value": "{profit_after_tax_2024}",
+          "previous_value": "{profit_after_tax_2023}"
+        },
+        {
+          "label": "Weighted average number of equity shares of \u20b9 10/- each outstanding during the year",
+          "value": "{weighted_shares_2024}",
+          "previous_value": "{weighted_shares_2023}"
+        },
+        {
+          "label": "Earnings Per Share - Basic & Diluted",
+          "value": "{eps_basic_diluted_2024}",
+          "previous_value": "{eps_basic_diluted_2023}"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "note_number": "28",
+    "generated_on": "2025-07-19T20:40:02.728087"
+  }
+}
+```

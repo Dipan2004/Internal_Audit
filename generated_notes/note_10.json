@@ -7,11 +7,11 @@
       "subcategories": [
         {
           "label": "March 31, 2024",
-          "value": "484.80"
+          "value": 0.0
         },
         {
           "label": "March 31, 2023",
-          "value": "-"
+          "value": 0.0
         }
       ]
     },
@@ -20,17 +20,17 @@
       "subcategories": [
         {
           "label": "Long Term - Security Deposits",
-          "value": "484.80",
-          "previous_value": "-"
+          "value": 48.48,
+          "previous_value": 0.0
         }
       ],
-      "total": "484.80",
-      "previous_total": "0.00"
+      "total": "48.48",
+      "previous_total": "0.0"
     }
   ],
   "metadata": {
     "note_number": "10",
-    "generated_on": "2025-07-08T17:28:27.333108"
+    "generated_on": "2025-07-19T20:55:34.277657"
   },
-  "markdown_content": "10. Long Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Security Deposits            | 484.80 | - |\n| **Total**                    | 484.80 | - |"
+  "markdown_content": "10. Long Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|\n| Long Term - Security Deposits  | 48.48 | 0.0 |\n| **Other loans and advances**  |\n| Advance tax                   | 0.0          | 0.0           |\n| Balances with statutory/government authorities | 0.0          | 0.0           |\n| **Total**                     | 48.48         | 0.0           |"
 }

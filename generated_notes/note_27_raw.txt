@@ -1,0 +1,41 @@
+ {
+  "title": "Relationship with Struck off Companies",
+  "full_title": "27. Relationship with Struck off Companies",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "0.00"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Transactions with Struck off Companies",
+          "value": "0.00",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "0.00",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "27",
+    "generated_on": "2025-07-19T20:39:52.101035"
+  },
+  "notes_and_disclosures": [
+    "The Company did not have any transactions with Companies struck off under Section 248 of Companies Act, 2013 or Section 560 of Companies Act, 1956 considering the information available with the Company."
+  ],
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 0.00           | -              |\n| Other Advances               | 0.00           | -              |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 0.00           | -              |\n| Balances with statutory/government authorities | 0.00           | -              |\n| **Total**                    | 0.00           | -              |"
+}
+
+This JSON object follows the provided template structure, uses exact values from the trial balance, and ensures that totals match the sum of subcategories. The markdown_content field includes a table in the specified format.

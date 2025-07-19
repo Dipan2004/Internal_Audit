@@ -1,0 +1,36 @@
+{
+  "title": "Deferred Tax Liability (Net)",
+  "full_title": "5. Deferred Tax Liability (Net)",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "{march_2024_total}"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "{march_2023_total}"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Deferred Tax Liability",
+          "value": "{deferred_tax_liability_2024}",
+          "previous_value": "{deferred_tax_liability_2023}"
+        }
+      ],
+      "total": "{total_2024}",
+      "previous_total": "{total_2023}"
+    }
+  ],
+  "metadata": {
+    "note_number": "5",
+    "generated_on": "2025-07-19T20:54:16.713091"
+  },
+  "markdown_content": "5. Deferred Tax Liability (Net)\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 0.0            | -              |\n| Other Advances               | 0.0            | -              |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 0.0            | -              |\n| Balances with statutory/government authorities | 0.0 | - |\n| **Total**                    | 0.0            | -              |"
+}

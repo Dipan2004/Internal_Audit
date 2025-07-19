@@ -1,0 +1,33 @@
+# Note 15
+
+```json
+{
+  "title": "Other Current Assets",
+  "full_title": "15. Other Current Assets",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": 0.0
+        },
+        {
+          "label": "March 31, 2023",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "category": "Interest accrued on fixed deposits",
+      "subcategories": [],
+      "total": 0.0,
+      "previous_total": 0.0
+    }
+  ],
+  "metadata": {
+    "note_number": "15",
+    "generated_on": "2025-07-19T20:56:46.930163"
+  }
+}
+```

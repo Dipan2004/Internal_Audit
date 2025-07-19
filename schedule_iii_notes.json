@@ -1,4 +1,74 @@
 {
+  "10": {
+    "title": "Long Term Loans and Advances",
+    "full_title": "10. Long Term Loans and Advances",
+    "structure": [
+      {
+        "category": "In Lakhs",
+        "subcategories": [
+          {
+            "label": "March 31, 2024",
+            "value": "10.00"
+          },
+          {
+            "label": "March 31, 2023",
+            "value": "8.50"
+          }
+        ]
+      },
+      {
+        "category": "Unsecured, considered good",
+        "subcategories": [
+          {
+            "label": "Security Deposits",
+            "value": "10.00",
+            "previous_value": "8.50"
+          }
+        ],
+        "total": "10.00",
+        "previous_total": "8.50"
+      }
+    ],
+    "metadata": {
+      "note_number": "10",
+      "generated_on": "2025-07-16 20:49:01"
+    }
+  },
+  "11": {
+    "title": "Inventories",
+    "full_title": "11. Inventories",
+    "structure": [
+      {
+        "category": "In Lakhs",
+        "subcategories": [
+          {
+            "label": "March 31, 2024",
+            "value": "3.00"
+          },
+          {
+            "label": "March 31, 2023",
+            "value": "2.80"
+          }
+        ]
+      },
+      {
+        "category": "Raw Materials and Components",
+        "subcategories": [
+          {
+            "label": "Consumables",
+            "value": "3.00",
+            "previous_value": "2.80"
+          }
+        ],
+        "total": "3.00",
+        "previous_total": "2.80"
+      }
+    ],
+    "metadata": {
+      "note_number": "11",
+      "generated_on": "2025-07-16 20:49:01"
+    }
+  },
   "12": {
     "title": "Cash and Bank Balances",
     "full_title": "12. Cash and Bank Balances",
@@ -7,24 +77,66 @@
         "category": "In Lakhs",
         "subcategories": [
           {
-            "label": "Cash in Hand",
-            "value": "5.50"
-          },
-          {
-            "label": "Bank Balance",
-            "value": "125.75"
-          },
-          {
             "label": "March 31, 2024",
-            "value": "131.25"
+            "value": "5.00"
+          },
+          {
+            "label": "March 31, 2023",
+            "value": "4.50"
+          }
+        ]
+      },
+      {
+        "category": "Cash and Cash Equivalents",
+        "subcategories": [
+          {
+            "label": "Cash and Bank Balances",
+            "value": "5.00",
+            "previous_value": "4.50"
           }
         ],
-        "total": "131.25"
+        "total": "5.00",
+        "previous_total": "4.50"
       }
     ],
     "metadata": {
       "note_number": "12",
-      "generated_on": "2025-07-09 17:56:38"
+      "generated_on": "2025-07-16 20:49:01"
+    }
+  },
+  "13": {
+    "title": "Trade Receivables",
+    "full_title": "13. Trade Receivables",
+    "structure": [
+      {
+        "category": "In Lakhs",
+        "subcategories": [
+          {
+            "label": "March 31, 2024",
+            "value": "15.00"
+          },
+          {
+            "label": "March 31, 2023",
+            "value": "12.00"
+          }
+        ]
+      },
+      {
+        "category": "Unsecured, considered good",
+        "subcategories": [
+          {
+            "label": "Trade Receivables",
+            "value": "15.00",
+            "previous_value": "12.00"
+          }
+        ],
+        "total": "15.00",
+        "previous_total": "12.00"
+      }
+    ],
+    "metadata": {
+      "note_number": "13",
+      "generated_on": "2025-07-16 20:49:01"
     }
   }
 }

@@ -1,0 +1,50 @@
+{
+  "title": "Previous Year Figures",
+  "full_title": "32. Previous Year Figures",
+  "structure": [
+    {
+      "category": "Equity",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "380.67"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "322.31"
+        }
+      ]
+    },
+    {
+      "category": "Non-Current Liability",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "4318647.00"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Previous year's figures regrouped",
+          "value": "4702.54",
+          "previous_value": "375.85"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "note_number": "32",
+    "generated_on": "2025-07-19T20:40:46.969111"
+  },
+  "notes_and_disclosures": [
+    "Previous year's figures have been regrouped wherever necessary to confirm to Current year's classifications."
+  ],
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 0.00           | -              |\n| Other Advances               | 0.00           | -              |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 0.00           | -              |\n| Balances with statutory/government authorities | 0.00          | -              |\n| **Total**                    | 0.00           | -              |"
+}

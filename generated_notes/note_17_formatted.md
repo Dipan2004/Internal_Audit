@@ -1,0 +1,44 @@
+# Note 17
+
+```json
+{
+  "title": "Other Income",
+  "full_title": "17. Other Income",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "2784.72"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "category": "Indirect Incomes",
+      "subcategories": [
+        {
+          "label": "Interest on FD",
+          "value": "2.52",
+          "previous_value": "2.52"
+        },
+        {
+          "label": "Interest on Income Tax Refund",
+          "value": "0.27",
+          "previous_value": "0.27"
+        }
+      ],
+      "total": "2.79",
+      "previous_total": "2.52"
+    }
+  ],
+  "metadata": {
+    "note_number": "17",
+    "generated_on": "2025-07-19T20:57:01.622714"
+  }
+}
+```

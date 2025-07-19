@@ -1,0 +1,292 @@
+# Note 6
+
+```json
+{
+  "title": "Trade Payables",
+  "full_title": "6. Trade Payables",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "2024_march_total"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "2023_march_total"
+        }
+      ]
+    },
+    {
+      "category": "Unsecured, considered good",
+      "subcategories": [
+        {
+          "label": "Outstanding for a period exceeding six months from the date they are due for payment",
+          "value": "over_six_months_2024",
+          "previous_value": "over_six_months_2023"
+        },
+        {
+          "label": "Other payables",
+          "value": "other_payables_2024",
+          "previous_value": "other_payables_2023"
+        }
+      ],
+      "total": "unsecured_total_2024",
+      "previous_total": "unsecured_total_2023"
+    },
+    {
+      "category": "Age wise analysis of Trade payables as on 31.03.2024",
+      "subcategories": [
+        {
+          "label": "Particulars",
+          "sub_label": "Outstanding for following periods from due date of payment",
+          "columns": [
+            {
+              "header": "0 - 6 months",
+              "value": "zero_six_2024"
+            },
+            {
+              "header": "6 months - 1 Year",
+              "value": "six_one_2024"
+            },
+            {
+              "header": "1 - 2 Years",
+              "value": "one_two_2024"
+            },
+            {
+              "header": "2 - 3 Years",
+              "value": "two_three_2024"
+            },
+            {
+              "header": "More than 3 Years",
+              "value": "more_three_2024"
+            },
+            {
+              "header": "Total",
+              "value": "age_total_2024"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "undisputed_good_zero_six_2024"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "undisputed_good_six_one_2024"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "undisputed_good_one_two_2024"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "undisputed_good_two_three_2024"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "undisputed_good_more_three_2024"
+            },
+            {
+              "period": "Total",
+              "value": "undisputed_good_total_2024"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "disputed_good_zero_six_2024"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "disputed_good_six_one_2024"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "disputed_good_one_two_2024"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "disputed_good_two_three_2024"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "disputed_good_more_three_2024"
+            },
+            {
+              "period": "Total",
+              "value": "disputed_good_total_2024"
+            }
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "total_zero_six_2024"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "total_six_one_2024"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "total_one_two_2024"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "total_two_three_2024"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "total_more_three_2024"
+            },
+            {
+              "period": "Total",
+              "value": "age_total_2024"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Age wise analysis of Trade payables as on 31.03.2023",
+      "subcategories": [
+        {
+          "label": "Particulars",
+          "sub_label": "Outstanding for following periods from due date of payment",
+          "columns": [
+            {
+              "header": "0 - 6 months",
+              "value": "zero_six_2023"
+            },
+            {
+              "header": "6 months - 1 Year",
+              "value": "six_one_2023"
+            },
+            {
+              "header": "1 - 2 Years",
+              "value": "one_two_2023"
+            },
+            {
+              "header": "2 - 3 Years",
+              "value": "two_three_2023"
+            },
+            {
+              "header": "More than 3 Years",
+              "value": "more_three_2023"
+            },
+            {
+              "header": "Total",
+              "value": "age_total_2023"
+            }
+          ]
+        },
+        {
+          "label": "Undisputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "undisputed_good_zero_six_2023"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "undisputed_good_six_one_2023"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "undisputed_good_one_two_2023"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "undisputed_good_two_three_2023"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "undisputed_good_more_three_2023"
+            },
+            {
+              "period": "Total",
+              "value": "undisputed_good_total_2023"
+            }
+          ]
+        },
+        {
+          "label": "Disputed",
+          "sub_label": "- Considered good",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "disputed_good_zero_six_2023"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "disputed_good_six_one_2023"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "disputed_good_one_two_2023"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "disputed_good_two_three_2023"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "disputed_good_more_three_2023"
+            },
+            {
+              "period": "Total",
+              "value": "disputed_good_total_2023"
+            }
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            {
+              "period": "0 - 6 months",
+              "value": "total_zero_six_2023"
+            },
+            {
+              "period": "6 months - 1 Year",
+              "value": "total_six_one_2023"
+            },
+            {
+              "period": "1 - 2 Years",
+              "value": "total_one_two_2023"
+            },
+            {
+              "period": "2 - 3 Years",
+              "value": "total_two_three_2023"
+            },
+            {
+              "period": "More than 3 Years",
+              "value": "total_more_three_2023"
+            },
+            {
+              "period": "Total",
+              "value": "age_total_2023"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "note_number": "6",
+    "generated_on": "2025-07-19T20:54:25.100869"
+  }
+}
+```

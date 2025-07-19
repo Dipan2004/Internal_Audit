@@ -1,5 +1,4 @@
-```json
-{
+ {
   "title": "Trade Receivables",
   "full_title": "12. Trade Receivables",
   "structure": [
@@ -12,7 +11,7 @@
         },
         {
           "label": "March 31, 2023",
-          "value": "-"
+          "value": "0.0"
         }
       ]
     },
@@ -21,17 +20,17 @@
       "subcategories": [
         {
           "label": "Outstanding for a period exceeding six months from the date they are due for payment",
-          "value": "0.00",
-          "previous_value": "-"
+          "value": "0.0",
+          "previous_value": "0.0"
         },
         {
           "label": "Other receivables",
           "value": "833.79",
-          "previous_value": "-"
+          "previous_value": "0.0"
         }
       ],
       "total": "833.79",
-      "previous_total": "0.00"
+      "previous_total": "0.0"
     },
     {
       "category": "Age wise analysis of Trade receivables as on 31.03.2024",
@@ -42,23 +41,23 @@
           "columns": [
             {
               "header": "0 - 6 months",
-              "value": "833.79"
+              "value": "0.0"
             },
             {
               "header": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "header": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "header": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "header": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "header": "Total",
@@ -72,23 +71,23 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "833.79"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "Total",
@@ -102,27 +101,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "0.00"
+              "value": "0.0"
             }
           ]
         },
@@ -132,27 +131,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "0.00"
+              "value": "0.0"
             }
           ]
         },
@@ -162,27 +161,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "0.00"
+              "value": "0.0"
             }
           ]
         },
@@ -191,23 +190,23 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "833.79"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "0.00"
+              "value": "0.0"
             },
             {
               "period": "Total",
@@ -226,27 +225,27 @@
           "columns": [
             {
               "header": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "header": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "header": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "header": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "header": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "header": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         },
@@ -256,27 +255,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         },
@@ -286,27 +285,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         },
@@ -316,27 +315,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         },
@@ -346,27 +345,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         },
@@ -375,27 +374,27 @@
           "values": [
             {
               "period": "0 - 6 months",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "6 months - 1 Year",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "1 - 2 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "2 - 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "More than 3 Years",
-              "value": "-"
+              "value": "0.0"
             },
             {
               "period": "Total",
-              "value": "-"
+              "value": "0.0"
             }
           ]
         }
@@ -404,7 +403,6 @@
   ],
   "metadata": {
     "note_number": "12",
-    "generated_on": "2025-07-08T17:35:18.825934"
+    "generated_on": "2025-07-19T20:55:55.992029"
   }
 }
-```
