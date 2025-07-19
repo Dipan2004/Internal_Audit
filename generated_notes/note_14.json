@@ -7,11 +7,11 @@
       "subcategories": [
         {
           "label": "March 31, 2024",
-          "value": 743.74
+          "value": "743.74"
         },
         {
           "label": "March 31, 2023",
-          "value": 0.0
+          "value": "0.00"
         }
       ]
     },
@@ -20,13 +20,13 @@
       "subcategories": [
         {
           "label": "Prepaid Expenses",
-          "value": 15.9,
-          "previous_value": 0.0
+          "value": "15.90",
+          "previous_value": "0.00"
         },
         {
           "label": "Other Advances",
-          "value": 257.02,
-          "previous_value": 0.0
+          "value": "257.02",
+          "previous_value": "0.00"
         }
       ]
     },
@@ -35,26 +35,25 @@
       "subcategories": [
         {
           "label": "Advance tax",
-          "value": 112.85,
-          "previous_value": 0.0
+          "value": "112.85",
+          "previous_value": "0.00"
         },
         {
           "label": "Balances with statutory/government authorities",
-          "value": 357.96,
-          "previous_value": 0.0
+          "value": "357.96",
+          "previous_value": "0.00"
         }
       ]
     },
     {
       "category": "Total",
       "subcategories": [],
-      "total": 743.74,
-      "previous_total": 0.0
+      "total": "743.74",
+      "previous_total": "0.00"
     }
   ],
   "metadata": {
     "note_number": "14",
-    "generated_on": "2025-07-09T16:25:46.933747"
-  },
-  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 15.90 | - |\n| Other Advances               | 257.02 | - |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 112.85 | - |\n| Balances with statutory/government authorities | 357.96 | - |\n| **Total**                    | 743.74 | - |"
+    "generated_on": "2025-07-19T20:56:38.610786"
+  }
 }

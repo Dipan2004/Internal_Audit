@@ -1,15 +1,8 @@
 import json
-import os
 import pandas as pd
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-from openpyxl.utils.dataframe import dataframe_to_rows
+from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.utils import get_column_letter
-
-
-
-
-
 
 def create_output_folder(folder_path):
     """Create output folder if it doesn't exist"""
@@ -70,230 +63,165 @@ def create_financial_table_sheet(workbook, sheet_name, note_data):
         for col_num, column_name in enumerate(df.columns, 1):
             cell = ws.cell(row=current_row, column=col_num, value=column_name.replace('_', ' ').title())
             cell.font = header_font
+            cell.border = border
             cell.fill = header_fill
-            cell.alignment = center_alignment
-            cell.border = thin_border
+            cell.alignment = Alignment(horizontal='center')
         
-        current_row += 1
+        row += 1
         
-        # Add table data
-        for _, row in df.iterrows():
-            for col_num, value in enumerate(row, 1):
-                cell = ws.cell(row=current_row, column=col_num, value=value)
-                cell.border = thin_border
+        # Process structure
+        for section in json_data.get('structure', []):
+            category = section.get('category', '')
+            subcategories = section.get('subcategories', [])
+            
+            # Add category header if exists
+            if category:
+                ws.merge_cells(f'A{row}:C{row}')
+                cell = ws[f'A{row}']
+                cell.value = category
+                cell.font = Font(bold=True, size=10)
+                cell.border = border
+                cell.fill = PatternFill(start_color="F0F0F0", end_color="F0F0F0", fill_type="solid")
+                row += 1
+            
+            # Add subcategories
+            for subcat in subcategories:
+                label = subcat.get('label', '')
+                current_value = subcat.get('value', '0.00')
+                previous_value = subcat.get('previous_value', '0.00')
                 
-                # Right align numeric columns (except first column)
-                if col_num > 1:
-                    cell.alignment = right_alignment
+                # Handle special cases for totals
+                if label.startswith('March 31'):
+                    continue  # Skip these as they're handled in headers
                 
-                # Bold formatting for total rows and headers
-                if isinstance(value, str) and ('**' in value or 'Total' in value or 'Particulars' in value):
-                    cell.font = bold_font
-                    # Remove markdown formatting
-                    cell.value = value.replace('**', '')
+                # Format values
+                if isinstance(current_value, str) and current_value.startswith('{'):
+                    current_formatted = "-"
+                else:
+                    current_formatted = self.format_currency(self.parse_value(current_value))
+                
+                if isinstance(previous_value, str) and previous_value.startswith('{'):
+                    previous_formatted = "-"
+                else:
+                    previous_formatted = self.format_currency(self.parse_value(previous_value))
+                
+                # Add row
+                ws.cell(row=row, column=1, value=label).font = normal_font
+                ws.cell(row=row, column=2, value=current_formatted).font = normal_font
+                ws.cell(row=row, column=3, value=previous_formatted).font = normal_font
+                
+                # Apply borders
+                for col in range(1, 4):
+                    ws.cell(row=row, column=col).border = border
+                
+                # Right align numbers
+                ws.cell(row=row, column=2).alignment = Alignment(horizontal='right')
+                ws.cell(row=row, column=3).alignment = Alignment(horizontal='right')
+                
+                row += 1
+            
+            # Add total if exists
+            if 'total' in section:
+                total_current = section.get('total', '0.00')
+                total_previous = section.get('previous_total', '0.00')
+                
+                # Format totals
+                if isinstance(total_current, str) and total_current.startswith('{'):
+                    total_current_formatted = "-"
+                else:
+                    total_current_formatted = self.format_currency(self.parse_value(total_current))
+                
+                if isinstance(total_previous, str) and total_previous.startswith('{'):
+                    total_previous_formatted = "-"
+                else:
+                    total_previous_formatted = self.format_currency(self.parse_value(total_previous))
+                
+                # Add total row
+                ws.cell(row=row, column=1, value="Total").font = Font(bold=True, size=10)
+                ws.cell(row=row, column=2, value=total_current_formatted).font = Font(bold=True, size=10)
+                ws.cell(row=row, column=3, value=total_previous_formatted).font = Font(bold=True, size=10)
+                
+                # Apply borders and alignment
+                for col in range(1, 4):
+                    ws.cell(row=row, column=col).border = border
+                
+                ws.cell(row=row, column=2).alignment = Alignment(horizontal='right')
+                ws.cell(row=row, column=3).alignment = Alignment(horizontal='right')
+                
+                row += 1
         
-            current_row += 1
+        # Add notes and disclosures
+        if 'notes_and_disclosures' in json_data:
+            row += 1
+            for note in json_data['notes_and_disclosures']:
+                ws.merge_cells(f'A{row}:C{row}')
+                ws[f'A{row}'] = note
+                ws[f'A{row}'].font = Font(size=9, italic=True)
+                row += 1
         
-        current_row += 1
-    
-    # Add breakdown information if available
-    if 'breakdown' in note_data and note_data['breakdown']:
-        ws.cell(row=current_row, column=1, value="Breakdown Details:")
-        ws.cell(row=current_row, column=1).font = bold_font
-        current_row += 1
-        
-        # Headers for breakdown
-        ws.cell(row=current_row, column=1, value="Description")
-        ws.cell(row=current_row, column=2, value="Amount")
-        ws.cell(row=current_row, column=3, value="Amount (Lakhs)")
-        
+        # Auto-adjust column widths
         for col in range(1, 4):
-            cell = ws.cell(row=current_row, column=col)
-            cell.font = header_font
-            cell.fill = header_fill
-            cell.alignment = center_alignment
-            cell.border = thin_border
+            max_length = 0
+            column = get_column_letter(col)
+            for cell in ws[column]:
+                try:
+                    if len(str(cell.value)) > max_length:
+                        max_length = len(str(cell.value))
+                except:
+                    pass
+            adjusted_width = min(max_length + 2, 50)
+            ws.column_dimensions[column].width = adjusted_width
         
-        current_row += 1
-        
-        # Add breakdown data
-        for key, value in note_data['breakdown'].items():
-            if isinstance(value, dict):
-                desc = value.get('description', key)
-                amount = value.get('amount', 0)
-                amount_lakhs = value.get('amount_lakhs', 0)
-                
-                ws.cell(row=current_row, column=1, value=desc).border = thin_border
-                ws.cell(row=current_row, column=2, value=amount).border = thin_border
-                ws.cell(row=current_row, column=3, value=amount_lakhs).border = thin_border
-                
-                # Right align numeric columns
-                ws.cell(row=current_row, column=2).alignment = right_alignment
-                ws.cell(row=current_row, column=3).alignment = right_alignment
-                
-                current_row += 1
-        
-        current_row += 1
+        # Save the file
+        wb.save(output_file)
+        print(f"Excel file created: {output_file}")
     
-    # Add matched accounts if available
-    if 'matched_accounts' in note_data and note_data['matched_accounts']:
-        ws.cell(row=current_row, column=1, value="Account-wise Breakdown:")
-        ws.cell(row=current_row, column=1).font = bold_font
-        current_row += 1
+    def process_all_files(self):
+        """Process all JSON files in the input folder"""
+        if not os.path.exists(self.input_folder):
+            print(f"Input folder '{self.input_folder}' does not exist!")
+            return
         
-        # Headers for matched accounts
-        headers = ["Account", "Amount", "Amount (Lakhs)", "Group"]
-        for col_num, header in enumerate(headers, 1):
-            cell = ws.cell(row=current_row, column=col_num, value=header)
-            cell.font = header_font
-            cell.fill = header_fill
-            cell.alignment = center_alignment
-            cell.border = thin_border
+        json_files = [f for f in os.listdir(self.input_folder) if f.endswith('.json')]
         
-        current_row += 1
+        if not json_files:
+            print(f"No JSON files found in '{self.input_folder}'")
+            return
         
-        # Add matched accounts data
-        for account in note_data['matched_accounts']:
-            ws.cell(row=current_row, column=1, value=account.get('account', '')).border = thin_border
-            ws.cell(row=current_row, column=2, value=account.get('amount', 0)).border = thin_border
-            ws.cell(row=current_row, column=3, value=account.get('amount_lakhs', 0)).border = thin_border
-            ws.cell(row=current_row, column=4, value=account.get('group', '')).border = thin_border
+        for json_file in json_files:
+            input_path = os.path.join(self.input_folder, json_file)
+            output_filename = json_file.replace('.json', '.xlsx')
+            output_path = os.path.join(self.output_folder, output_filename)
             
-            # Right align numeric columns
-            ws.cell(row=current_row, column=2).alignment = right_alignment
-            ws.cell(row=current_row, column=3).alignment = right_alignment
+            print(f"Processing {json_file}...")
             
-            current_row += 1
-        
-        current_row += 1
-    
-    # Add summary information
-    if 'total_amount' in note_data:
-        ws.cell(row=current_row, column=1, value="Summary:")
-        ws.cell(row=current_row, column=1).font = bold_font
-        current_row += 1
-        
-        ws.cell(row=current_row, column=1, value="Total Amount:")
-        ws.cell(row=current_row, column=2, value=note_data.get('total_amount', 0))
-        ws.cell(row=current_row, column=2).alignment = right_alignment
-        current_row += 1
-        
-        ws.cell(row=current_row, column=1, value="Total Amount (Lakhs):")
-        ws.cell(row=current_row, column=2, value=note_data.get('total_amount_lakhs', 0))
-        ws.cell(row=current_row, column=2).alignment = right_alignment
-        current_row += 1
-        
-        ws.cell(row=current_row, column=1, value="Matched Accounts Count:")
-        ws.cell(row=current_row, column=2, value=note_data.get('matched_accounts_count', 0))
-        ws.cell(row=current_row, column=2).alignment = right_alignment
-        current_row += 1
-    
-    # Auto-adjust column widths
-    for column in ws.columns:
-        max_length = 0
-        column_letter = get_column_letter(column[0].column)
-        
-        for cell in column:
-            try:
-                if len(str(cell.value)) > max_length:
-                    max_length = len(str(cell.value))
-            except:
-                pass
-        
-        adjusted_width = min(max_length + 2, 60)  # Cap at 60 characters
-        ws.column_dimensions[column_letter].width = adjusted_width
-    
-    return ws
-
-def convert_json_to_excel(input_file, output_file):
-    """Main function to convert JSON to Excel"""
-    # Read JSON data
-    json_data = read_json_file(input_file)
-    if json_data is None:
-        return False
-    
-    # Create workbook
-    workbook = Workbook()
-    
-    # Remove default sheet
-    default_sheet = workbook.active
-    workbook.remove(default_sheet)
-    
-    # Handle different JSON structures
-    if 'notes' in json_data:
-        # If JSON has 'notes' key, process each note
-        notes_data = json_data['notes']
-        for note in notes_data:
-            note_title = note.get('full_title', note.get('note_title', f"Note {note.get('note_number', '')}"))
-            # Clean sheet name
-            clean_sheet_name = str(note_title).replace('/', '_').replace('\\', '_').replace('*', '_')
-            clean_sheet_name = clean_sheet_name.replace('?', '_').replace('[', '_').replace(']', '_')
-            clean_sheet_name = clean_sheet_name[:31]  # Excel sheet name limit
-            
-            print(f"Processing: {clean_sheet_name}")
-            create_financial_table_sheet(workbook, clean_sheet_name, note)
-    else:
-        # Process each top-level key as a separate sheet
-        for note_key, note_data in json_data.items():
-            print(f"Processing: {note_key}")
-            
-            # Clean sheet name
-            clean_sheet_name = str(note_key).replace('/', '_').replace('\\', '_').replace('*', '_')
-            clean_sheet_name = clean_sheet_name.replace('?', '_').replace('[', '_').replace(']', '_')
-            clean_sheet_name = clean_sheet_name[:31]  # Excel sheet name limit
-            
-            if isinstance(note_data, dict):
-                create_financial_table_sheet(workbook, clean_sheet_name, note_data)
+            json_data = self.load_json_data(input_path)
+            if json_data:
+                self.create_excel_from_json(json_data, output_path)
             else:
-                # Handle non-dict top-level values
-                simple_data = {"value": note_data}
-                create_financial_table_sheet(workbook, clean_sheet_name, simple_data)
+                print(f"Failed to process {json_file}")
     
-    # Save the workbook
-    try:
-        workbook.save(output_file)
-        print(f"Successfully saved Excel file: {output_file}")
-        return True
-    except Exception as e:
-        print(f"Error saving Excel file: {e}")
-        return False
+    def process_single_file(self, input_file, output_file=None):
+        """Process a single JSON file"""
+        if not output_file:
+            output_file = input_file.replace('.json', '.xlsx')
+            output_file = os.path.join(self.output_folder, os.path.basename(output_file))
+        
+        json_data = self.load_json_data(input_file)
+        if json_data:
+            self.create_excel_from_json(json_data, output_file)
+        else:
+            print(f"Failed to process {input_file}")
 
 def main():
-    """Main execution function"""
-    # Define file paths
-    input_file = "output/notes_output.json"
-    output_folder = "xlsx"
-    output_file = os.path.join(output_folder, "final_notes_output.xlsx")
+    # Example usage
+    converter = FinancialNotesConverter()
     
-    # Create output folder
-    create_output_folder(output_folder)
+    # Process all files in the generated_notes folder
+    converter.process_all_files()
     
-    # Check if input file exists
-    if not os.path.exists(input_file):
-        print(f"Error: Input file '{input_file}' not found.")
-        print("Please ensure the file exists in the correct location.")
-        return
-    
-    # Convert JSON to Excel
-    success = convert_json_to_excel(input_file, output_file)
-    
-    if success:
-        print("\n" + "="*50)
-        print("CONVERSION COMPLETED SUCCESSFULLY!")
-        print("="*50)
-        print(f"Input file: {input_file}")
-        print(f"Output file: {output_file}")
-        print("\nThe Excel file has been created with:")
-        print("- Each note as a separate sheet")
-        print("- Proper financial table formatting")
-        print("- Table data displayed in tabular format")
-        print("- Breakdown and account details included")
-        print("- Professional styling and formatting")
-    else:
-        print("\n" + "="*50)
-        print("CONVERSION FAILED!")
-        print("="*50)
-        print("Please check the error messages above.")
+    # Or process a single file
+    # converter.process_single_file('generated_notes/paste.txt', 'output.xlsx')
 
 if __name__ == "__main__":
     main()

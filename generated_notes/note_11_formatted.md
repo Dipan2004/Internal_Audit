@@ -1,7 +1,14 @@
-11. Inventories
+# Note 11
 
-| Particulars                  | March 31, 2024 | March 31, 2023 |
-|------------------------------|----------------|----------------|
-| Consumables                  | 0.10           | -              |
-| Opening Stock                | 10.13          | -              |
-| **Total**                    | 10.23          | -              |
+```json
+{
+  "raw_materials_2024": 0.0,
+  "raw_materials_2023": 0.0,
+  "finished_goods_2024": 0.0,
+  "finished_goods_2023": 0.0,
+  "spare_parts_2024": 0.0,
+  "spare_parts_2023": 0.0,
+  "consumables_2024": 0.0,
+  "consumables_2023": 0.0
+}
+```

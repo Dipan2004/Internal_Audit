@@ -1,0 +1,57 @@
+ {
+  "title": "Related Party Disclosures",
+  "full_title": "29. Related Party Disclosures",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": 0.0
+        },
+        {
+          "label": "March 31, 2023",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "category": "Subsidiary Company",
+      "subcategories": [
+        {
+          "label": "Name of Subsidiary",
+          "value": "",
+          "previous_value": ""
+        }
+      ]
+    },
+    {
+      "category": "Transactions with Related Parties",
+      "subcategories": [
+        {
+          "label": "Nature of Transaction",
+          "value": "",
+          "previous_value": ""
+        },
+        {
+          "label": "Amount",
+          "value": 0.0,
+          "previous_value": 0.0
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "note_number": "29",
+    "generated_on": "2025-07-19T20:40:12.843071"
+  },
+  "notes_and_disclosures": [
+    "As per Accounting Standard 18, the disclosures of related parties as defined in the Accounting Standard are given below."
+  ],
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|\n| Prepaid Expenses             | 0.0           | --            |\n| Other Advances               | 0.0           | --            |\n| **Other loans and advances**  |\n| Advance tax                  | 0.0           | --            |\n| Balances with statutory/government authorities | 0.0           | --            |\n| **Total**                    | 0.0           | --            |"
+}
+
+*Calculation details:*
+
+- The "value" and "previous_value" fields for the "Transactions with Related Parties" category are set to 0.0 as there is no related party data provided in the trial balance.
+- The markdown_content table is generated based on the provided format and the calculated values for short-term loans and advances.

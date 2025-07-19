@@ -1,0 +1,79 @@
+{
+  "title": "Fixed Assets",
+  "full_title": "9. Fixed Assets",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "222.47"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "category": "Tangible Assets",
+      "subcategories": [
+        {
+          "label": "Gross Block",
+          "value": "454696.13",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Accumulated Depreciation",
+          "value": "60344.36",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Net Block",
+          "value": "394351.77",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "394351.77",
+      "previous_total": "0.00"
+    },
+    {
+      "category": "Intangible Assets",
+      "subcategories": [
+        {
+          "label": "Gross Block",
+          "value": "237.50",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Accumulated Amortisation",
+          "value": "0.00",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Net Block",
+          "value": "237.50",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "237.50",
+      "previous_total": "0.00"
+    },
+    {
+      "category": "Capital Work-in-Progress",
+      "subcategories": [
+        {
+          "label": "Capital Work-in-Progress",
+          "value": "0.00",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "0.00",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "9",
+    "generated_on": "2025-07-19T20:55:22.363536"
+  }
+}

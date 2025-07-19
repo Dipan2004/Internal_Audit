@@ -1,0 +1,35 @@
+ {
+  "title": "Long Term Borrowings",
+  "full_title": "4. Long Term Borrowings",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "{march_2024_total}"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "{march_2023_total}"
+        }
+      ]
+    },
+    {
+      "category": "Secured",
+      "subcategories": [
+        {
+          "label": "Term Loans from Banks",
+          "value": "4469387.1",
+          "previous_value": "81396076.35"
+        }
+      ],
+      "total": "4469387.1",
+      "previous_total": "81396076.35"
+    }
+  ],
+  "metadata": {
+    "note_number": "4",
+    "generated_on": "2025-07-19T20:54:08.478286"
+  }
+}

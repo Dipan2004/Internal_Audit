@@ -1,0 +1,50 @@
+ {
+  "title": "Cost of Materials Consumed",
+  "full_title": "18. Cost of Materials Consumed",
+  "structure": [
+    {
+      "category": "Purchase Accounts",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "24027.00"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "23967.61"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Opening Stock",
+          "value": "1013.27",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Add: Purchases",
+          "value": "24027.00",
+          "previous_value": "23967.61"
+        },
+        {
+          "label": "",
+          "value": "25040.27",
+          "previous_value": "23967.61"
+        },
+        {
+          "label": "Less: Closing Stock",
+          "value": "0.00",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "25040.27",
+      "previous_total": "23967.61"
+    }
+  ],
+  "metadata": {
+    "note_number": "18",
+    "generated_on": "2025-07-19T20:38:05.010914"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Payment to Auditor",
+  "full_title": "24. Payment to Auditor",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "0.00"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "For Audit fee",
+          "value": "0.00",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "For Tax Audit / Certification Fees",
+          "value": "0.00",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "0.00",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "24",
+    "generated_on": "2025-07-19T20:39:24.114078"
+  },
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 0.00 | -- |\n| Other Advances               | 0.00 | -- |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 0.00 | -- |\n| Balances with statutory/government authorities | 0.00 | -- |\n| **Total**                    | 0.00 | -- |"
+}

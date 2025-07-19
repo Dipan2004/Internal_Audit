@@ -1,0 +1,42 @@
+ {
+  "title": "Particulars of Un-hedged Foreign Currency Exposure",
+  "full_title": "26. Particulars of Un-hedged Foreign Currency Exposure",
+  "structure": [
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "{march_2024_total}"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "{march_2023_total}"
+        }
+      ]
+    },
+    {
+      "category": "Inflow",
+      "subcategories": [
+        {
+          "label": "Income from export of services",
+          "value": "{incomefromexportofservices_2024}",
+          "previous_value": "{incomefromexportofservices_2023}"
+        }
+      ],
+      "total": "{total_2024}",
+      "previous_total": "{total_2023}"
+    }
+  ],
+  "metadata": {
+    "note_number": "26",
+    "generated_on": "2025-07-19T20:39:41.578482"
+  },
+  "notes_and_disclosures": [
+    "(i) There is no derivate contract outstanding as at the Balance Sheet date.",
+    "(ii) Particulars of un-hedged foreign currency exposure as at the Balance Sheet date"
+  ],
+  "markdown_content": "14. Short Term Loans and Advances\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Unsecured, considered good**|                |                |\n| Prepaid Expenses             | 0.0           | -             |\n| Other Advances               | 0.0           | -             |\n| **Other loans and advances** |                |                |\n| Advance tax                  | 0.0           | -             |\n| Balances with statutory/government authorities | 0.0           | -             |\n| **Total**                    | 0.0           | -             |"
+}
+
+*Note: The financial data provided does not contain any foreign currency exposure, so all values are set to 0.0.*

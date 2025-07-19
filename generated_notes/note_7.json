@@ -1,0 +1,6 @@
+{
+  "note_number": "7",
+  "raw_response": " {\n  \"title\": \"Other Current Liabilities\",\n  \"full_title\": \"7. Other Current Liabilities\",\n  \"structure\": [\n    {\n      \"category\": \"In Lakhs\",\n      \"subcategories\": [\n        {\n          \"label\": \"March 31, 2024\",\n          \"value\": \"{march_2024_total}\"\n        },\n        {\n          \"label\": \"March 31, 2023\",\n          \"value\": \"{march_2023_total}\"\n        }\n      ]\n    },\n    {\n      \"category\": \"\",\n      \"subcategories\": [\n        {\n          \"label\": \"Current Maturities of Long Term Borrowings\",\n          \"value\": \"{current_maturities_2024}\",\n          \"previous_value\": \"{current_maturities_2023}\"\n        },\n        {\n          \"label\": \"Outstanding Liabilities for Expenses\",\n          \"value\": \"{outstanding_liabilities_2",
+  "error": "Could not parse JSON from response",
+  "generated_on": "2025-07-19T20:55:14.425472"
+}

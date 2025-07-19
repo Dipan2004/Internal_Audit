@@ -1,0 +1,40 @@
+{
+  "title": "Reserves and Surplus",
+  "full_title": "3. Reserves and Surplus",
+  "structure": [
+    {
+      "category": "In Lakhs",
+      "subcategories": [
+        {
+          "label": "March 31, 2024",
+          "value": "{march_2024_total}"
+        },
+        {
+          "label": "March 31, 2023",
+          "value": "{march_2023_total}"
+        }
+      ]
+    },
+    {
+      "category": "",
+      "subcategories": [
+        {
+          "label": "Share Premium Account",
+          "value": "17546.16",
+          "previous_value": "0.00"
+        },
+        {
+          "label": "Surplus in Statement of Profit and Loss",
+          "value": "3153.09",
+          "previous_value": "0.00"
+        }
+      ],
+      "total": "20699.25",
+      "previous_total": "0.00"
+    }
+  ],
+  "metadata": {
+    "note_number": "3",
+    "generated_on": "2025-07-19T20:54:00.740578"
+  }
+}

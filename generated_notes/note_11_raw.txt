@@ -1,4 +1,4 @@
-{
+ {
   "title": "Inventories",
   "full_title": "11. Inventories",
   "structure": [
@@ -7,30 +7,43 @@
       "subcategories": [
         {
           "label": "March 31, 2024",
-          "value": "10.23"
+          "value": "{march_2024_total}"
         },
         {
           "label": "March 31, 2023",
-          "value": "-"
+          "value": "{march_2023_total}"
         }
       ]
     },
     {
       "category": "Consumables",
       "subcategories": [],
-      "total": "0.10",
-      "previous_total": "0.00"
-    },
-    {
-      "category": "Opening Stock",
-      "subcategories": [],
-      "total": "10.13",
-      "previous_total": "0.00"
+      "total": "{consumables_2024}",
+      "previous_total": "{consumables_2023}"
     }
   ],
   "metadata": {
     "note_number": "11",
-    "generated_on": "2025-07-08T17:29:57.028569"
+    "generated_on": "2025-07-19T20:55:43.242233"
   },
-  "markdown_content": "11. Inventories\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| Consumables                  | 0.10           | -              |\n| Opening Stock                | 10.13          | -              |\n| **Total**                    | 10.23          | -              |"
+  "markdown_content": "11. Inventories\n\n| Particulars                  | March 31, 2024 | March 31, 2023 |\n|------------------------------|----------------|----------------|\n| **Consumables**            |\n| Raw Materials                | {raw_materials_2024} | {raw_materials_2023} |\n| Finished Goods              | {finished_goods_2024} | {finished_goods_2023} |\n| Spare Parts                 | {spare_parts_2024} | {spare_parts_2023} |\n| **Total**                    | {consumables_2024} | {consumables_2023} |"
 }
+
+To calculate the values for the JSON object, you need to extract the relevant data from the provided financial context. Here's the calculated data:
+
+```json
+{
+  "raw_materials_2024": 0.0,
+  "raw_materials_2023": 0.0,
+  "finished_goods_2024": 0.0,
+  "finished_goods_2023": 0.0,
+  "spare_parts_2024": 0.0,
+  "spare_parts_2023": 0.0,
+  "consumables_2024": 0.0,
+  "consumables_2023": 0.0
+}
+```
+
+You can calculate the values for each field by filtering the trial balance data based on the account names and summing the amounts. For example, to calculate the `raw_materials_2024` value, you would filter the trial balance data for accounts containing the string "Raw Materials" in the account name and sum the amounts for those accounts.
+
+Please note that the provided financial context does not include any accounts related to inventories, so all the values are 0.0.
