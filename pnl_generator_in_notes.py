@@ -1,7 +1,7 @@
 import os
 import json
 from openpyxl import load_workbook, Workbook
-from openpyxl.styles import Font, Border, Side, Alignment
+from openpyxl.styles import Font, Border, Side, Alignment, PatternFill
 import re
 
 def safe_float_conversion(value):
@@ -9,491 +9,502 @@ def safe_float_conversion(value):
     if value is None:
         return 0.0
     
-    # Convert to string and clean up
     str_val = str(value).strip()
     
-    # Handle empty or dash values
-    if not str_val or str_val in ['-', '--', '']:
+    if not str_val or str_val in ['-', '--', '', 'None']:
         return 0.0
     
-    # Remove common formatting
-    str_val = str_val.replace(',', '').replace('₹', '').replace('Rs.', '')
-    str_val = str_val.replace('(', '').replace(')', '')
+    # Remove formatting - Fixed the missing argument
+    str_val = str_val.replace(',', '').replace('₹', '').replace('Rs.', '').replace(' ', '')
     
-    # Handle parentheses as negative (accounting format)
-    is_negative = '(' in str(value) and ')' in str(value)
+    # Handle parentheses as negative
+    is_negative = '(' in str_val and ')' in str_val
+    str_val = str_val.replace('(', '').replace(')', '')
     
     try:
         result = float(str_val)
         return -result if is_negative else result
     except (ValueError, TypeError):
-        print(f"Warning: Could not convert '{value}' to float, using 0.0")
         return 0.0
 
-def find_year_columns(ws, max_search_rows=15):
-    """Find columns containing year data (2024, 2023)."""
-    year_2024_col = None
-    year_2023_col = None
-    
-    print("Searching for year columns...")
-    
-    for row_idx in range(1, min(max_search_rows + 1, ws.max_row + 1)):
+def find_data_columns(ws):
+    """Find the data columns for 2024 and 2023."""
+    # Look for year headers in first 10 rows
+    for row_idx in range(1, 11):
         for col_idx in range(1, ws.max_column + 1):
             cell_value = str(ws.cell(row=row_idx, column=col_idx).value or "").strip()
-            
-            if "2024" in cell_value and year_2024_col is None:
-                year_2024_col = col_idx
-                print(f"Found 2024 column at column {col_idx} (row {row_idx})")
-            elif "2023" in cell_value and year_2023_col is None:
-                year_2023_col = col_idx
-                print(f"Found 2023 column at column {col_idx} (row {row_idx})")
+            if "2024" in cell_value:
+                col_2024 = col_idx
+            elif "2023" in cell_value:
+                col_2023 = col_idx
     
-    # If not found, try to find by position (common patterns)
-    if year_2024_col is None or year_2023_col is None:
-        print("Year columns not found in headers, trying positional detection...")
-        # Look for numeric data patterns
-        for row_idx in range(5, min(20, ws.max_row + 1)):
-            row_values = [ws.cell(row=row_idx, column=col).value for col in range(1, ws.max_column + 1)]
-            
-            for col_idx, value in enumerate(row_values, 1):
-                if value is not None and str(value).strip():
-                    try:
-                        float_val = safe_float_conversion(value)
-                        if float_val > 0:  # Found numeric data
-                            if year_2024_col is None and col_idx >= 3:
-                                year_2024_col = col_idx
-                            elif year_2023_col is None and col_idx > year_2024_col:
-                                year_2023_col = col_idx
-                                break
-                    except:
-                        continue
-            
-            if year_2024_col and year_2023_col:
-                break
+    # If not found, use common positions (usually last two data columns)
+    if 'col_2024' not in locals():
+        col_2024 = ws.max_column - 1 if ws.max_column > 2 else 2
+    if 'col_2023' not in locals(): 
+        col_2023 = ws.max_column if ws.max_column > 1 else 3
     
-    # Default fallback positions
-    if year_2024_col is None:
-        year_2024_col = 3
-        print(f"Using default 2024 column: {year_2024_col}")
-    if year_2023_col is None:
-        year_2023_col = 4
-        print(f"Using default 2023 column: {year_2023_col}")
-    
-    return year_2024_col, year_2023_col
+    return col_2024, col_2023
 
 def load_and_map_excel_notes(file_path="data/notes_pnl2.xlsx"):
-    """Load notes data from Excel file with improved numeric handling."""
+    """Load and parse notes data from Excel with improved accuracy."""
     try:
-        wb = load_workbook(file_path, data_only=True)  # data_only=True to get calculated values
+        wb = load_workbook(file_path, data_only=True)
         ws = wb.active
         notes_data = {}
         
-        print("Reading Excel file...")
-        print(f"Sheet has {ws.max_row} rows and {ws.max_column} columns")
+        print(f"Reading Excel file: {file_path}")
+        print(f"Sheet dimensions: {ws.max_row} rows × {ws.max_column} columns")
         
-        # Find year columns
-        year_2024_col, year_2023_col = find_year_columns(ws)
-        print(f"Using columns - 2024: {year_2024_col}, 2023: {year_2023_col}")
+        # Find data columns
+        col_2024, col_2023 = find_data_columns(ws)
+        print(f"Data columns - 2024: {col_2024}, 2023: {col_2023}")
         
-        # Convert all rows to list for processing
-        all_rows = []
+        current_note = None
+        current_note_data = None
+        
         for row_idx in range(1, ws.max_row + 1):
+            # Get row data
             row_data = []
             for col_idx in range(1, ws.max_column + 1):
                 cell_value = ws.cell(row=row_idx, column=col_idx).value
                 row_data.append(cell_value)
-            all_rows.append(row_data)
-        
-        i = 0
-        while i < len(all_rows):
-            row = all_rows[i]
             
-            if not row or not row[0]:
-                i += 1
+            if not row_data or not row_data[0]:
                 continue
                 
-            cell_value = str(row[0]).strip()
+            first_cell = str(row_data[0]).strip()
             
-            # Look for note patterns (16., 17., ... 28.)
-            note_match = re.match(r'^(\d{2})\.?\s*(.+)', cell_value)
-            if note_match and int(note_match.group(1)) in range(16, 29):
+            # Check for note header (16., 17., etc.)
+            note_match = re.match(r'^(\d{2})\.?\s*(.+)', first_cell)
+            if note_match:
                 note_num = note_match.group(1)
-                category_name = note_match.group(2).strip()
+                if int(note_num) >= 16:  # Financial notes start from 16
+                    # Save previous note if exists
+                    if current_note and current_note_data:
+                        notes_data[current_note] = current_note_data
+                    
+                    # Start new note
+                    current_note = note_num
+                    category_name = note_match.group(2).strip()
+                    current_note_data = {
+                        "category_name": category_name,
+                        "structure": [{
+                            "category": category_name,
+                            "subcategories": []
+                        }],
+                        "total_2024": 0.0,
+                        "total_2023": 0.0,
+                        "total_change": 0.0
+                    }
+                    print(f"\n📋 Processing Note {note_num}: {category_name}")
+                    continue
+            
+            # Process data rows for current note
+            if current_note and current_note_data:
+                # Skip header/formatting rows
+                skip_keywords = ['in lakhs', 'march 31', 'particulars', 'year ended', 
+                               'amount', 'total', 'subtotal', '2024', '2023']
                 
-                print(f"\n📋 Processing Note {note_num}: {category_name}")
+                if (len(first_cell) <= 2 or 
+                    any(keyword in first_cell.lower() for keyword in skip_keywords)):
+                    continue
                 
-                # Initialize note structure
-                notes_data[note_num] = {
-                    "category_name": category_name,
-                    "structure": [{
-                        "category": category_name,
-                        "subcategories": []
-                    }]
-                }
+                # Extract values
+                value_2024 = 0.0
+                value_2023 = 0.0
                 
-                # Process subsequent rows
-                i += 1
-                line_count = 0
+                if col_2024 <= len(row_data):
+                    value_2024 = safe_float_conversion(row_data[col_2024 - 1])
                 
-                while i < len(all_rows):
-                    data_row = all_rows[i]
-                    
-                    if not data_row or len(data_row) == 0:
-                        i += 1
-                        continue
-                    
-                    data_cell_value = str(data_row[0] or "").strip()
-                    
-                    # Check if we've hit another note
-                    next_note_match = re.match(r'^(\d{2})\.?\s*(.+)', data_cell_value)
-                    if next_note_match and int(next_note_match.group(1)) in range(16, 29):
-                        i -= 1  # Step back to process this note
-                        break
-                    
-                    # Skip obvious header/formatting rows
-                    skip_patterns = [
-                        "in lakhs", "march 31", "year ended", "notes", "particulars",
-                        "amount", "total", "subtotal", "details", "description"
-                    ]
-                    
-                    if (not data_cell_value or 
-                        len(data_cell_value) <= 1 or
-                        any(pattern in data_cell_value.lower() for pattern in skip_patterns)):
-                        i += 1
-                        continue
-                    
-                    # Extract values with improved error handling
-                    value_2024 = 0.0
-                    value_2023 = 0.0
-                    
-                    # Get 2024 value
-                    if year_2024_col <= len(data_row):
-                        raw_2024 = data_row[year_2024_col - 1]
-                        value_2024 = safe_float_conversion(raw_2024)
-                    
-                    # Get 2023 value
-                    if year_2023_col <= len(data_row):
-                        raw_2023 = data_row[year_2023_col - 1]
-                        value_2023 = safe_float_conversion(raw_2023)
-                    
-                    # Only add meaningful entries (has text and/or values)
-                    if (data_cell_value and len(data_cell_value.strip()) > 2 and 
-                        (value_2024 != 0.0 or value_2023 != 0.0 or 
-                         any(char.isalpha() for char in data_cell_value))):
-                        
-                        subcategory = {
-                            "label": data_cell_value,
-                            "value": value_2024,
-                            "previous_value": value_2023,
-                            "change": value_2024 - value_2023,
-                            "change_percent": ((value_2024 - value_2023) / value_2023 * 100) if value_2023 != 0 else 0
-                        }
-                        notes_data[note_num]["structure"][0]["subcategories"].append(subcategory)
-                        
-                        line_count += 1
-                        print(f"  ✓ {data_cell_value[:35]:<35} | 2024: {value_2024:>10.2f} | 2023: {value_2023:>10.2f}")
-                    
-                    i += 1
+                if col_2023 <= len(row_data):
+                    value_2023 = safe_float_conversion(row_data[col_2023 - 1])
                 
-                print(f"  📊 Added {line_count} line items for Note {note_num}")
-                
-                # Calculate totals for this note
-                total_2024 = sum(s["value"] for s in notes_data[note_num]["structure"][0]["subcategories"])
-                total_2023 = sum(s["previous_value"] for s in notes_data[note_num]["structure"][0]["subcategories"])
-                notes_data[note_num]["total_2024"] = total_2024
-                notes_data[note_num]["total_2023"] = total_2023
-                notes_data[note_num]["total_change"] = total_2024 - total_2023
-                
-            i += 1
-
-        # Create output directory and save JSON
+                # Add meaningful entries only
+                if (first_cell and len(first_cell.strip()) > 2 and 
+                    (value_2024 != 0.0 or value_2023 != 0.0 or 
+                     any(c.isalpha() for c in first_cell))):
+                    
+                    subcategory = {
+                        "label": first_cell,
+                        "value": value_2024,
+                        "previous_value": value_2023,
+                        "change": value_2024 - value_2023,
+                        "change_percent": ((value_2024 - value_2023) / value_2023 * 100) if value_2023 != 0 else 0
+                    }
+                    
+                    current_note_data["structure"][0]["subcategories"].append(subcategory)
+                    current_note_data["total_2024"] += value_2024
+                    current_note_data["total_2023"] += value_2023
+                    
+                    print(f"  ✓ {first_cell[:40]:<40} | 2024: {value_2024:>10.2f} | 2023: {value_2023:>10.2f}")
+        
+        # Save last note
+        if current_note and current_note_data:
+            current_note_data["total_change"] = current_note_data["total_2024"] - current_note_data["total_2023"]
+            notes_data[current_note] = current_note_data
+        
+        # Save JSON
         json_file_path = "data/pnl_notes.json"
         os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
         
         with open(json_file_path, "w", encoding="utf-8") as f:
             json.dump(notes_data, f, indent=2, ensure_ascii=False)
         
-        print(f"\n✅ JSON file saved: {json_file_path}")
-        print(f"📊 Total notes mapped: {len(notes_data)}")
+        print(f"\n✅ JSON saved: {json_file_path}")
+        print(f"📊 Total notes processed: {len(notes_data)}")
         
-        # Print detailed summary
-        print("\n" + "="*80)
+        # Summary - Fixed the variable name
+        print("\n" + "="*70)
         print("📈 NOTES SUMMARY")
-        print("="*80)
+        print("="*70)
         for note_num in sorted(notes_data.keys(), key=int):
-            note_info = notes_data[note_num]
-            subcat_count = len(note_info["structure"][0]["subcategories"])
-            total_2024 = note_info.get("total_2024", 0)
-            total_2023 = note_info.get("total_2023", 0)
-            change = note_info.get("total_change", 0)
-            
-            print(f"Note {note_num}: {note_info['category_name'][:40]:<40}")
-            print(f"         Items: {subcat_count:<3} | 2024: {total_2024:>12.2f} | 2023: {total_2023:>12.2f} | Change: {change:>12.2f}")
+            note = notes_data[note_num]
+            items = len(note["structure"][0]["subcategories"])
+            print(f"Note {note_num}: {note['category_name'][:35]:<35} | Items: {items:>3} | "
+                  f"2024: {note['total_2024']:>10.2f} | 2023: {note['total_2023']:>10.2f}")
         
         return notes_data
         
-    except FileNotFoundError:
-        print(f"❌ Error: Excel file {file_path} not found.")
-        print("Please ensure the file exists in the specified location.")
-        return {}
     except Exception as e:
-        print(f"❌ Error loading Excel file: {str(e)}")
+        print(f"❌ Error: {str(e)}")
         import traceback
         traceback.print_exc()
         return {}
 
-def load_note_data(file_path="data/pnl_notes.json"):
-    """Load note data from JSON file."""
-    try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"❌ Error: JSON file {file_path} not found.")
-        return {}
-    except json.JSONDecodeError:
-        print(f"❌ Error: Invalid JSON in {file_path}")
-        return {}
-
-def calculate_note_total(note_data, year="2024"):
-    """Calculate total for a note."""
-    if not note_data or "structure" not in note_data:
-        return 0.0
-    
-    total = 0.0
-    for category in note_data["structure"]:
-        for subcat in category.get("subcategories", []):
-            try:
-                value = subcat.get("value" if year == "2024" else "previous_value", 0.0)
-                total += float(value)
-            except (ValueError, TypeError):
-                continue
-    return total
-
-def format_currency(value):
-    """Format currency value."""
-    if isinstance(value, (int, float)) and value != 0:
-        return f"{value:,.2f}"
-    return "-"
-
-def generate_comprehensive_pnl_report(notes_data):
-    """Generate comprehensive P&L report in Excel format."""
+def generate_pnl_report(notes_data):
+    """Generate comprehensive P&L report matching the exact template."""
     wb = Workbook()
     ws = wb.active
     ws.title = "Profit and Loss Statement"
 
-    # Styles
-    bold_font = Font(bold=True, size=12)
-    header_font = Font(bold=True, size=14)
-    thin_border = Border(left=Side(style="thin"), right=Side(style="thin"),
-                        top=Side(style="thin"), bottom=Side(style="thin"))
-    center_align = Alignment(horizontal="center")
-    left_align = Alignment(horizontal="left")
-    right_align = Alignment(horizontal="right")
+    # Define styles
+    title_font = Font(bold=True, size=12)
+    header_font = Font(bold=True, size=10)
+    normal_font = Font(size=10)
+    bold_font = Font(bold=True, size=10)
+    
+    # Borders
+    thin_border = Border(
+        left=Side(style="thin"), right=Side(style="thin"),
+        top=Side(style="thin"), bottom=Side(style="thin")
+    )
+    top_bottom_border = Border(
+        top=Side(style="thin"), bottom=Side(style="thin")
+    )
+    
+    # Alignments
+    center_align = Alignment(horizontal="center", vertical="center")
+    left_align = Alignment(horizontal="left", vertical="center")
+    right_align = Alignment(horizontal="right", vertical="center")
 
-    # Column widths
-    ws.column_dimensions["A"].width = 50
-    ws.column_dimensions["B"].width = 10
-    ws.column_dimensions["C"].width = 18
-    ws.column_dimensions["D"].width = 18
-    ws.column_dimensions["E"].width = 18
+    # Set column widths to match template
+    ws.column_dimensions["A"].width = 45  # Particulars
+    ws.column_dimensions["B"].width = 8   # Notes
+    ws.column_dimensions["C"].width = 15  # 2024
+    ws.column_dimensions["D"].width = 15  # 2023
 
-    # Header
-    ws["A1"] = "COMPREHENSIVE PROFIT AND LOSS STATEMENT"
-    ws["A1"].font = header_font
-    ws.merge_cells("A1:E1")
+    row = 1
+
+    # Title
+    ws.merge_cells("A1:D1")
+    ws["A1"] = "Statement of Profit and Loss for the year ended March 31, 2024"
+    ws["A1"].font = title_font
     ws["A1"].alignment = center_align
+    ws["A1"].border = top_bottom_border
+    row += 1
 
-    ws["A2"] = "For the year ended March 31, 2024"
-    ws["A2"].font = bold_font
-    ws.merge_cells("A2:E2")
-    ws["A2"].alignment = center_align
+    # Add empty row
+    row += 1
 
-    ws["A3"] = "(All amounts in Lakhs)"
-    ws.merge_cells("A3:E3")
-    ws["A3"].alignment = right_align
+    # Column headers with "In Lakhs" annotation
+    ws["A3"] = ""
+    ws["B3"] = ""
+    ws["C3"] = "In Lakhs"
+    ws["D3"] = ""
+    ws["C3"].font = normal_font
+    ws["C3"].alignment = right_align
+    row += 1
 
-    # Table headers
-    headers = ["Particulars", "Notes", "Year ended March 31, 2024", "Year ended March 31, 2023", "Change"]
+    # Main headers
+    headers = ["", "Notes", "Year ended March 31, 2024", "Year ended March 31, 2023"]
     for col, header in enumerate(headers, 1):
-        cell = ws.cell(row=5, column=col)
+        cell = ws.cell(row=row, column=col)
         cell.value = header
-        cell.font = bold_font
-        cell.border = thin_border
-        cell.alignment = center_align
-
-    row = 6
-
-    # INCOME SECTION
-    ws.cell(row=row, column=1).value = "INCOME"
-    ws.cell(row=row, column=1).font = bold_font
-    for col in range(1, 6):
-        ws.cell(row=row, column=col).border = thin_border
+        cell.font = header_font
+        cell.border = top_bottom_border
+        if col > 2:
+            cell.alignment = center_align
+        else:
+            cell.alignment = left_align
     row += 1
 
-    # Revenue and Other Income
-    total_income_2024 = 0
-    total_income_2023 = 0
-
-    # Process income notes (typically 16, 17)
-    income_notes = ["16", "17"]
-    income_labels = {
-        "16": "Revenue from operations (net)",
-        "17": "Other income"
-    }
-
-    for note_num in income_notes:
-        if note_num in notes_data:
-            income_2024 = notes_data[note_num].get("total_2024", 0)
-            income_2023 = notes_data[note_num].get("total_2023", 0)
-            change = income_2024 - income_2023
-            
-            total_income_2024 += income_2024
-            total_income_2023 += income_2023
-            
-            ws.cell(row=row, column=1).value = income_labels.get(note_num, f"Income Note {note_num}")
-            ws.cell(row=row, column=2).value = note_num
-            ws.cell(row=row, column=3).value = format_currency(income_2024)
-            ws.cell(row=row, column=4).value = format_currency(income_2023)
-            ws.cell(row=row, column=5).value = format_currency(change)
-            for col in range(1, 6):
-                ws.cell(row=row, column=col).border = thin_border
-            row += 1
-
-    # Total Income
-    ws.cell(row=row, column=1).value = "Total Income (I)"
-    ws.cell(row=row, column=1).font = bold_font
-    ws.cell(row=row, column=3).value = format_currency(total_income_2024)
-    ws.cell(row=row, column=4).value = format_currency(total_income_2023)
-    ws.cell(row=row, column=5).value = format_currency(total_income_2024 - total_income_2023)
-    for col in range(1, 6):
-        ws.cell(row=row, column=col).border = thin_border
-        ws.cell(row=row, column=col).font = bold_font
-    row += 2
-
-    # EXPENSES SECTION
-    ws.cell(row=row, column=1).value = "EXPENSES"
-    ws.cell(row=row, column=1).font = bold_font
-    for col in range(1, 6):
-        ws.cell(row=row, column=col).border = thin_border
-    row += 1
-
-    # Process all expense notes
-    expense_notes_labels = {
-        "18": "Cost of materials consumed",
-        "19": "Employee benefit expense",
-        "20": "Other expenses",
-        "21": "Depreciation and amortisation expense",
-        "22": "Impairment losses",
-        "23": "Finance costs",
-        "24": "Tax expense",
-        "25": "Exceptional items",
-        "26": "Discontinued operations",
-        "27": "Prior period items",
-        "28": "Other comprehensive income"
-    }
-
-    total_expenses_2024 = 0
-    total_expenses_2023 = 0
-
-    # Process expense notes (18-28)
-    for note_num in sorted([k for k in notes_data.keys() if int(k) >= 18]):
-        note_data = notes_data[note_num]
-        expense_2024 = note_data.get("total_2024", 0)
-        expense_2023 = note_data.get("total_2023", 0)
-        change = expense_2024 - expense_2023
+    def add_data_row(description, note_ref, val_2024, val_2023, is_bold=False, is_section_header=False):
+        """Add a data row with proper formatting."""
+        nonlocal row
         
-        # Only add to total expenses if it's actually an expense (positive values typically)
-        if int(note_num) <= 25:  # Typical expense notes
-            total_expenses_2024 += expense_2024
-            total_expenses_2023 += expense_2023
+        # Description
+        cell_a = ws.cell(row=row, column=1)
+        cell_a.value = description
+        cell_a.font = bold_font if (is_bold or is_section_header) else normal_font
+        cell_a.alignment = left_align
+        if not is_section_header:
+            cell_a.border = thin_border
         
-        label = expense_notes_labels.get(note_num, note_data.get("category_name", f"Note {note_num}"))
+        # Note reference
+        cell_b = ws.cell(row=row, column=2)
+        cell_b.value = note_ref if note_ref else ""
+        cell_b.font = normal_font
+        cell_b.alignment = center_align
+        if not is_section_header:
+            cell_b.border = thin_border
         
-        ws.cell(row=row, column=1).value = label
-        ws.cell(row=row, column=2).value = note_num
-        ws.cell(row=row, column=3).value = format_currency(expense_2024)
-        ws.cell(row=row, column=4).value = format_currency(expense_2023)
-        ws.cell(row=row, column=5).value = format_currency(change)
-        for col in range(1, 6):
-            ws.cell(row=row, column=col).border = thin_border
+        # 2024 value
+        cell_c = ws.cell(row=row, column=3)
+        cell_c.value = f"{val_2024:,.2f}" if val_2024 != 0 else ""
+        cell_c.font = bold_font if is_bold else normal_font
+        cell_c.alignment = right_align
+        if not is_section_header:
+            cell_c.border = thin_border
+        
+        # 2023 value
+        cell_d = ws.cell(row=row, column=4)
+        cell_d.value = f"{val_2023:,.2f}" if val_2023 != 0 else ""
+        cell_d.font = bold_font if is_bold else normal_font
+        cell_d.alignment = right_align
+        if not is_section_header:
+            cell_d.border = thin_border
+        
         row += 1
 
-    # Total Expenses
-    ws.cell(row=row, column=1).value = "Total Expenses (II)"
-    ws.cell(row=row, column=1).font = bold_font
-    ws.cell(row=row, column=3).value = format_currency(total_expenses_2024)
-    ws.cell(row=row, column=4).value = format_currency(total_expenses_2023)
-    ws.cell(row=row, column=5).value = format_currency(total_expenses_2024 - total_expenses_2023)
-    for col in range(1, 6):
-        ws.cell(row=row, column=col).border = thin_border
-        ws.cell(row=row, column=col).font = bold_font
-    row += 2
-
-    # Profit Before Tax
-    profit_before_tax_2024 = total_income_2024 - total_expenses_2024
-    profit_before_tax_2023 = total_income_2023 - total_expenses_2023
+    # INCOME SECTION
+    add_data_row("Income", "", 0, 0, is_section_header=True)
     
-    ws.cell(row=row, column=1).value = "Profit/(Loss) before Tax (I) - (II)"
-    ws.cell(row=row, column=1).font = bold_font
-    ws.cell(row=row, column=3).value = format_currency(profit_before_tax_2024)
-    ws.cell(row=row, column=4).value = format_currency(profit_before_tax_2023)
-    ws.cell(row=row, column=5).value = format_currency(profit_before_tax_2024 - profit_before_tax_2023)
-    for col in range(1, 6):
-        ws.cell(row=row, column=col).border = thin_border
-        ws.cell(row=row, column=col).font = bold_font
+    # Revenue from operations
+    revenue_2024 = notes_data.get("16", {}).get("total_2024", 0.0)
+    revenue_2023 = notes_data.get("16", {}).get("total_2023", 0.0)
+    if revenue_2024 == 0 and revenue_2023 == 0:
+        print("⚠️ Warning: No data found for Note 16 (Revenue from operations)")
+    add_data_row("Revenue from operations (net)", "16", revenue_2024, revenue_2023)
+    
+    # Other income
+    other_income_2024 = notes_data.get("17", {}).get("total_2024", 0.0)
+    other_income_2023 = notes_data.get("17", {}).get("total_2023", 0.0)
+    if other_income_2024 == 0 and other_income_2023 == 0:
+        print("⚠️ Warning: No data found for Note 17 (Other income)")
+    add_data_row("Other income", "17", other_income_2024, other_income_2023)
+    
+    # Total revenue
+    total_revenue_2024 = revenue_2024 + other_income_2024
+    total_revenue_2023 = revenue_2023 + other_income_2023
+    add_data_row("Total revenue (I)", "", total_revenue_2024, total_revenue_2023, is_bold=True)
 
-    # Align columns
-    for r in range(5, row + 1):
-        ws.cell(row=r, column=1).alignment = left_align
-        for c in range(2, 6):
-            ws.cell(row=r, column=c).alignment = right_align
+    # EXPENSES SECTION
+    add_data_row("Expenses", "", 0, 0, is_section_header=True)
+    
+    # Cost of materials consumed
+    materials_2024 = notes_data.get("18", {}).get("total_2024", 0.0)
+    materials_2023 = notes_data.get("18", {}).get("total_2023", 0.0)
+    if materials_2024 == 0 and materials_2023 == 0:
+        print("⚠️ Warning: No data found for Note 18 (Cost of materials consumed)")
+    add_data_row("Cost of materials consumed", "18", materials_2024, materials_2023)
+    
+    # Employee benefit expense
+    employee_2024 = notes_data.get("19", {}).get("total_2024", 0.0)
+    employee_2023 = notes_data.get("19", {}).get("total_2023", 0.0)
+    if employee_2024 == 0 and employee_2023 == 0:
+        print("⚠️ Warning: No data found for Note 19 (Employee benefit expense)")
+    add_data_row("Employee benefit expense", "19", employee_2024, employee_2023)
+    
+    # Other expenses
+    other_exp_2024 = notes_data.get("20", {}).get("total_2024", 0.0)
+    other_exp_2023 = notes_data.get("20", {}).get("total_2023", 0.0)
+    if other_exp_2024 == 0 and other_exp_2023 == 0:
+        print("⚠️ Warning: No data found for Note 20 (Other expenses)")
+    add_data_row("Other expenses", "20", other_exp_2024, other_exp_2023)
+    
+    # Depreciation and amortisation
+    depreciation_2024 = notes_data.get("21", {}).get("total_2024", 0.0)
+    depreciation_2023 = notes_data.get("21", {}).get("total_2023", 0.0)
+    if depreciation_2024 == 0 and depreciation_2023 == 0:
+        print("⚠️ Warning: No data found for Note 21 (Depreciation and amortisation expense)")
+    add_data_row("Depreciation and amortisation expense", "21", depreciation_2024, depreciation_2023)
+    
+    # Loss on sale of assets (Note 22)
+    loss_sale_2024 = notes_data.get("22", {}).get("total_2024", 0.0)
+    loss_sale_2023 = notes_data.get("22", {}).get("total_2023", 0.0)
+    if loss_sale_2024 == 0 and loss_sale_2023 == 0 and "22" in notes_data:
+        print("⚠️ Warning: No data found for Note 22 (Loss on sale of assets)")
+    add_data_row("Loss on sale of assets & investments", "22", loss_sale_2024, loss_sale_2023)
+    
+    # Finance costs
+    finance_2024 = notes_data.get("23", {}).get("total_2024", 0.0)
+    finance_2023 = notes_data.get("23", {}).get("total_2023", 0.0)
+    if finance_2024 == 0 and finance_2023 == 0:
+        print("⚠️ Warning: No data found for Note 23 (Finance costs)")
+    add_data_row("Finance costs", "23", finance_2024, finance_2023)
+    
+    # Total expenses
+    total_expenses_2024 = materials_2024 + employee_2024 + other_exp_2024 + depreciation_2024 + loss_sale_2024 + finance_2024
+    total_expenses_2023 = materials_2023 + employee_2023 + other_exp_2023 + depreciation_2023 + loss_sale_2023 + finance_2023
+    add_data_row("Total Expenses (II)", "", total_expenses_2024, total_expenses_2023, is_bold=True)
+    
+    # Profit before tax
+    profit_before_tax_2024 = total_revenue_2024 - total_expenses_2024
+    profit_before_tax_2023 = total_revenue_2023 - total_expenses_2023
+    add_data_row("Profit before Tax (I) - (II)", "", profit_before_tax_2024, profit_before_tax_2023, is_bold=True)
+    
+    # Tax Expense section
+    add_data_row("IV. TAX EXPENSE", "", 0, 0, is_section_header=True)
+    
+    # Current Tax (Placeholder)
+    current_tax_2024 = 0.0
+    current_tax_2023 = 0.0
+    add_data_row("Current Tax", "", current_tax_2024, current_tax_2023)
+    
+    # Deferred Tax Liability/(Asset) (Placeholder)
+    deferred_tax_2024 = 0.0
+    deferred_tax_2023 = 0.0
+    add_data_row("Deferred Tax Liability/(Asset)", "", deferred_tax_2024, deferred_tax_2023)
+    
+    # Income Tax relating to Prior Year (Placeholder)
+    prior_tax_2024 = 0.0
+    prior_tax_2023 = 0.0
+    add_data_row("Income Tax relating to Prior Year", "", prior_tax_2024, prior_tax_2023)
+    
+    # MAT Credit Entitlement/Utilisation (Placeholder)
+    mat_credit_2024 = 0.0
+    mat_credit_2023 = 0.0
+    add_data_row("MAT Credit (Entitlement)/Utilisation", "", mat_credit_2024, mat_credit_2023)
+    
+    # Total tax
+    total_tax_2024 = current_tax_2024 + deferred_tax_2024 + prior_tax_2024 + mat_credit_2024
+    total_tax_2023 = current_tax_2023 + deferred_tax_2023 + prior_tax_2023 + mat_credit_2023
+    add_data_row("Total Tax Expense (IV)", "", total_tax_2024, total_tax_2023, is_bold=True)
+    
+    # Profit after Tax
+    profit_after_tax_2024 = profit_before_tax_2024 - total_tax_2024
+    profit_after_tax_2023 = profit_before_tax_2023 - total_tax_2023
+    add_data_row("Profit After Tax (III - IV)", "", profit_after_tax_2024, profit_after_tax_2023, is_bold=True)
 
-    # Save file
-    output_file = "comprehensive_pnl_report.xlsx"
+    # Earnings per share section
+    add_data_row("Earnings per share", "", 0, 0, is_section_header=True)
+    
+    # Get EPS data from notes
+    basic_eps_2024 = 0.0
+    basic_eps_2023 = 0.0
+    diluted_eps_2024 = 0.0
+    diluted_eps_2023 = 0.0
+    weighted_shares_2024 = 0.0
+    weighted_shares_2023 = 0.0
+    
+    if "30" in notes_data:
+        eps_data = notes_data["30"]["structure"][0]["subcategories"]
+        for item in eps_data:
+            if "basic" in item["label"].lower():
+                basic_eps_2024 = item["value"]
+                basic_eps_2023 = item["previous_value"]
+            elif "diluted" in item["label"].lower():
+                diluted_eps_2024 = item["value"]
+                diluted_eps_2023 = item["previous_value"]
+            elif "weighted average" in item["label"].lower():
+                weighted_shares_2024 = item["value"]
+                weighted_shares_2023 = item["previous_value"]
+        if basic_eps_2024 == 0 and basic_eps_2023 == 0:
+            print("⚠️ Warning: No EPS data found in Note 30")
+    
+    add_data_row("Basic and diluted", "30", basic_eps_2024, basic_eps_2023)
+    add_data_row("Nominal value", "", 10.0, 10.0)  # Assuming ₹10 per share
+    
+    # Weighted average number of equity shares
+    add_data_row("Weighted average number of equity shares", "30", weighted_shares_2024, weighted_shares_2023)
+
+    # Footer notes
+    row += 2
+    ws.merge_cells(f"A{row}:D{row}")
+    ws[f"A{row}"] = "The accompanying notes are an integral part of the financial statements"
+    ws[f"A{row}"].font = normal_font
+    ws[f"A{row}"].alignment = left_align
+    row += 1
+    
+    ws.merge_cells(f"A{row}:D{row}")
+    ws[f"A{row}"] = "As per my report of even date                     For and on behalf of the Board of Directors"
+    ws[f"A{row}"].font = normal_font
+    ws[f"A{row}"].alignment = left_align
+    row += 2
+    
+    ws.merge_cells(f"A{row}:D{row}")
+    ws[f"A{row}"] = "For M/s Siva Parvathi & Associates                                                    -"
+    ws[f"A{row}"].font = normal_font
+    ws[f"A{row}"].alignment = left_align
+    row += 2
+    
+    ws.merge_cells(f"A{row}:D{row}")
+    ws[f"A{row}"] = "ICAI Firm registration number: 020872S"
+    ws[f"A{row}"].font = normal_font
+    ws[f"A{row}"].alignment = left_align
+    row += 1
+    
+    ws.merge_cells(f"A{row}:D{row}")
+    ws[f"A{row}"] = "Chartered Accountants"
+    ws[f"A{row}"].font = normal_font
+    ws[f"A{row}"].alignment = left_align
+
+    # Save the file
+    output_file = "pnl_2.xlsx"
     try:
         wb.save(output_file)
-        print(f"\n✅ Comprehensive P&L report generated: {output_file}")
+        print(f"\n✅ P&L Statement generated: {output_file}")
         
-        # Print detailed summary
-        print(f"\n" + "="*80)
-        print(f"📊 COMPREHENSIVE FINANCIAL SUMMARY")
-        print(f"="*80)
-        print(f"Total Income 2024:        ₹{format_currency(total_income_2024):>15} Lakhs")
-        print(f"Total Income 2023:        ₹{format_currency(total_income_2023):>15} Lakhs")
-        print(f"Income Change:            ₹{format_currency(total_income_2024 - total_income_2023):>15} Lakhs")
-        print(f"")
-        print(f"Total Expenses 2024:      ₹{format_currency(total_expenses_2024):>15} Lakhs")
-        print(f"Total Expenses 2023:      ₹{format_currency(total_expenses_2023):>15} Lakhs")
-        print(f"Expenses Change:          ₹{format_currency(total_expenses_2024 - total_expenses_2023):>15} Lakhs")
-        print(f"")
-        print(f"Profit Before Tax 2024:   ₹{format_currency(profit_before_tax_2024):>15} Lakhs")
-        print(f"Profit Before Tax 2023:   ₹{format_currency(profit_before_tax_2023):>15} Lakhs")
-        print(f"Profit Change:            ₹{format_currency(profit_before_tax_2024 - profit_before_tax_2023):>15} Lakhs")
+        # Print summary
+        print("\n" + "="*60)
+        print("📊 FINANCIAL SUMMARY")
+        print("="*60)
+        print(f"Total Revenue 2024:     ₹{total_revenue_2024:>12,.2f} Lakhs")
+        print(f"Total Revenue 2023:     ₹{total_revenue_2023:>12,.2f} Lakhs")
+        print(f"Total Expenses 2024:    ₹{total_expenses_2024:>12,.2f} Lakhs")
+        print(f"Total Expenses 2023:    ₹{total_expenses_2023:>12,.2f} Lakhs")
+        print(f"Profit Before Tax 2024: ₹{profit_before_tax_2024:>12,.2f} Lakhs")
+        print(f"Profit Before Tax 2023: ₹{profit_before_tax_2023:>12,.2f} Lakhs")
+        print(f"Profit After Tax 2024:  ₹{profit_after_tax_2024:>12,.2f} Lakhs")
+        print(f"Profit After Tax 2023:  ₹{profit_after_tax_2023:>12,.2f} Lakhs")
         
-        if total_income_2023 > 0:
-            income_growth = ((total_income_2024 - total_income_2023) / total_income_2023) * 100
-            print(f"Income Growth:            {income_growth:>18.2f}%")
-        
-        print(f"="*80)
-        
+        if total_revenue_2023 > 0:
+            growth_rate = ((total_revenue_2024 - total_revenue_2023) / total_revenue_2023) * 100
+            print(f"Revenue Growth Rate:    {growth_rate:>12.2f}%")
+            
+        if basic_eps_2024 > 0 or basic_eps_2023 > 0:
+            print(f"Basic EPS 2024:         ₹{basic_eps_2024:>12.2f}")
+            print(f"Basic EPS 2023:         ₹{basic_eps_2023:>12.2f}")
+            print(f"Weighted Shares 2024:   {weighted_shares_2024:>12,.2f} Lakhs")
+            print(f"Weighted Shares 2023:   {weighted_shares_2023:>12,.2f} Lakhs")
+            
+    except PermissionError:
+        print(f"❌ Permission Error: Cannot save to {output_file}")
+        fallback_file = os.path.join(os.path.expanduser("~"), "Desktop", "pnl_statement_fallback.xlsx")
+        try:
+            wb.save(fallback_file)
+            print(f"✅ P&L Statement saved to: {fallback_file}")
+        except Exception as e:
+            print(f"❌ Failed to save: {str(e)}")
     except Exception as e:
-        print(f"❌ Error saving Excel file: {str(e)}")
+        print(f"❌ Error saving file: {str(e)}")
 
-if __name__ == "__main__":
-    print("🚀 IMPROVED P&L GENERATOR STARTING...")
-    print("=" * 80)
+def main():
+    print("🚀 P&L STATEMENT GENERATOR")
+    print("=" * 50)
     
-    print("\n📋 STEP 1: Converting Excel to JSON with improved numeric handling")
+    # Step 1: Convert Excel to JSON
+    print("\n📋 STEP 1: Converting Excel to JSON")
     notes_data = load_and_map_excel_notes()
     
     if notes_data:
-        print("\n📊 STEP 2: Generating Comprehensive P&L Report")
-        generate_comprehensive_pnl_report(notes_data)
-        print("\n🎉 PROCESS COMPLETED SUCCESSFULLY!")
-        print("✅ Check the 'comprehensive_pnl_report.xlsx' file for the complete report")
+        # Step 2: Generate P&L Statement
+        print("\n📊 STEP 2: Generating P&L Statement")
+        generate_pnl_report(notes_data)
+        print("\n🎉 PROCESS COMPLETED!")
     else:
-        print("\n❌ PROCESS FAILED: No data found.")
-        print("Please check:")
-        print("  1. Excel file exists at 'data/notes_pnl.xlsx'")
-        print("  2. File contains notes numbered 16-28")
-        print("  3. Data has proper year columns (2024, 2023)")
+        print("\n❌ FAILED: No data found")
+
+if __name__ == "__main__":
+    main()
