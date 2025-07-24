@@ -46,6 +46,37 @@ def find_data_columns(ws):
     
     return col_2024, col_2023
 
+def get_note_total_value(note_num, subcategories):
+    """Get the correct total value for specific notes that have calculated totals."""
+    
+    # Notes that should use only the final calculated line, not sum of all lines
+    calculated_notes = {
+        "18": ["cost of materials consumed", "materials consumed"],  # Use final calculated line
+        "19": None,  # Sum all lines normally
+        "20": None,  # Sum all lines normally
+        "21": None,  # Sum all lines normally
+        "22": None,  # Sum all lines normally
+        "23": None,  # Sum all lines normally
+    }
+    
+    if note_num in calculated_notes and calculated_notes[note_num] is not None:
+        # Find the line that contains the final calculation
+        search_terms = calculated_notes[note_num]
+        
+        for subcategory in subcategories:
+            label_lower = subcategory["label"].lower()
+            if any(term in label_lower for term in search_terms):
+                print(f"  🎯 Using calculated total for Note {note_num}: {subcategory['label']}")
+                return subcategory["value"], subcategory["previous_value"]
+        
+        # Fallback: if no calculated line found, use sum of all
+        print(f"  ⚠️ No calculated total found for Note {note_num}, using sum of all")
+    
+    # Default: sum all subcategories
+    total_2024 = sum(sub["value"] for sub in subcategories)
+    total_2023 = sum(sub["previous_value"] for sub in subcategories)
+    return total_2024, total_2023
+
 def load_and_map_excel_notes(file_path="data/notes_pnl2.xlsx"):
     """Load and parse notes data from Excel with improved accuracy."""
     try:
@@ -82,6 +113,14 @@ def load_and_map_excel_notes(file_path="data/notes_pnl2.xlsx"):
                 if int(note_num) >= 16:  # Financial notes start from 16
                     # Save previous note if exists
                     if current_note and current_note_data:
+                        # Calculate correct totals for the previous note
+                        subcategories = current_note_data["structure"][0]["subcategories"]
+                        total_2024, total_2023 = get_note_total_value(current_note, subcategories)
+                        
+                        current_note_data["total_2024"] = total_2024
+                        current_note_data["total_2023"] = total_2023
+                        current_note_data["total_change"] = total_2024 - total_2023
+                        
                         notes_data[current_note] = current_note_data
                     
                     # Start new note
@@ -134,14 +173,18 @@ def load_and_map_excel_notes(file_path="data/notes_pnl2.xlsx"):
                     }
                     
                     current_note_data["structure"][0]["subcategories"].append(subcategory)
-                    current_note_data["total_2024"] += value_2024
-                    current_note_data["total_2023"] += value_2023
                     
                     print(f"  ✓ {first_cell[:40]:<40} | 2024: {value_2024:>10.2f} | 2023: {value_2023:>10.2f}")
         
-        # Save last note
+        # Save last note with correct totals
         if current_note and current_note_data:
-            current_note_data["total_change"] = current_note_data["total_2024"] - current_note_data["total_2023"]
+            subcategories = current_note_data["structure"][0]["subcategories"]
+            total_2024, total_2023 = get_note_total_value(current_note, subcategories)
+            
+            current_note_data["total_2024"] = total_2024
+            current_note_data["total_2023"] = total_2023
+            current_note_data["total_change"] = total_2024 - total_2023
+            
             notes_data[current_note] = current_note_data
         
         # Save JSON
@@ -307,6 +350,8 @@ def generate_pnl_report(notes_data):
     materials_2023 = notes_data.get("18", {}).get("total_2023", 0.0)
     if materials_2024 == 0 and materials_2023 == 0:
         print("⚠️ Warning: No data found for Note 18 (Cost of materials consumed)")
+    else:
+        print(f"✅ Note 18 totals - 2024: {materials_2024:.2f}, 2023: {materials_2023:.2f}")
     add_data_row("Cost of materials consumed", "18", materials_2024, materials_2023)
     
     # Employee benefit expense
@@ -314,6 +359,8 @@ def generate_pnl_report(notes_data):
     employee_2023 = notes_data.get("19", {}).get("total_2023", 0.0)
     if employee_2024 == 0 and employee_2023 == 0:
         print("⚠️ Warning: No data found for Note 19 (Employee benefit expense)")
+    else:
+        print(f"✅ Note 19 totals - 2024: {employee_2024:.2f}, 2023: {employee_2023:.2f}")
     add_data_row("Employee benefit expense", "19", employee_2024, employee_2023)
     
     # Other expenses
