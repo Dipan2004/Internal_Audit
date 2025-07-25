@@ -1,0 +1,781 @@
+{
+  "2": {
+    "category_name": "Share capital",
+    "structure": [
+      {
+        "category": "Share capital",
+        "subcategories": [
+          {
+            "label": "Authorised shares",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "75,70,000 (March 31, 2024 : 75,70,000) equity shares of ₹ 10/- each",
+            "value": 0.0,
+            "previous_value": 757.0,
+            "change": -757.0,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Issued, subscribed and fully paid-up shares",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "54,25,210 (March 31, 2024 : 54,25,210) equity shares of ₹ 10/- each",
+            "value": 0.0,
+            "previous_value": 542.521,
+            "change": -542.521,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Total issued, subscribed and fully paid-up share capital",
+            "value": 0.0,
+            "previous_value": 542.521,
+            "change": -542.521,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Reconciliation of the equity shares outstanding at the beginning and at the end of the year",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Equity shares of ₹ 10/- each fully paid",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "At the beginning of the year",
+            "value": 54.2521,
+            "previous_value": 54.2521,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Outstanding at the end of the year",
+            "value": 54.2521,
+            "previous_value": 54.2521,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Terms/ rights attached to equity shares",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "The Company has only one class of equity shares having par value of ₹ 10/- per share. Each holder of equity share is entitled to one vote per share. The Company declares and pays dividend in Indian Rupees. In the event of liquidation of the Company, the holders of equity shares will be entitled to receive remaining assets of the Company, after distribution of all preferential amounts. The distribution will be in proportion to the number of equity shares held by the shareholders.",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Details of share holders holding more than 5% shares in the Company",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Name of the shareholder",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Equity shares of ₹ 10/- each fully paid",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Mr. Srinivas Ravuri",
+            "value": 18.94771,
+            "previous_value": 18.94771,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mr. Akula Thukaram Bapuji",
+            "value": 9.4985,
+            "previous_value": 9.4985,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mrs. Akula Indira Prasanna",
+            "value": 9.15378,
+            "previous_value": 9.15378,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mr. Rajesh Kumar Suvvaru",
+            "value": 9.0176,
+            "previous_value": 9.0176,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mrs. Paithrini Kota",
+            "value": 3.12194,
+            "previous_value": 3.12194,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Disclosure of Shareholding of Promoters",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Name of the Promoter",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Equity shares of ₹ 10/- each fully paid",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Mr. Srinivas Ravuri",
+            "value": 18.94771,
+            "previous_value": 18.94771,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mr. Akula Thukaram Bapuji",
+            "value": 9.4985,
+            "previous_value": 9.4985,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mrs. Akula Indira Prasanna",
+            "value": 9.15378,
+            "previous_value": 9.15378,
+            "change": 0.0,
+            "change_percent": 0.0
+          },
+          {
+            "label": "Mr. Rajesh Kumar Suvvaru",
+            "value": 9.0176,
+            "previous_value": 9.0176,
+            "change": 0.0,
+            "change_percent": 0.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 542.521,
+    "total_change": -542.521
+  },
+  "3": {
+    "category_name": "Reserves and surplus",
+    "structure": [
+      {
+        "category": "Reserves and surplus",
+        "subcategories": [
+          {
+            "label": "Opening balance",
+            "value": 0.0,
+            "previous_value": 175.46161,
+            "change": -175.46161,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Securities Premium",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Balance as per the last financial statements",
+            "value": 0.0,
+            "previous_value": 175.46161,
+            "change": -175.46161,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Closing Balance",
+            "value": 0.0,
+            "previous_value": 175.46161,
+            "change": -175.46161,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Surplus in the statement of profit and loss",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Balance, at the beginning of the year",
+            "value": 0.0,
+            "previous_value": 2467.40870102698,
+            "change": -2467.40870102698,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Add: Profit for the Year",
+            "value": 0.0,
+            "previous_value": 672.2785998,
+            "change": -672.2785998,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Less:Transfered",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Less: Dividend Paid",
+            "value": 0.0,
+            "previous_value": 162.7563,
+            "change": -162.7563,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Net Surplus in the Statement of Profit & Loss",
+            "value": 0.0,
+            "previous_value": 2976.93100082698,
+            "change": -2976.93100082698,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Balance, at the end of the year",
+            "value": 0.0,
+            "previous_value": 3152.39261082698,
+            "change": -3152.39261082698,
+            "change_percent": -100.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 175.46161,
+    "total_change": -175.46161
+  },
+  "4": {
+    "category_name": "Long-Term Borrowings",
+    "structure": [
+      {
+        "category": "Long-Term Borrowings",
+        "subcategories": [
+          {
+            "label": "Andhra Pradesh State Financial Corporation",
+            "value": 0.0,
+            "previous_value": 197.9979,
+            "change": -197.9979,
+            "change_percent": -100.0
+          },
+          {
+            "label": "State Bank of India - SME",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Loan From ICICI Bank 603090031420",
+            "value": 0.0,
+            "previous_value": 683.5714632,
+            "change": -683.5714632,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Diamler Financial Services India Private Limited",
+            "value": 0.0,
+            "previous_value": 32.89343,
+            "change": -32.89343,
+            "change_percent": -100.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 683.5714632,
+    "total_change": -683.5714632
+  },
+  "5": {
+    "category_name": "Deferred Tax Liability / (Asset)",
+    "structure": [
+      {
+        "category": "Deferred Tax Liability / (Asset)",
+        "subcategories": [
+          {
+            "label": "Deferred tax liability",
+            "value": 0.0,
+            "previous_value": 49.0,
+            "change": -49.0,
+            "change_percent": -100.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 49.0,
+    "total_change": -49.0
+  },
+  "6": {
+    "category_name": "Trade Payables",
+    "structure": [
+      {
+        "category": "Trade Payables",
+        "subcategories": [
+          {
+            "label": "Dues to Micro & Small Enterprises",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "For Capital expenditure",
+            "value": 0.0,
+            "previous_value": 13.63613,
+            "change": -13.63613,
+            "change_percent": -100.0
+          },
+          {
+            "label": "For other expenses",
+            "value": 0.0,
+            "previous_value": 45.96967,
+            "change": -45.96967,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Dues to Others",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "For Capital expenditure",
+            "value": 0.0,
+            "previous_value": 4.40567,
+            "change": -4.40567,
+            "change_percent": -100.0
+          },
+          {
+            "label": "For other expenses",
+            "value": 0.0,
+            "previous_value": 40.21992,
+            "change": -40.21992,
+            "change_percent": -100.0
+          },
+          {
+            "label": "MSME",
+            "value": 50.29014,
+            "previous_value": 0.0,
+            "change": 50.29014,
+            "change_percent": 0
+          },
+          {
+            "label": "Others",
+            "value": 38.87216,
+            "previous_value": 0.0,
+            "change": 38.87216,
+            "change_percent": 0
+          },
+          {
+            "label": "Total",
+            "value": 131.944346,
+            "previous_value": 0.0,
+            "change": 131.944346,
+            "change_percent": 0
+          },
+          {
+            "label": "MSME",
+            "value": 68.5112831,
+            "previous_value": 0.0,
+            "change": 68.5112831,
+            "change_percent": 0
+          },
+          {
+            "label": "Others",
+            "value": 66.628716,
+            "previous_value": 0.0,
+            "change": 66.628716,
+            "change_percent": 0
+          },
+          {
+            "label": "Total",
+            "value": 135.1399991,
+            "previous_value": 0.0,
+            "change": 135.1399991,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 131.944346,
+    "total_2023": 0.0,
+    "total_change": 131.944346
+  },
+  "7": {
+    "category_name": "Other Current Liabilities",
+    "structure": [
+      {
+        "category": "Other Current Liabilities",
+        "subcategories": [
+          {
+            "label": "Current Maturities of Long Term Borrowings",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Outstanding Liabilities for Expenses",
+            "value": 0.0,
+            "previous_value": 45.9956534,
+            "change": -45.9956534,
+            "change_percent": -100.0
+          },
+          {
+            "label": "Statutory dues",
+            "value": 0.0,
+            "previous_value": 79.3516672,
+            "change": -79.3516672,
+            "change_percent": -100.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 79.3516672,
+    "total_change": -79.3516672
+  },
+  "8": {
+    "category_name": "Short Term Provisions",
+    "structure": [
+      {
+        "category": "Short Term Provisions",
+        "subcategories": [
+          {
+            "label": "Provision for Taxation",
+            "value": 0.0,
+            "previous_value": 179.27262,
+            "change": -179.27262,
+            "change_percent": -100.0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 179.27262,
+    "total_change": -179.27262
+  },
+  "9": {
+    "category_name": "Fixed Assets",
+    "structure": [
+      {
+        "category": "Fixed Assets",
+        "subcategories": [
+          {
+            "label": "Tangible Assets",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Intangible Assets",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.0,
+    "total_2023": 0.0,
+    "total_change": 0.0
+  },
+  "10": {
+    "category_name": "Long Term Loans and advances",
+    "structure": [
+      {
+        "category": "Long Term Loans and advances",
+        "subcategories": [
+          {
+            "label": "Unsecured, considered good",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Long Term - Security Deposits",
+            "value": 0.5975346,
+            "previous_value": 0.0,
+            "change": 0.5975346,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 0.5975346,
+    "total_2023": 0.0,
+    "total_change": 0.5975346
+  },
+  "11": {
+    "category_name": "Inventories",
+    "structure": [
+      {
+        "category": "Inventories",
+        "subcategories": [
+          {
+            "label": "Consumables",
+            "value": 9.9217,
+            "previous_value": 0.0,
+            "change": 9.9217,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 9.9217,
+    "total_2023": 0.0,
+    "total_change": 9.9217
+  },
+  "12": {
+    "category_name": "Trade receivables",
+    "structure": [
+      {
+        "category": "Trade receivables",
+        "subcategories": [
+          {
+            "label": "Unsecured, considered good",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Other receivables",
+            "value": 64.0810122,
+            "previous_value": 0.0,
+            "change": 64.0810122,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered good",
+            "value": 769.7080509,
+            "previous_value": 21.4167922,
+            "change": 748.2912587,
+            "change_percent": 3493.9464870000465
+          },
+          {
+            "label": "Considered doubtful",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered good",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered doubtful",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Total",
+            "value": 769.7080509,
+            "previous_value": 21.4167922,
+            "change": 748.2912587,
+            "change_percent": 3493.9464870000465
+          },
+          {
+            "label": "Considered good",
+            "value": 932.93485,
+            "previous_value": 0.0,
+            "change": 932.93485,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered doubtful",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered good",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Considered doubtful",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Total",
+            "value": 932.93485,
+            "previous_value": 0.0,
+            "change": 932.93485,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 769.7080509,
+    "total_2023": 21.4167922,
+    "total_change": 748.2912587
+  },
+  "13": {
+    "category_name": "Cash and bank balances",
+    "structure": [
+      {
+        "category": "Cash and bank balances",
+        "subcategories": [
+          {
+            "label": "Cash and cash equivalents",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Balances with banks in current accounts",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Cash on hand",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Other Bank Balances",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Fixed Deposits with ICICI Bank",
+            "value": 402.98954,
+            "previous_value": 0.0,
+            "change": 402.98954,
+            "change_percent": 0
+          },
+          {
+            "label": "Short Term Loans and Advances",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Unsecured, considered good",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Prepaid Expenses",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Other Advances",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Other loans and advances",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Advance tax",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Balances with statutory/government authorities",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Other Current Assets",
+            "value": 0.0,
+            "previous_value": 0.0,
+            "change": 0.0,
+            "change_percent": 0
+          },
+          {
+            "label": "Interest accrued on fixed deposits",
+            "value": 2.18107,
+            "previous_value": 0.0,
+            "change": 2.18107,
+            "change_percent": 0
+          }
+        ]
+      }
+    ],
+    "total_2024": 402.98954,
+    "total_2023": 0.0,
+    "total_change": 402.98954
+  }
+}
