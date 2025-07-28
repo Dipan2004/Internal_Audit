@@ -521,6 +521,8 @@ def process_folder_with_ai(input_folder: str = "csv_notes",
     print(f"\n✓ AI-enhanced data saved to: {output_file}")
     print(f"Successfully processed: {len(combined_data['processing_info']['processed_files'])} files")
     print(f"Failed: {len(combined_data['processing_info']['failed_files'])} files")
+    
+    return combined_data
 
 # Example usage
 if __name__ == "__main__":
@@ -561,7 +563,7 @@ Outstanding at the end of the year	54.2521	543	54.2521	543"""
     # Initialize extractor
     extractor = EnhancedDataExtractor(api_key)
     
-    print("🔄 Processing financial data...")
+    print("🔄 Processing sample financial data...")
     
     # Extract with AI analysis (will fallback gracefully if no API key)
     result = extractor.extract_structured_data(sample_data, use_ai_analysis=bool(api_key))
@@ -608,9 +610,19 @@ Outstanding at the end of the year	54.2521	543	54.2521	543"""
                 print(result['ai_insights'])
     
     print("\n" + "=" * 60)
+    
+    # NOW PROCESS ACTUAL FILES AND SAVE OUTPUT
+    print("🔄 Now processing files from folder and saving output...")
+    print("=" * 60)
+    
+    # This is the fix - actually call the function to process files and save output
+    processed_data = process_folder_with_ai("csv_notes", "output/ai_enhanced_data.json", api_key)
+    
+    print("=" * 60)
     print("💡 TIPS:")
-    print("• For detailed JSON output, uncomment the JSON dump section")
-    print("• To process entire folders, use process_folder_with_ai()")
+    print("• JSON output saved to: output/ai_enhanced_data.json")
+    print("• To change input folder, modify 'csv_notes' parameter")
+    print("• To change output file, modify 'output/ai_enhanced_data.json' parameter")
     print("• Check .env file format: OPENROUTER_API_KEY=your_key_here")
     print("=" * 60)
     
@@ -620,13 +632,8 @@ Outstanding at the end of the year	54.2521	543	54.2521	543"""
     print(f"   Current working directory: {os.getcwd()}")
     print(f"   .env file exists: {os.path.exists('.env')}")
     
-    # Uncomment to see full JSON output
-    # print("\nFull JSON Result:")
-    # print(json.dumps(result, indent=2, default=str))
-    
-    # Process entire folder example (uncomment to use)
-    # if api_key:
-    #     print("\n🔄 Processing folder with AI...")
-    #     process_folder_with_ai("csv_notes", "output/ai_enhanced_data.json", api_key)
-    # else:
-    #     print("\n📁 To process folders with AI, set up your API key first.")
+    if processed_data:
+        print(f"   Files processed: {len(processed_data['processing_info']['processed_files'])}")
+        print(f"   Files failed: {len(processed_data['processing_info']['failed_files'])}")
+    else:
+        print("   No files were processed (check if csv_notes folder exists)")
