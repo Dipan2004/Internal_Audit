@@ -1,0 +1,434 @@
+{
+  "company_financial_data": {
+    "processing_summary": {
+      "total_files": 3,
+      "processing_date": "2025-07-29T23:04:40.006568",
+      "processed_files": [
+        "Note_10_to_15_Full.csv",
+        "Note_2_to_8_Full.csv",
+        "Note_9_Full.csv"
+      ]
+    },
+    "share_capital": {
+      "75,70,000 (March 31, 2024 : 75,70,000) equity shares of ₹ 10/- each": {
+        "2024-03-31 00:00:00": 757,
+        "2023-03-31 00:00:00": 757
+      },
+      "54,25,210 (March 31, 2024 : 54,25,210) equity shares of ₹ 10/- each": {
+        "2024-03-31 00:00:00": 542.521,
+        "2023-03-31 00:00:00": 542.521
+      },
+      "Total issued, subscribed and fully paid-up share capital": {
+        "2024-03-31 00:00:00": 542.521,
+        "2023-03-31 00:00:00": 542.521
+      },
+      "At the beginning of the year": [
+        54.2521,
+        543,
+        54.2521,
+        543
+      ],
+      "Outstanding at the end of the year": [
+        54.2521,
+        543,
+        54.2521,
+        543
+      ],
+      "Mr. Srinivas Ravuri": [
+        18.94771,
+        0.3492530243068932,
+        18.94771,
+        0.3492530243068932
+      ],
+      "Mr. Akula Thukaram Bapuji": [
+        9.4985,
+        0.17508078028315954,
+        9.4985,
+        0.17508078028315954
+      ],
+      "Mrs. Akula Indira Prasanna": [
+        9.15378,
+        0.16872674053170292,
+        9.15378,
+        0.16872674053170292
+      ],
+      "Mr. Rajesh Kumar Suvvaru": [
+        9.0176,
+        0.1662166072834047,
+        9.0176,
+        0.1662166072834047
+      ],
+      "Mrs. Paithrini Kota": [
+        3.12194,
+        0.05754505355553057,
+        3.12194,
+        0.05754505355553057
+      ],
+      "_metadata": {
+        "reporting_dates": [
+          "2024-03-31 00:00:00",
+          "2023-03-31 00:00:00"
+        ]
+      }
+    },
+    "reserves_and_surplus": {
+      "Opening balance": 175.46161,
+      "Balance as per the last financial statements": {
+        "2024-03-31 00:00:00": 175.46161,
+        "2023-03-31 00:00:00": 175.46161
+      },
+      "Add / Less : Changes during the year": {
+        "2024-03-31 00:00:00": 0,
+        "2023-03-31 00:00:00": 0
+      },
+      "Closing Balance": {
+        "2024-03-31 00:00:00": 175.46161,
+        "2023-03-31 00:00:00": 175.46161
+      },
+      "Balance, at the beginning of the year": {
+        "2024-03-31 00:00:00": 2467.40870102698,
+        "2023-03-31 00:00:00": 1440.5618283269798
+      },
+      "Add: Profit for the Year": {
+        "2024-03-31 00:00:00": 672.2785998,
+        "2023-03-31 00:00:00": 1026.8468727000002
+      },
+      "Less: Dividend Paid": [
+        162.7563,
+        0,
+        247412254.99,
+        247409787.58129898
+      ],
+      "Net Surplus in the Statement of Profit & Loss": [
+        2976.93100082698,
+        2467.40870102698,
+        "Difference"
+      ],
+      "Balance, at the end of the year": {
+        "2024-03-31 00:00:00": 3152.3926108269798,
+        "2023-03-31 00:00:00": 2642.87031102698
+      },
+      "_metadata": {
+        "reporting_dates": [
+          "2024-03-31 00:00:00",
+          "2023-03-31 00:00:00"
+        ]
+      }
+    },
+    "borrowings": {
+      "4. Long-Term Borrowings": {
+        "Andhra Pradesh State Financial Corporation": [
+          197.9979,
+          276.4194,
+          "We didn't have this loan repayment"
+        ],
+        "State Bank of India - SME": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 0
+        },
+        "Loan From ICICI Bank 603090031420": [
+          683.5714631999999,
+          
+          "Building principal"
+        ],
+        "Diamler Financial Services India Private Limited": [
+          32.89343,
+          44.94277,
+          
+          "Car loan p & Interest"
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      }
+    },
+    "current_liabilities": {
+      "6. Trade Payables": {
+        "For Capital expenditure": {
+          "2024-03-31 00:00:00": 4.40567,
+          "2023-03-31 00:00:00": 7.23695
+        },
+        "For other expenses": {
+          "2024-03-31 00:00:00": 40.21992,
+          "2023-03-31 00:00:00": 62.833715999999995
+        },
+        "Sundry Creditors": {
+          "2024-03-31 00:00:00": 42.78204600000001,
+          "2023-03-31 00:00:00": 42.78204600000001
+        },
+        "Particulars": {
+          "2024-03-31 00:00:00": "Outstanding for following periods from due date of payment",
+          "2023-03-31 00:00:00": "Total"
+        },
+        "- MSME": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "- Others": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "Disputed dues": 44.62559,
+        "Total": [
+          135.1399991,
+          3.75705,
+          0,
+          0,
+          138.8970491
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "7. Other Current Liabilities": {
+        "Current Maturities of Long Term Borrowings": [
+          136.08612,
+          139.20441
+        
+        ],
+        "Outstanding Liabilities for Expenses": {
+          "2024-03-31 00:00:00": 45.9956534,
+          "2023-03-31 00:00:00": 156.88272
+        },
+        "Statutory dues": {
+          "2024-03-31 00:00:00": 79.3516672,
+          "2023-03-31 00:00:00": 48.031316600000004
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "8. Short Term Provisions": {
+        "Provision for Taxation": [
+          179.27262,
+          692.25399,
+          "Checked in last year FS TB also"
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      }
+    },
+    "fixed_assets": {
+      "tangible_assets": {
+        "": {
+          "gross_carrying_value": {
+            "opening": 71.9141047,
+            "additions": 0,
+            "deletions": 0,
+            "closing": 71.9141047
+          },
+          "accumulated_depreciation": {
+            "opening": 8.78968,
+            "for_the_year": 8.5632,
+            "deletions": 0,
+            "closing": 17.35288
+          },
+          "net_carrying_value": {
+            "closing": 54.5612247,
+            "opening": 63.12442469999999
+          }
+        }
+      },
+      "intangible_assets": {
+        "": {
+          "gross_carrying_value": {
+            "opening": 21.09198,
+            "additions": 17.71303,
+            "deletions": null,
+            "closing": 38.805009999999996
+          },
+          "accumulated_depreciation": {
+            "opening": 15.02913,
+            "for_the_year": 1.88706,
+            "deletions": 0,
+            "closing": 16.91619
+          },
+          "net_carrying_value": {
+            "closing": 21.888819999999996,
+            "opening": 6.062849999999999
+          }
+        }
+      },
+      "totals": {}
+    },
+    "current_assets": {
+      "11. Inventories": {
+        "Consumables": {
+          "2024-03-31 00:00:00": 9.9217,
+          "2023-03-31 00:00:00": 10.13265
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "12. Trade receivables": {
+        "Outstanding for a period exceeding six months from the date they are due for payment": {
+          "2024-03-31 00:00:00": 769.7080509,
+          "2023-03-31 00:00:00": 932.93111
+        },
+        "Other receivables": {
+          "2024-03-31 00:00:00": 64.0810122,
+          "2023-03-31 00:00:00": 104.85535859999999
+        },
+        "Particulars": {
+          "2024-03-31 00:00:00": "Outstanding for following periods from due date of payment",
+          "2023-03-31 00:00:00": "Total"
+        },
+        "- Considered good": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "- Considered doubtful": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "Total": [
+          932.93485,
+          104.85535859999999,
+          0,
+          0,
+          0,
+          1037.7902086
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "13. Cash and bank balances": {
+        "Balances with banks in current accounts": {
+          "2024-03-31 00:00:00": 188.4338718,
+          "2023-03-31 00:00:00": 564.509016
+        },
+        "Cash on hand": {
+          "2024-03-31 00:00:00": 3.68228,
+          "2023-03-31 00:00:00": 3.87068
+        },
+        "Fixed Deposits with ICICI Bank": {
+          "2024-03-31 00:00:00": 402.98954,
+          "2023-03-31 00:00:00": 554.06937
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "trade_receivables_aging": {
+        "2024": {
+          "0_6_months": 0,
+          "6_12_months": 0,
+          "1_2_years": 0,
+          "2_3_years": 0,
+          "more_than_3_years": 0,
+          "total": 0
+        },
+        "2023": {
+          "0_6_months": 0,
+          "6_12_months": 0,
+          "1_2_years": 0,
+          "2_3_years": 0,
+          "more_than_3_years": 0,
+          "total": 0
+        }
+      }
+    },
+    "loans_and_advances": {
+      "10. Long Term Loans and advances": {
+        "Long Term - Security Deposits": {
+          "2024-03-31 00:00:00": 81.80887,
+          "2023-03-31 00:00:00": 66.46452
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "14. Short Term Loans and Advances": {
+        "Prepaid Expenses": {
+          "2024-03-31 00:00:00": 15.89845,
+          "2023-03-31 00:00:00": 12.67096
+        },
+        "Other Advances": {
+          "2024-03-31 00:00:00": 256.65531,
+          "2023-03-31 00:00:00": 5.16976
+        },
+        "Advance tax": {
+          "2024-03-31 00:00:00": 112.85077,
+          "2023-03-31 00:00:00": 251.3
+        },
+        "Balances with statutory/government authorities": {
+          "2024-03-31 00:00:00": 117.8588135,
+          "2023-03-31 00:00:00": 520.1340734
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      }
+    },
+    "other_data": {
+      "15. Other Current Assets": {
+        "Interest accrued on fixed deposits": {
+          "2024-03-31 00:00:00": 2.18107,
+          "2023-03-31 00:00:00": 1.01368
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "5. Deferred Tax Liability / (Asset)": {
+        "Deferred tax liability": {
+          "2024-03-31 00:00:00": 49,
+          "2023-03-31 00:00:00": 43.18647
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      }
+    }
+  }
+}

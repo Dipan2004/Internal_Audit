@@ -1,0 +1,84 @@
+{
+  "global_config": {
+    "description": "Financial data extraction configuration",
+    "version": "1.0",
+    "data_key": "balance_sheet_data"
+  },
+  "output_template": {
+    "extraction_info": {
+      "total_items_extracted": 0,
+      "extraction_timestamp": "",
+      "source_file": "",
+      "config_version": "1.0"
+    },
+    "balance_sheet_data": []
+  },
+  "extraction_rules": [
+    {
+      "rule_name": "Share Capital",
+      "paths": [
+        "company_financial_data.share_capital.Total issued, subscribed and fully paid-up share capital",
+        "*.share_capital.*",
+        "**.share_capital"
+      ],
+      "extractor": "date_values",
+      "aggregation": "first",
+      "output_key": "Share Capital",
+      "note_number": "2",
+      "description": "Total issued and paid-up share capital"
+    },
+    {
+      "rule_name": "Reserves and Surplus",
+      "paths": [
+        "company_financial_data.reserves_and_surplus.Balance, at the end of the year",
+        "*.reserves_and_surplus.*end*",
+        "**.reserves**balance"
+      ],
+      "extractor": "date_values",
+      "aggregation": "first",
+      "output_key": "Reserves and Surplus",
+      "note_number": "3",
+      "description": "Accumulated reserves and surplus"
+    },
+    {
+      "rule_name": "Trade Receivables",
+      "paths": [
+        "company_financial_data.current_assets.*.Trade receivables.*",
+        "**.trade*receivables**",
+        "**.receivables**"
+      ],
+      "extractor": "nested_sum",
+      "aggregation": "sum",
+      "output_key": "Trade Receivables",
+      "note_number": "12",
+      "description": "Total trade receivables"
+    },
+    {
+      "rule_name": "Cash and Bank Balances",
+      "paths": [
+        "company_financial_data.current_assets.*.Cash and bank balances.*",
+        "**.cash**",
+        "**.bank**balances"
+      ],
+      "extractor": "nested_sum",
+      "aggregation": "sum",
+      "output_key": "Cash and Bank Balances",
+      "note_number": "13",
+      "description": "Total cash and bank balances"
+    },
+    {
+      "rule_name": "Fixed Assets",
+      "paths": [
+        "company_financial_data.fixed_assets.**.net_carrying_value.closing",
+        "**.fixed_assets**",
+        "**.tangible_assets**",
+        "**.intangible_assets**"
+      ],
+      "extractor": "sum_all",
+      "aggregation": "sum",
+      "output_key": "Fixed Assets",
+      "note_number": "9",
+      "description": "Total fixed assets net value"
+    }
+  ]
+}
