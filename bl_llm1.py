@@ -118,6 +118,28 @@ class EnhancedBalanceSheetGenerator:
         except:
             return 0.0
 
+    def get_value_flexible(self, data, date_key_2024="2024-03-31 00:00:00", date_key_2023="2023-03-31 00:00:00"):
+        """
+        Flexibly extract values from either list or dictionary format
+        Returns tuple (value_2024, value_2023)
+        """
+        if isinstance(data, dict):
+            # Dictionary format - extract by date keys
+            val_2024 = self.safe_float(data.get(date_key_2024, 0))
+            val_2023 = self.safe_float(data.get(date_key_2023, 0))
+            return val_2024, val_2023
+        
+        elif isinstance(data, list):
+            # List format - assume first element is 2024, second is 2023
+            val_2024 = self.safe_float(data[0]) if len(data) > 0 else 0.0
+            val_2023 = self.safe_float(data[1]) if len(data) > 1 else 0.0
+            return val_2024, val_2023
+        
+        else:
+            # Single value or other format
+            val = self.safe_float(data)
+            return val, 0.0  # Assume it's 2024 value, 2023 is 0
+
     def call_ai_for_analysis(self, data_summary: str) -> dict:
         """Use AI to analyze and extract balance sheet data"""
         
@@ -206,7 +228,7 @@ Return ONLY this JSON format:
             return {"balance_sheet_items": [], "totals": {}}
 
     def extract_from_json_structure(self, json_data: dict) -> list:
-        """Direct extraction from the structured JSON data"""
+        """Direct extraction from the structured JSON data with flexible list/dict support"""
         items = []
         
         company_data = json_data.get("company_financial_data", {})
@@ -215,8 +237,7 @@ Return ONLY this JSON format:
         share_capital = company_data.get("share_capital", {})
         total_share_capital = share_capital.get("Total issued, subscribed and fully paid-up share capital", {})
         if total_share_capital:
-            val_2024 = self.safe_float(total_share_capital.get("2024-03-31 00:00:00", 0))
-            val_2023 = self.safe_float(total_share_capital.get("2023-03-31 00:00:00", 0))
+            val_2024, val_2023 = self.get_value_flexible(total_share_capital)
             if val_2024 or val_2023:
                 items.append({
                     "category": "Shareholders' funds",
@@ -230,8 +251,7 @@ Return ONLY this JSON format:
         reserves = company_data.get("reserves_and_surplus", {})
         closing_balance = reserves.get("Balance, at the end of the year", {})
         if closing_balance:
-            val_2024 = self.safe_float(closing_balance.get("2024-03-31 00:00:00", 0))
-            val_2023 = self.safe_float(closing_balance.get("2023-03-31 00:00:00", 0))
+            val_2024, val_2023 = self.get_value_flexible(closing_balance)
             if val_2024 or val_2023:
                 items.append({
                     "category": "Shareholders' funds",
@@ -247,13 +267,10 @@ Return ONLY this JSON format:
         total_borrowings_2023 = 0
         
         for key, value in borrowings.items():
-            if key != "_metadata" and isinstance(value, (list, dict)):
-                if isinstance(value, list) and len(value) >= 2:
-                    total_borrowings_2024 += self.safe_float(value[0])
-                    total_borrowings_2023 += self.safe_float(value[1])
-                elif isinstance(value, dict):
-                    total_borrowings_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                    total_borrowings_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                total_borrowings_2024 += val_2024
+                total_borrowings_2023 += val_2023
         
         if total_borrowings_2024 or total_borrowings_2023:
             items.append({
@@ -268,8 +285,7 @@ Return ONLY this JSON format:
         deferred_tax = company_data.get("other_data", {}).get("5. Deferred Tax Liability / (Asset)", {})
         if deferred_tax:
             dtl = deferred_tax.get("Deferred tax liability", {})
-            val_2024 = self.safe_float(dtl.get("2024-03-31 00:00:00", 0))
-            val_2023 = self.safe_float(dtl.get("2023-03-31 00:00:00", 0))
+            val_2024, val_2023 = self.get_value_flexible(dtl)
             if val_2024 or val_2023:
                 items.append({
                     "category": "Non-Current liabilities",
@@ -286,13 +302,10 @@ Return ONLY this JSON format:
         trade_payables = current_liabilities.get("6. Trade Payables", {})
         tp_2024 = tp_2023 = 0
         for key, value in trade_payables.items():
-            if key not in ["_metadata", "Particulars", "Disputed dues"] and isinstance(value, dict):
-                tp_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                tp_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
-            elif key == "Total" and isinstance(value, list):
-                # Use the total if available
-                if len(value) >= 5:
-                    tp_2024 = self.safe_float(value[4])  # Last value is usually total
+            if key not in ["_metadata", "Particulars", "Disputed dues"] and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                tp_2024 += val_2024
+                tp_2023 += val_2023
         
         if tp_2024 or tp_2023:
             items.append({
@@ -307,13 +320,10 @@ Return ONLY this JSON format:
         other_cl = current_liabilities.get("7. Other Current Liabilities", {})
         ocl_2024 = ocl_2023 = 0
         for key, value in other_cl.items():
-            if key != "_metadata":
-                if isinstance(value, dict):
-                    ocl_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                    ocl_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
-                elif isinstance(value, list) and len(value) >= 2:
-                    ocl_2024 += self.safe_float(value[0])
-                    ocl_2023 += self.safe_float(value[1])
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                ocl_2024 += val_2024
+                ocl_2023 += val_2023
         
         if ocl_2024 or ocl_2023:
             items.append({
@@ -328,10 +338,10 @@ Return ONLY this JSON format:
         provisions = current_liabilities.get("8. Short Term Provisions", {})
         prov_2024 = prov_2023 = 0
         for key, value in provisions.items():
-            if key != "_metadata":
-                if isinstance(value, list) and len(value) >= 2:
-                    prov_2024 += self.safe_float(value[0])
-                    prov_2023 += self.safe_float(value[1])
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                prov_2024 += val_2024
+                prov_2023 += val_2023
         
         if prov_2024 or prov_2023:
             items.append({
@@ -349,41 +359,54 @@ Return ONLY this JSON format:
         tangible = fixed_assets.get("tangible_assets", {}).get("", {})
         if tangible:
             net_carrying = tangible.get("net_carrying_value", {})
-            val_2024 = self.safe_float(net_carrying.get("closing", 0))
-            val_2023 = self.safe_float(net_carrying.get("opening", 0))
-            if val_2024 or val_2023:
-                items.append({
-                    "category": "Non-current assets",
-                    "subcategory": "Fixed assets",
-                    "name": "Tangible assets",
-                    "note": "9",
-                    "value_2024": val_2024,
-                    "value_2023": val_2023
-                })
+            if net_carrying:
+                # Handle both dict and list formats for net carrying value
+                if isinstance(net_carrying, dict):
+                    val_2024 = self.safe_float(net_carrying.get("closing", 0))
+                    val_2023 = self.safe_float(net_carrying.get("opening", 0))
+                else:
+                    val_2024, val_2023 = self.get_value_flexible(net_carrying)
+                
+                if val_2024 or val_2023:
+                    items.append({
+                        "category": "Non-current assets",
+                        "subcategory": "Fixed assets",
+                        "name": "Tangible assets",
+                        "note": "9",
+                        "value_2024": val_2024,
+                        "value_2023": val_2023
+                    })
 
         # Intangible Assets  
         intangible = fixed_assets.get("intangible_assets", {}).get("", {})
         if intangible:
             net_carrying = intangible.get("net_carrying_value", {})
-            val_2024 = self.safe_float(net_carrying.get("closing", 0))
-            val_2023 = self.safe_float(net_carrying.get("opening", 0))
-            if val_2024 or val_2023:
-                items.append({
-                    "category": "Non-current assets",
-                    "subcategory": "Fixed assets", 
-                    "name": "Intangible assets",
-                    "note": "9",
-                    "value_2024": val_2024,
-                    "value_2023": val_2023
-                })
+            if net_carrying:
+                # Handle both dict and list formats for net carrying value
+                if isinstance(net_carrying, dict):
+                    val_2024 = self.safe_float(net_carrying.get("closing", 0))
+                    val_2023 = self.safe_float(net_carrying.get("opening", 0))
+                else:
+                    val_2024, val_2023 = self.get_value_flexible(net_carrying)
+                
+                if val_2024 or val_2023:
+                    items.append({
+                        "category": "Non-current assets",
+                        "subcategory": "Fixed assets", 
+                        "name": "Intangible assets",
+                        "note": "9",
+                        "value_2024": val_2024,
+                        "value_2023": val_2023
+                    })
 
         # Long Term Loans and Advances
         lt_loans = company_data.get("loans_and_advances", {}).get("10. Long Term Loans and advances", {})
         lt_2024 = lt_2023 = 0
         for key, value in lt_loans.items():
-            if key != "_metadata" and isinstance(value, dict):
-                lt_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                lt_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                lt_2024 += val_2024
+                lt_2023 += val_2023
         
         if lt_2024 or lt_2023:
             items.append({
@@ -401,9 +424,10 @@ Return ONLY this JSON format:
         inventories = current_assets.get("11. Inventories", {})
         inv_2024 = inv_2023 = 0
         for key, value in inventories.items():
-            if key != "_metadata" and isinstance(value, dict):
-                inv_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                inv_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                inv_2024 += val_2024
+                inv_2023 += val_2023
         
         if inv_2024 or inv_2023:
             items.append({
@@ -418,12 +442,10 @@ Return ONLY this JSON format:
         trade_recv = current_assets.get("12. Trade receivables", {})
         tr_2024 = tr_2023 = 0
         for key, value in trade_recv.items():
-            if key not in ["_metadata", "Particulars", "trade_receivables_aging"] and isinstance(value, dict):
-                tr_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                tr_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
-            elif key == "Total" and isinstance(value, list):
-                if len(value) >= 6:
-                    tr_2024 = self.safe_float(value[5])  # Total value
+            if key not in ["_metadata", "Particulars", "trade_receivables_aging"] and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                tr_2024 += val_2024
+                tr_2023 += val_2023
         
         if tr_2024 or tr_2023:
             items.append({
@@ -438,9 +460,10 @@ Return ONLY this JSON format:
         cash_bank = current_assets.get("13. Cash and bank balances", {})
         cb_2024 = cb_2023 = 0
         for key, value in cash_bank.items():
-            if key != "_metadata" and isinstance(value, dict):
-                cb_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                cb_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                cb_2024 += val_2024
+                cb_2023 += val_2023
         
         if cb_2024 or cb_2023:
             items.append({
@@ -455,9 +478,10 @@ Return ONLY this JSON format:
         st_loans = company_data.get("loans_and_advances", {}).get("14. Short Term Loans and Advances", {})
         st_2024 = st_2023 = 0
         for key, value in st_loans.items():
-            if key != "_metadata" and isinstance(value, dict):
-                st_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                st_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                st_2024 += val_2024
+                st_2023 += val_2023
         
         if st_2024 or st_2023:
             items.append({
@@ -472,9 +496,10 @@ Return ONLY this JSON format:
         other_ca = company_data.get("other_data", {}).get("15. Other Current Assets", {})
         oca_2024 = oca_2023 = 0
         for key, value in other_ca.items():
-            if key != "_metadata" and isinstance(value, dict):
-                oca_2024 += self.safe_float(value.get("2024-03-31 00:00:00", 0))
-                oca_2023 += self.safe_float(value.get("2023-03-31 00:00:00", 0))
+            if key != "_metadata" and value is not None:
+                val_2024, val_2023 = self.get_value_flexible(value)
+                oca_2024 += val_2024
+                oca_2023 += val_2023
         
         if oca_2024 or oca_2023:
             items.append({
