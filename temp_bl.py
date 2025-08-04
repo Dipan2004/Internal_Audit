@@ -1,209 +1,406 @@
-class BalanceSheet:
+class BalanceSheetTemplate:
+    
     def __init__(self):
-        self.equity_liabilities = {
-            "Shareholders' funds": {
-                "Share capital": {"note": "2", "2024": 0.0, "2023": 0.0},
-                "Reserves and surplus": {"note": "3", "2024": 0.0, "2023": 0.0}
+        # Complete Balance Sheet Structure Template
+        self.template_structure = [
+           
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Shareholders' funds",
+                "subcategory": "",
+                "name": "Share capital",
+                "note": "2",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
             },
-            "Non-Current liabilities": {
-                "Long term borrowings": {"note": "4", "2024": 0.0, "2023": 0.0},
-                "Deferred Tax Liability (Net)": {"note": "5", "2024": 0.0, "2023": 0.0}
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Shareholders' funds", 
+                "subcategory": "",
+                "name": "Reserves and surplus",
+                "note": "3",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
             },
-            "Current liabilities": {
-                "Trade payables": {"note": "6", "2024": 0.0, "2023": 0.0},
-                "Other current liabilities": {"note": "7", "2024": 0.0, "2023": 0.0},
-                "Short term provisions": {"note": "8", "2024": 0.0, "2023": 0.0}
-            }
-        }
-        
-        self.assets = {
-            "Non-current assets": {
-                "Fixed assets": {
-                    "Tangible assets": {"note": "9", "2024": 0.0, "2023": 0.0},
-                    "Intangible assets": {"note": "9", "2024": 0.0, "2023": 0.0}
-                },
-                "Capital Work in progress": {"note": "", "2024": 0.0, "2023": 0.0},
-                "Long Term Loans and Advances": {"note": "10", "2024": 0.0, "2023": 0.0}
-            },
-            "Current assets": {
-                "Inventories": {"note": "11", "2024": 0.0, "2023": 0.0},
-                "Trade receivables": {"note": "12", "2024": 0.0, "2023": 0.0},
-                "Cash and bank balances": {"note": "13", "2024": 0.0, "2023": 0.0},
-                "Short-term loans and advances": {"note": "14", "2024": 0.0, "2023": 0.0},
-                "Other current assets": {"note": "15", "2024": 0.0, "2023": 0.0}
-            }
-        }
-        
-        # Company information
-        self.company_info = {
-            "name": "Company Name",
-            "year_end": "March 31, 2024",
-            "currency": "In Lakhs",
-            "auditor": "Auditor Name & Associates"
-        }
-    
-    def set_company_info(self, name=None, year_end=None, currency=None, auditor=None):
-        """Update company information"""
-        if name: self.company_info["name"] = name
-        if year_end: self.company_info["year_end"] = year_end
-        if currency: self.company_info["currency"] = currency
-        if auditor: self.company_info["auditor"] = auditor
-    
-    def update_item(self, section, category, item, note=None, val_2024=None, val_2023=None):
-        """Update a specific balance sheet item"""
-        try:
-            if section == "equity_liabilities":
-                target = self.equity_liabilities[category][item]
-            elif section == "assets":
-                if category == "Fixed assets":
-                    target = self.assets["Non-current assets"]["Fixed assets"][item]
-                else:
-                    target = self.assets[category][item]
-            else:
-                return False
             
-            if note is not None: target["note"] = str(note)
-            if val_2024 is not None: target["2024"] = float(val_2024)
-            if val_2023 is not None: target["2023"] = float(val_2023)
-            return True
-        except KeyError:
-            return False
-    
-    def get_totals(self):
-        """Calculate section totals"""
-        totals = {}
+            # Non-Current liabilities
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Non-Current liabilities",
+                "subcategory": "",
+                "name": "Long term borrowings",
+                "note": "4",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Non-Current liabilities",
+                "subcategory": "",
+                "name": "Deferred Tax Liability (Net)",
+                "note": "5",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            
+            # Current liabilities
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Current liabilities",
+                "subcategory": "",
+                "name": "Trade payables",
+                "note": "6",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Current liabilities",
+                "subcategory": "",
+                "name": "Other current liabilities", 
+                "note": "7",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "EQUITY AND LIABILITIES",
+                "category": "Current liabilities",
+                "subcategory": "",
+                "name": "Short term provisions",
+                "note": "8",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            
+            # ASSETS
+            # ======
+            
+            # Non-current assets - Fixed assets
+            {
+                "section": "ASSETS",
+                "category": "Non-current assets",
+                "subcategory": "Fixed assets",
+                "name": "Tangible assets",
+                "note": "9",
+                "indent_level": 2,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "ASSETS",
+                "category": "Non-current assets",
+                "subcategory": "Fixed assets", 
+                "name": "Intangible assets",
+                "note": "9",
+                "indent_level": 2,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            
+            # Non-current assets - Other
+            {
+                "section": "ASSETS",
+                "category": "Non-current assets",
+                "subcategory": "",
+                "name": "Long Term Loans and Advances",
+                "note": "10",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            
+            # Current assets
+            {
+                "section": "ASSETS",
+                "category": "Current assets",
+                "subcategory": "",
+                "name": "Inventories",
+                "note": "11",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "ASSETS",
+                "category": "Current assets",
+                "subcategory": "",
+                "name": "Trade receivables",
+                "note": "12",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "ASSETS",
+                "category": "Current assets",
+                "subcategory": "",
+                "name": "Cash and bank balances",
+                "note": "13",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "ASSETS",
+                "category": "Current assets",
+                "subcategory": "",
+                "name": "Short-term loans and advances",
+                "note": "14",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            },
+            {
+                "section": "ASSETS", 
+                "category": "Current assets",
+                "subcategory": "",
+                "name": "Other current assets",
+                "note": "15",
+                "indent_level": 1,
+                "is_total_row": False,
+                "is_section_header": False,
+                "is_category_header": False
+            }
+        ]
         
-        # Shareholders' funds total
-        sf_2024 = sum(item["2024"] for item in self.equity_liabilities["Shareholders' funds"].values())
-        sf_2023 = sum(item["2023"] for item in self.equity_liabilities["Shareholders' funds"].values())
-        totals["shareholders_funds"] = {"2024": sf_2024, "2023": sf_2023}
-        
-        # Non-current liabilities total
-        ncl_2024 = sum(item["2024"] for item in self.equity_liabilities["Non-Current liabilities"].values())
-        ncl_2023 = sum(item["2023"] for item in self.equity_liabilities["Non-Current liabilities"].values())
-        totals["non_current_liabilities"] = {"2024": ncl_2024, "2023": ncl_2023}
-        
-        # Current liabilities total
-        cl_2024 = sum(item["2024"] for item in self.equity_liabilities["Current liabilities"].values())
-        cl_2023 = sum(item["2023"] for item in self.equity_liabilities["Current liabilities"].values())
-        totals["current_liabilities"] = {"2024": cl_2024, "2023": cl_2023}
-        
-        # Total equity and liabilities
-        total_eq_liab_2024 = sf_2024 + ncl_2024 + cl_2024
-        total_eq_liab_2023 = sf_2023 + ncl_2023 + cl_2023
-        totals["total_equity_liabilities"] = {"2024": total_eq_liab_2024, "2023": total_eq_liab_2023}
-        
-        # Fixed assets total
-        fa_2024 = sum(item["2024"] for item in self.assets["Non-current assets"]["Fixed assets"].values())
-        fa_2023 = sum(item["2023"] for item in self.assets["Non-current assets"]["Fixed assets"].values())
-        
-        # Non-current assets total (including fixed assets)
-        nca_other_2024 = (self.assets["Non-current assets"]["Capital Work in progress"]["2024"] + 
-                         self.assets["Non-current assets"]["Long Term Loans and Advances"]["2024"])
-        nca_other_2023 = (self.assets["Non-current assets"]["Capital Work in progress"]["2023"] + 
-                         self.assets["Non-current assets"]["Long Term Loans and Advances"]["2023"])
-        
-        nca_2024 = fa_2024 + nca_other_2024
-        nca_2023 = fa_2023 + nca_other_2023
-        totals["non_current_assets"] = {"2024": nca_2024, "2023": nca_2023}
-        
-        # Current assets total
-        ca_2024 = sum(item["2024"] for item in self.assets["Current assets"].values())
-        ca_2023 = sum(item["2023"] for item in self.assets["Current assets"].values())
-        totals["current_assets"] = {"2024": ca_2024, "2023": ca_2023}
-        
-        # Total assets
-        total_assets_2024 = nca_2024 + ca_2024
-        total_assets_2023 = nca_2023 + ca_2023
-        totals["total_assets"] = {"2024": total_assets_2024, "2023": total_assets_2023}
-        
-        # Balance check
-        totals["balanced"] = {
-            "2024": abs(total_assets_2024 - total_eq_liab_2024) < 0.01,
-            "2023": abs(total_assets_2023 - total_eq_liab_2023) < 0.01
+        # Define the display structure and formatting rules
+        self.formatting_rules = {
+            "header": {
+                "title": "Balance Sheet as at March 31, 2024",
+                "currency_note": "(In Lakhs)",
+                "column_headers": ["", "Notes", "March 31, 2024", "March 31, 2023"]
+            },
+            "sections": {
+                "EQUITY AND LIABILITIES": {
+                    "display_name": "EQUITY AND LIABILITIES",
+                    "order": 1
+                },
+                "ASSETS": {
+                    "display_name": "ASSETS", 
+                    "order": 2
+                }
+            },
+            "categories": {
+                "Shareholders' funds": {
+                    "display_name": "Shareholders' funds",
+                    "show_total": True,
+                    "total_label": "",
+                    "order": 1
+                },
+                "Non-Current liabilities": {
+                    "display_name": "Non-Current liabilities",
+                    "show_total": True,
+                    "total_label": "",
+                    "order": 2
+                },
+                "Current liabilities": {
+                    "display_name": "Current liabilities", 
+                    "show_total": True,
+                    "total_label": "",
+                    "order": 3
+                },
+                "Non-current assets": {
+                    "display_name": "Non-current assets",
+                    "show_total": True, 
+                    "total_label": "",
+                    "order": 4
+                },
+                "Current assets": {
+                    "display_name": "Current assets",
+                    "show_total": True,
+                    "total_label": "",
+                    "order": 5
+                }
+            },
+            "subcategories": {
+                "Fixed assets": {
+                    "display_name": "Fixed assets",
+                    "show_total": True,
+                    "total_label": "",
+                    "parent_category": "Non-current assets"
+                }
+            },
+            "totals": {
+                "TOTAL_EQUITY_LIABILITIES": {
+                    "display_name": "TOTAL",
+                    "position": "after_equity_liabilities",
+                    "is_grand_total": True
+                },
+                "TOTAL_ASSETS": {
+                    "display_name": "TOTAL", 
+                    "position": "after_assets",
+                    "is_grand_total": True
+                }
+            }
         }
         
-        return totals
-    
-    def validate_balance(self):
-        """Check if balance sheet is balanced"""
-        totals = self.get_totals()
-        return totals["balanced"]["2024"] and totals["balanced"]["2023"]
-    
-    def to_dict(self):
-        """Convert balance sheet to dictionary format"""
-        return {
-            "company_info": self.company_info,
-            "equity_liabilities": self.equity_liabilities,
-            "assets": self.assets,
-            "totals": self.get_totals()
+        # Field mapping patterns for data extraction
+        self.field_mappings = {
+            'share_capital': [
+                'share capital', 'equity share', 'paid up', 'issued shares', 
+                'authorised shares', 'subscribed', 'fully paid'
+            ],
+            'reserves_surplus': [
+                'reserves and surplus', 'reserves', 'surplus', 'retained earnings',
+                'profit and loss', 'general reserves', 'closing balance'
+            ],
+            'long_term_borrowings': [
+                'long term borrowings', 'long-term borrowings', 'borrowings',
+                'debt', 'loans', 'financial corporation', 'bank loan'
+            ],
+            'deferred_tax': [
+                'deferred tax', 'tax liability', 'deferred tax liability'
+            ],
+            'trade_payables': [
+                'trade payables', 'payables', 'creditors', 'sundry creditors',
+                'capital expenditure', 'other expenses'
+            ],
+            'other_current_liabilities': [
+                'other current liabilities', 'current maturities', 'outstanding liabilities',
+                'statutory dues', 'accrued expenses'
+            ],
+            'short_term_provisions': [
+                'short term provisions', 'provisions', 'provision for taxation',
+                'tax provision'
+            ],
+            'tangible_assets': [
+                'tangible assets', 'property plant', 'fixed assets', 'buildings',
+                'plant', 'equipment', 'net carrying value'
+            ],
+            'intangible_assets': [
+                'intangible assets', 'software', 'goodwill', 'intangible'
+            ],
+            'long_term_loans_advances': [
+                'long term loans', 'security deposits', 'long term advances'
+            ],
+            'inventories': [
+                'inventories', 'stock', 'consumables', 'raw materials'
+            ],
+            'trade_receivables': [
+                'trade receivables', 'receivables', 'debtors', 'outstanding',
+                'other receivables'
+            ],
+            'cash_bank': [
+                'cash and bank', 'cash', 'bank balances', 'current accounts',
+                'cash on hand', 'fixed deposits'
+            ],
+            'short_term_loans_advances': [
+                'short term loans', 'prepaid expenses', 'other advances',
+                'advance tax', 'statutory authorities'
+            ],
+            'other_current_assets': [
+                'other current assets', 'accrued income', 'interest accrued'
+            ]
         }
     
-    def from_dict(self, data):
-        """Load balance sheet from dictionary"""
-        if "company_info" in data:
-            self.company_info.update(data["company_info"])
-        if "equity_liabilities" in data:
-            self.equity_liabilities = data["equity_liabilities"]
-        if "assets" in data:
-            self.assets = data["assets"]
+    def get_template_structure(self):
+        """Return the complete template structure"""
+        return self.template_structure.copy()
     
-    def print_summary(self):
-        """Print a summary of the balance sheet"""
-        totals = self.get_totals()
-        print(f"\n{'='*50}")
-        print(f"BALANCE SHEET SUMMARY - {self.company_info['year_end']}")
-        print(f"{'='*50}")
-        print(f"Currency: {self.company_info['currency']}")
-        print(f"\nASSETS:")
-        print(f"  Non-current assets: ₹{totals['non_current_assets']['2024']:,.2f}")
-        print(f"  Current assets: ₹{totals['current_assets']['2024']:,.2f}")
-        print(f"  TOTAL ASSETS: ₹{totals['total_assets']['2024']:,.2f}")
-        print(f"\nEQUITY & LIABILITIES:")
-        print(f"  Shareholders' funds: ₹{totals['shareholders_funds']['2024']:,.2f}")
-        print(f"  Non-current liabilities: ₹{totals['non_current_liabilities']['2024']:,.2f}")
-        print(f"  Current liabilities: ₹{totals['current_liabilities']['2024']:,.2f}")
-        print(f"  TOTAL EQUITY & LIABILITIES: ₹{totals['total_equity_liabilities']['2024']:,.2f}")
-        print(f"\nBALANCE CHECK: {'✅ BALANCED' if self.validate_balance() else '❌ NOT BALANCED'}")
-        print(f"{'='*50}")
+    def get_formatting_rules(self):
+        """Return the formatting rules"""
+        return self.formatting_rules.copy()
+    
+    def get_field_mappings(self):
+        """Return the field mapping patterns"""
+        return self.field_mappings.copy()
+    
+    def get_categories(self):
+        """Get unique categories from template"""
+        categories = []
+        seen = set()
+        for item in self.template_structure:
+            cat = item["category"]
+            if cat not in seen:
+                categories.append(cat)
+                seen.add(cat)
+        return categories
+    
+    def get_items_by_category(self, category):
+        """Get all items for a specific category"""
+        return [item for item in self.template_structure if item["category"] == category]
+    
+    def get_items_by_section(self, section):
+        """Get all items for a specific section"""
+        return [item for item in self.template_structure if item["section"] == section]
+    
+    def get_subcategories(self, category):
+        """Get subcategories for a specific category"""
+        subcats = set()
+        for item in self.template_structure:
+            if item["category"] == category and item["subcategory"]:
+                subcats.add(item["subcategory"])
+        return list(subcats)
 
-# Example usage and testing
-if __name__ == "__main__":
-    # Create a balance sheet instance
-    bs = BalanceSheet()
-    
-    # Set company information
-    bs.set_company_info(
-        name="Siva Parvathi & Associates",
-        year_end="March 31, 2024",
-        currency="In Lakhs",
-        auditor="M/s Siva Parvathi & Associates"
-    )
-    
-    # Update some sample values (from your image)
-    bs.update_item("equity_liabilities", "Shareholders' funds", "Share capital", "2", 542.52, 542.52)
-    bs.update_item("equity_liabilities", "Shareholders' funds", "Reserves and surplus", "3", 3152.39, 2642.90)
-    bs.update_item("equity_liabilities", "Non-Current liabilities", "Long term borrowings", "4", 914.46, 321.36)
-    bs.update_item("equity_liabilities", "Non-Current liabilities", "Deferred Tax Liability (Net)", "5", 49.00, 43.19)
-    bs.update_item("equity_liabilities", "Current liabilities", "Trade payables", "6", 147.01, 138.90)
-    bs.update_item("equity_liabilities", "Current liabilities", "Other current liabilities", "7", 261.45, 344.12)
-    bs.update_item("equity_liabilities", "Current liabilities", "Short term provisions", "8", 179.27, 692.25)
-    
-    bs.update_item("assets", "Non-current assets", "Tangible assets", "9", 3133.39, 1692.05)
-    bs.update_item("assets", "Non-current assets", "Intangible assets", "9", 21.89, 6.06)
-    bs.update_item("assets", "Capital Work in progress", "Capital Work in progress", "", 65.22, 0.0)
-    bs.update_item("assets", "Long Term Loans and Advances", "Long Term Loans and Advances", "10", 81.81, 66.46)
-    
-    bs.update_item("assets", "Current assets", "Inventories", "11", 9.92, 10.13)
-    bs.update_item("assets", "Current assets", "Trade receivables", "12", 833.79, 1037.70)
-    bs.update_item("assets", "Current assets", "Cash and bank balances", "13", 595.11, 1122.45)
-    bs.update_item("assets", "Current assets", "Short-term loans and advances", "14", 503.26, 789.27)
-    bs.update_item("assets", "Current assets", "Other current assets", "15", 2.18, 1.01)
-    
-    # Print summary
-    bs.print_summary()
-    
-    # Test individual functions
-    share_capital = bs.equity_liabilities["Shareholders' funds"]["Share capital"]["2024"]
-    print(f"\nShare Capital 2024: ₹{share_capital}")
-    print(f"Is Balanced: {bs.validate_balance()}")
+
+# For backward compatibility - alias the class
+BalanceSheet = BalanceSheetTemplate
+
+# Alternative access - Module level constants
+BALANCE_SHEET_SECTIONS = ["EQUITY AND LIABILITIES", "ASSETS"]
+
+BALANCE_SHEET_CATEGORIES = [
+    "Shareholders' funds",
+    "Non-Current liabilities",
+    "Current liabilities",
+    "Non-current assets",
+    "Current assets"
+]
+
+STANDARD_NOTES_MAPPING = {
+    "Share capital": "2",
+    "Reserves and surplus": "3",
+    "Long term borrowings": "4", 
+    "Deferred Tax Liability (Net)": "5",
+    "Trade payables": "6",
+    "Other current liabilities": "7",
+    "Short term provisions": "8",
+    "Tangible assets": "9",
+    "Intangible assets": "9", 
+    "Long Term Loans and Advances": "10",
+    "Inventories": "11",
+    "Trade receivables": "12",
+    "Cash and bank balances": "13",
+    "Short-term loans and advances": "14",
+    "Other current assets": "15"
+}
+
+# Quick access template for simple use cases
+SIMPLE_TEMPLATE = [
+    {"category": "Shareholders' funds", "name": "Share capital", "note": "2"},
+    {"category": "Shareholders' funds", "name": "Reserves and surplus", "note": "3"},
+    {"category": "Non-Current liabilities", "name": "Long term borrowings", "note": "4"},
+    {"category": "Non-Current liabilities", "name": "Deferred Tax Liability (Net)", "note": "5"},
+    {"category": "Current liabilities", "name": "Trade payables", "note": "6"},
+    {"category": "Current liabilities", "name": "Other current liabilities", "note": "7"},
+    {"category": "Current liabilities", "name": "Short term provisions", "note": "8"},
+    {"category": "Non-current assets", "subcategory": "Fixed assets", "name": "Tangible assets", "note": "9"},
+    {"category": "Non-current assets", "subcategory": "Fixed assets", "name": "Intangible assets", "note": "9"},
+    {"category": "Non-current assets", "name": "Long Term Loans and Advances", "note": "10"},
+    {"category": "Current assets", "name": "Inventories", "note": "11"},
+    {"category": "Current assets", "name": "Trade receivables", "note": "12"},
+    {"category": "Current assets", "name": "Cash and bank balances", "note": "13"},
+    {"category": "Current assets", "name": "Short-term loans and advances", "note": "14"},
+    {"category": "Current assets", "name": "Other current assets", "note": "15"}
+]
