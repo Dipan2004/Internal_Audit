@@ -5,6 +5,8 @@ from openpyxl.styles import Font, Border, Side, Alignment
 from openpyxl.utils import get_column_letter
 from datetime import datetime
 
+
+
 def load_data(file_path):
     """Load data from a JSON file with error handling."""
     try:
