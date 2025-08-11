@@ -5,6 +5,7 @@ from openpyxl.styles import Font, Border, Side, Alignment
 from openpyxl.utils import get_column_letter
 from datetime import datetime
 
+
 def load_note_data(note_number, folder="generated_notes"):
     """Load note data from JSON file in the specified folder."""
     file_path = os.path.join(folder, f"note_{note_number}.json")
