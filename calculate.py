@@ -6,7 +6,7 @@ import os
 
 class FinancialDataExtractor:
     def __init__(self, json_data):
-        """Initialize with the raw company financial data JSON"""
+        
         if isinstance(json_data, str):
             self.raw_data = json.loads(json_data)
         else:
