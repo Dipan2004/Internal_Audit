@@ -18,7 +18,7 @@ class FinancialDataExtractor:
         self.extracted_data = {}
     
     def safe_get_value(self, data_dict, *path_parts, year=None, default=0):
-        """Safely extract values from nested dictionary"""
+        
         try:
             current = data_dict
             for part in path_parts:
@@ -33,7 +33,7 @@ class FinancialDataExtractor:
             elif isinstance(current, (int, float)):
                 return float(current)
             elif isinstance(current, list) and len(current) > 0:
-                # For lists, try to extract numeric values
+                
                 for item in current:
                     if isinstance(item, (int, float)):
                         return float(item)
@@ -44,7 +44,7 @@ class FinancialDataExtractor:
             return default
     
     def extract_profit_and_loss_data(self):
-        """Extract P&L related data for CFS calculations"""
+        
         pl_data = {}
         
         # Profit after tax (Note 28)
