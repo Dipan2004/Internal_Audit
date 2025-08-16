@@ -5,7 +5,7 @@ from datetime import datetime
 
 class CashFlowStatementGenerator:
     def __init__(self, extracted_data_file=None, extracted_data=None):
-        """Initialize with extracted financial data"""
+        
         if extracted_data_file:
             with open(extracted_data_file, 'r') as f:
                 self.data = json.load(f)
@@ -15,7 +15,7 @@ class CashFlowStatementGenerator:
             raise ValueError("Either extracted_data_file or extracted_data must be provided")
     
     def format_amount(self, amount):
-        """Format amount for display - return numeric value, formatting handled by Excel"""
+        
         if amount is None or amount == '' or amount == '-':
             return 0
         
@@ -35,8 +35,6 @@ class CashFlowStatementGenerator:
         # Create the cash flow statement data
         cfs_data = []
         
-        # ==========================================
-        # CASH FLOW FROM OPERATING ACTIVITIES
         # ==========================================
         
         # Profit before taxation
