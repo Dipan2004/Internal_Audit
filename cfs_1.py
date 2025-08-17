@@ -32,7 +32,6 @@ class CashFlowStatementGenerator:
         fin_data = self.data['financing_activities']
         cash_data = self.data['cash_and_equivalents']
         
-        # Create the cash flow statement data
         cfs_data = []
         
         # ==========================================
