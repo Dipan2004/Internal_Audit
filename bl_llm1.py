@@ -21,7 +21,7 @@ class EnhancedBalanceSheetGenerator:
         self.api_key = api_key
         self.base_url = "https://openrouter.ai/api/v1/chat/completions"
         
-        # Enhanced mapping with multiple patterns
+        
         self.field_mappings = {
             # Share Capital patterns
             'share_capital': [
