@@ -1,0 +1,366 @@
+{
+  "company_financial_data": {
+    "processing_summary": {
+      "total_files": 1,
+      "processing_date": "2025-08-23T15:31:41.814536",
+      "processed_files": [
+        "Note_16_to_23_Full.csv"
+      ]
+    },
+    "share_capital": {},
+    "reserves_and_surplus": {},
+    "borrowings": {},
+    "current_liabilities": {},
+    "fixed_assets": {},
+    "current_assets": {},
+    "loans_and_advances": {},
+    "other_data": {
+      "16. Revenue from Operations": {
+        "Domestic": {
+          "2024-03-31 00:00:00": 1851.0968362,
+          "2023-03-31 00:00:00": 2696.58147
+        },
+        "Exports": {
+          "2024-03-31 00:00:00": 1457.487792,
+          "2023-03-31 00:00:00": 1576.5099475
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "17. Other income": {
+        "Interest income": {
+          "2024-03-31 00:00:00": 30.02825,
+          "2023-03-31 00:00:00": 23.89011
+        },
+        "Foreign exchange gain (Net)": {
+          "2024-03-31 00:00:00": 89.7518716,
+          "2023-03-31 00:00:00": 68.7249753
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "18. Cost of materials consumed": {
+        "Opening stock": {
+          "2024-03-31 00:00:00": 10.13265,
+          "2023-03-31 00:00:00": 11.4616
+        },
+        "Add: Purchases": {
+          "2024-03-31 00:00:00": 239.6761451,
+          "2023-03-31 00:00:00": 402.55620719999996
+        },
+        "Less: Closing stock": {
+          "2024-03-31 00:00:00": 9.9217,
+          "2023-03-31 00:00:00": 10.13265
+        },
+        "Cost of materials consumed": {
+          "2024-03-31 00:00:00": 239.88709510000004,
+          "2023-03-31 00:00:00": 403.8851572
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "19. Employee benefit expense": {
+        "Salaries, wages and bonus": [
+          822.17814,
+          823.8120288,
+          "EPF",
+          5389792.0
+        ],
+        "Contribution to PF & ESI": [
+          57.82558,
+          27.13278,
+          "ESI",
+          392766.0
+        ],
+        "Staff welfare expenses": [
+          9.8749916,
+          13.843275,
+          5782558.0,
+          "reducing from Salaries"
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "20. Other expenses": {
+        "BA / BE NOC Charges": {
+          "2024-03-31 00:00:00": 74.14,
+          "2023-03-31 00:00:00": 55.26363
+        },
+        "BA Expenses": {
+          "2024-03-31 00:00:00": 1.8368238000000001,
+          "2023-03-31 00:00:00": 0
+        },
+        "Payments to Volunteers": {
+          "2024-03-31 00:00:00": 308.76459,
+          "2023-03-31 00:00:00": 591.9919095
+        },
+        "Other Operating Expenses": {
+          "2024-03-31 00:00:00": 175.81341310000002,
+          "2023-03-31 00:00:00": 231.605269
+        },
+        "Laboratory testing charges": {
+          "2024-03-31 00:00:00": 35.01405,
+          "2023-03-31 00:00:00": 60.29296
+        },
+        "Rent": {
+          "2024-03-31 00:00:00": 201.56551,
+          "2023-03-31 00:00:00": 143.69435
+        },
+        "Rates & Taxes": {
+          "2024-03-31 00:00:00": 1.0217,
+          "2023-03-31 00:00:00": 0.3307316
+        },
+        "Fees & licenses": {
+          "2024-03-31 00:00:00": 1.6744,
+          "2023-03-31 00:00:00": 1.5664
+        },
+        "Insurance": [
+          2.5668498,
+          2.8074586,
+          0.0933222585175281,
+          0.1385394908883903
+        ],
+        "Membership & Subscription Charges": [
+          0.3312,
+          1.692,
+          4854600.0,
+          7424501,
+          "Study food expenses"
+        ],
+        "Postage & Communication Cost": [
+          0.11910200000000001,
+          0.63432,
+          6.360247806204425e-05,
+          7.973490871642418e-05,
+          "SF Vs Volunteers"
+        ],
+        "Printing and stationery": [
+          24.1954229,
+          33.6403124,
+          1467.273939019989,
+          1737.5010910353406,
+          "SF Vs Revenue"
+        ],
+        "CSR Fund Expenses": {
+          "2024-03-31 00:00:00": 24.70922,
+          "2023-03-31 00:00:00": 13.39841
+        },
+        "Telephone & Internet": [
+          3.3597802000000003,
+          2.7140503999999996,
+          "CWIP a/c      Dr",
+          6521806.4
+        ],
+        "Travelling and Conveyance": [
+          1.33986,
+          0.53803,
+          "To Civil works",
+          3599587.4,
+          "Transferred to Balance sheet"
+        ],
+        "Translation Charges": [
+          3.51574,
+          0,
+          "To Repairs & maintenance",
+          1469755.0
+        ],
+        "Electricity Charges": [
+          106.27931539999999,
+          115.18647,
+          "To Electricity charges",
+          315392.0
+        ],
+        "Security Charges": [
+          11.73753,
+          9.90744,
+          "To Electrical expenses",
+          858703.0
+        ],
+        "Annual Maintenance Charges": [
+          26.36798,
+          34.13233,
+          "To Plumbing expenses",
+          278369.0
+        ],
+        "- Electrical": {
+          "2024-03-31 00:00:00": 5.2733621,
+          "2023-03-31 00:00:00": 2.7825734000000004
+        },
+        "- Office": {
+          "2024-03-31 00:00:00": 46.0102925,
+          "2023-03-31 00:00:00": 48.438904400000006
+        },
+        "- Machinery": {
+          "2024-03-31 00:00:00": 2.9768041999999992,
+          "2023-03-31 00:00:00": 10.318571
+        },
+        "- Vehicles": 1.8283470000000002,
+        "- Others": 4.1043752,
+        "Business Development Expenses": {
+          "2024-03-31 00:00:00": 48.6195041,
+          "2023-03-31 00:00:00": 38.9486005
+        },
+        "Professional & Consultancy Fees": {
+          "2024-03-31 00:00:00": 23.78041,
+          "2023-03-31 00:00:00": 48.09414
+        },
+        "Payment to Auditors*": {
+          "2024-03-31 00:00:00": 0.35,
+          "2023-03-31 00:00:00": 0.35
+        },
+        "Bad Debts Written Off": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 1.6738732
+        },
+        "Fire Extingushiers Refilling Charges": {
+          "2024-03-31 00:00:00": 0.9805,
+          "2023-03-31 00:00:00": 0
+        },
+        "Food Expenses for Guests": {
+          "2024-03-31 00:00:00": 5.211601,
+          "2023-03-31 00:00:00": 0
+        },
+        "Diesel Expenses": {
+          "2024-03-31 00:00:00": 11.243223700000001,
+          "2023-03-31 00:00:00": 0
+        },
+        "Interest Under 234 C Fy 2021-22": {
+          "2024-03-31 00:00:00": 6.36117,
+          "2023-03-31 00:00:00": 0
+        },
+        "Loan Processing Charges": {
+          "2024-03-31 00:00:00": 2.88,
+          "2023-03-31 00:00:00": 0
+        },
+        "Sitting Fee of Directors": {
+          "2024-03-31 00:00:00": 0.25,
+          "2023-03-31 00:00:00": 0
+        },
+        "Customs Duty Payment": {
+          "2024-03-31 00:00:00": 0.64124,
+          "2023-03-31 00:00:00": 0
+        },
+        "Transportation and Unloading Charges": {
+          "2024-03-31 00:00:00": 10.4678292,
+          "2023-03-31 00:00:00": 0
+        },
+        "Software Equipment": {
+          "2024-03-31 00:00:00": 2.375,
+          "2023-03-31 00:00:00": 0
+        },
+        "Miscellaneous expenses": {
+          "2024-03-31 00:00:00": 3.5723319,
+          "2023-03-31 00:00:00": 16.619146699999998
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "21. Depreciation and amortisation expense": {
+        "Depreciation & amortisation": {
+          "2024-03-31 00:00:00": 184.79778,
+          "2023-03-31 00:00:00": 169.97991
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "22. Loss on Sale of Assets & Investments": {
+        "Short Term Loss on Sale of Investments (Non Derivative Loss)": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 0
+        },
+        "Long term loss on sale of investments": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 0
+        },
+        "Loss on Sale of Fixed Assets": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 0
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "23. Finance costs": {
+        "Bank & Finance Charges": {
+          "2024-03-31 00:00:00": 80.64763620000001,
+          "2023-03-31 00:00:00": 71.1867225
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "24. Payment to auditor": {
+        "- For Audit fee": {
+          "2024-03-31 00:00:00": 35,
+          "2023-03-31 00:00:00": 35
+        },
+        "- For Tax Audit / Certification Fees": {
+          "2024-03-31 00:00:00": 0,
+          "2023-03-31 00:00:00": 0
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "25. Earnings in foreign currency:": {
+        "Income from export of services": [
+          17.371725768772347,
+          157.650995,
+          "Taking avarage exchange rate for total export sales in the last Y 23-24"
+        ],
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "26. Particulars of un-hedged foreign currency exposure:": {
+        "Income from export of services": {
+          "2024-03-31 00:00:00": 1737.17257687723,
+          "2023-03-31 00:00:00": 157.650995
+        },
+        "_metadata": {
+          "reporting_dates": [
+            "2024-03-31 00:00:00",
+            "2023-03-31 00:00:00"
+          ]
+        }
+      },
+      "27. Relationship with Struck off Companies": {}
+    }
+  }
+}
